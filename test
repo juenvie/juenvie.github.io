@@ -409,12 +409,12 @@
       <span class="hero-img-label">Julien · Content Creator</span>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Hotel">
-      <span class="hero-img-label">Drone · Aerial</span>
+      <img src="images/indonesie_komodo_bateau_drone_001.jpg" alt="Komodo · Drone">
+      <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Pool">
-      <span class="hero-img-label">Lifestyle · Pool</span>
+      <img src="images/cabane_bambou_plage_001.jpg" alt="Cabane plage">
+      <span class="hero-img-label">🇮🇩 Indonésie · Plage</span>
     </div>
   </div>
 </section>
