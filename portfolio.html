@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Full portfolio of Julien — travel content creator for hotels & villas in Southeast Asia. Hotels, Food & Beverage, experiences across Bali, Thailand, Laos, Vietnam and Indonesia.">
+<meta property="og:title" content="Full Portfolio — Julien · Travel Content Creator">
+<meta property="og:description" content="Hotels, Food & Beverage, and experiences across Southeast Asia — photos, videos and drone footage.">
+<meta property="og:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<meta property="og:type" content="website">
+<title>Full Portfolio — Julien · Travel Content Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --sand: #E8DDD0;
+    --terracotta: #C4714A;
+    --deep: #1C1410;
+    --mid: #5C4A3A;
+    --light: #9A8878;
+    --accent: #C4714A;
+    --white: #FDFAF6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (identique à index.html) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; font-style: italic;
+    letter-spacing: 0.02em; color: var(--deep);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--deep);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── PAGE LAYOUT ── */
+  .page-wrap {
+    padding-top: 110px;
+    padding-bottom: 80px;
+  }
+
+  /* Lien retour */
+  .back-link {
+    display: inline-block;
+    padding: 0 48px 24px;
+    font-size: 13px;
+    color: var(--light);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--terracotta); }
+
+  /* ── EN-TÊTE DE PAGE ── */
+  .page-header {
+    padding: 32px 48px 56px;
+    border-bottom: 1px solid rgba(92,74,58,0.1);
+    margin-bottom: 64px;
+  }
+  .page-eyebrow {
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--terracotta);
+  }
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .page-title em { font-style: italic; color: var(--terracotta); }
+  .page-subtitle {
+    font-size: 16px; line-height: 1.7; color: var(--mid);
+    max-width: 560px;
+  }
+
+  /* ── SECTIONS CATÉGORIES ── */
+  .category-section {
+    padding: 0 48px 80px;
+  }
+  .category-section + .category-section {
+    border-top: 1px solid rgba(92,74,58,0.1);
+    padding-top: 64px;
+  }
+
+  .category-label {
+    font-size: 24px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 12px;
+  }
+  .category-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .category-subtitle {
+    font-size: 14px; line-height: 1.65; color: var(--light);
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+
+  /* ── GRILLE MASONRY ── */
+  .photo-grid {
+    columns: 3;
+    column-gap: 8px;
+  }
+
+  .photo-card {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  /* Photo réelle */
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .photo-card:hover img { transform: scale(1.03); }
+
+  /* Overlay label au survol */
+  .photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,20,16,0.72) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 14px;
+  }
+  .photo-card:hover .photo-overlay { opacity: 1; }
+  .photo-tag {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: white;
+  }
+
+  /* Placeholder (avant ajout de vraies photos) */
+  .photo-placeholder {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    background: var(--sand);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--light);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px dashed rgba(92,74,58,0.25);
+    cursor: default;
+  }
+  .photo-placeholder.portrait { aspect-ratio: 3 / 4; }
+  .photo-placeholder svg { opacity: 0.4; }
+
+  /* ── VIDÉOS SECTION ── */
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 16px;
+  }
+  .video-placeholder {
+    background: var(--deep);
+    aspect-ratio: 9 / 16;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px dashed rgba(255,255,255,0.12);
+    cursor: default;
+  }
+  .video-placeholder svg { opacity: 0.3; }
+  .video-row .video-card {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    background: var(--deep);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .video-row .video-card video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .video-row .video-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,20,16,0.55) 0%, transparent 50%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: flex-start;
+    padding: 12px;
+    transition: background 0.3s;
+  }
+  .video-row .video-card:hover .video-card-overlay {
+    background: linear-gradient(to top, rgba(28,20,16,0.65) 0%, transparent 50%);
+  }
+  .video-row .video-card-label {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: white;
+  }
+  /* Grille 3 vidéos avec séparateurs logo */
+  .video-row--3 {
+    grid-template-columns: 1fr 48px 1fr 48px 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+  .video-row-logo-sep {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .video-row-logo-sep img {
+    width: 36px; height: auto; opacity: 0.18;
+    filter: drop-shadow(0 0 4px rgba(196,113,74,0.3));
+  }
+  @media (max-width: 768px) {
+    .video-row { grid-template-columns: 1fr 1fr; }
+    .video-row--3 { grid-template-columns: 1fr 1fr; }
+    .video-row-logo-sep { display: none; }
+  }
+
+  /* ── VIDÉO FEATURED (drone horizontal) ── */
+  .video-featured {
+    position: relative; width: 100%;
+    overflow: hidden; background: var(--deep); margin-top: 16px;
+  }
+  .video-featured video {
+    width: 100%; height: auto; display: block;
+  }
+  .video-featured-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 40px 48px; pointer-events: none; z-index: 3;
+  }
+  .video-featured-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--terracotta); color: white;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 14px; margin-bottom: 16px; width: fit-content;
+  }
+  .video-featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 300; color: white; line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .video-featured-desc {
+    font-size: 14px; color: rgba(255,255,255,0.65); max-width: 420px;
+  }
+  @media (max-width: 768px) {
+    .video-featured { height: 45vh; min-height: 280px; }
+    .video-featured-overlay { padding: 24px; }
+    .video-featured-title { font-size: 26px; }
+  }
+
+  /* ── CONTACT RAPIDE ── */
+  .contact-link {
+    display: inline-block; padding: 14px 36px;
+    background: var(--terracotta); color: white;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .contact-link:hover { background: #b05e38; }
+  .contact-link.outline {
+    background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white;
+  }
+  .contact-link.outline:hover { border-color: white; }
+
+  /* ── FOOTER (identique à index.html) ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer span { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(245,240,232,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 40px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 20px; letter-spacing: 0.12em; }
+    .hamburger { display: flex; }
+    .back-link { padding: 0 24px 20px; }
+    .page-header { padding: 24px 24px 40px; margin-bottom: 40px; }
+    .category-section { padding: 0 24px 56px; }
+    .category-section + .category-section { padding-top: 48px; }
+    footer { padding: 16px 24px; }
+  }
+  @media (max-width: 768px) {
+    .photo-grid { columns: 1; }
+  }
+  @media (max-width: 480px) {
+    .photo-grid { columns: 1; }
+    .category-section { padding: 0 16px 48px; }
+    .category-title { font-size: 26px; }
+    .page-title { font-size: 36px; }
+    .page-header { padding: 20px 16px 36px; }
+    .video-row { grid-template-columns: 1fr; }
+    .video-row--3 { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV (identique à index.html, liens vers index.html#section) ── -->
+<nav>
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
+    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
+    ju.en.vie
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="index.html#packages">Packages</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
+    <li><a href="portfolio.html" style="color:var(--terracotta);">Full Portfolio</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- Lien retour -->
+  <a href="index.html" class="back-link">← Back to home</a>
+
+  <!-- ── EN-TÊTE DE PAGE ── -->
+  <div class="page-header">
+    <div class="page-eyebrow">Full Portfolio</div>
+    <h1 class="page-title">Every frame,<br><em>every destination.</em></h1>
+    <p class="page-subtitle">A selection of my work across hotels, Food &amp; Beverage, and experiences in Asia.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — HOTELS & ACCOMMODATION
+  ══════════════════════════════════════════ -->
+  <section class="category-section" id="hotels">
+    <div class="category-label">Category 01</div>
+    <h2 class="category-title">Hotels &amp; Accommodation</h2>
+    <p class="category-subtitle">Properties filmed across Southeast Asia — rooms, pools, atmosphere and unique stays.</p>
+
+    <div class="photo-grid">
+
+      <!-- PHOTO 1 : Hotels — Bali villa piscine (paysage) -->
+      <div class="photo-card">
+        <img src="images/bali_villa_piscine_001.jpeg" alt="Bali · Villa Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Villa Pool</span></div>
+      </div>
+
+      <!-- PHOTO 2 : Hotels — Laos drone cabanes -->
+      <div class="photo-card">
+        <img src="images/hotel-laos-drone-cabanes.JPG" alt="Laos · Hotel · Drone">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Écolodge · Drone</span></div>
+      </div>
+
+      <!-- PHOTO 3 : Hotels — Piscine palmiers coucher de soleil (portrait) -->
+      <div class="photo-card">
+        <img src="images/coucher-soleil-piscine-palmiers-hotel-plage.jpg" alt="Pool · Sunset">
+        <div class="photo-overlay"><span class="photo-tag">🌅 Pool · Sunset</span></div>
+      </div>
+
+      <!-- PHOTO 4 : Hotels — 2 lits Laos -->
+      <div class="photo-card">
+        <img src="images/2lits-laos.jpg" alt="Room · Laos">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Twin Room</span></div>
+      </div>
+
+      <!-- PHOTO 5 : Hotels — Vietnam piscine Ha Giang (portrait) -->
+      <div class="photo-card">
+        <img src="images/piscine-ha-giang-loop.jpg" alt="Ha Giang Loop · Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Ha Giang · Pool</span></div>
+      </div>
+
+      <!-- PHOTO 6 : Hotels — Lit voilage Laos -->
+      <div class="photo-card">
+        <img src="images/lit-laos-voilage.jpg" alt="Room · Canopy Bed · Laos">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Canopy Bed</span></div>
+      </div>
+
+      <!-- PHOTO 7 : Hotels — Bali villa pool (paysage) -->
+      <div class="photo-card">
+        <img src="images/IMG_4167.jpeg" alt="Bali · Villa Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Villa Pool</span></div>
+      </div>
+
+      <!-- PHOTO 8 : Hotels — Terrasse Laos -->
+      <div class="photo-card">
+        <img src="images/hotel-laos-terasse.jpg" alt="Terrace · Laos">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Terrace</span></div>
+      </div>
+
+      <!-- PHOTO 9 : Hotels — Vang Vieng Laos -->
+      <div class="photo-card">
+        <img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Vang Vieng · Hotel</span></div>
+      </div>
+
+    </div>
+
+    <div class="video-row video-row--3">
+      <!-- VIDEO 1 : Hotels — Anahata Canggu -->
+      <div class="video-card">
+        <video src="videos/Videos%20Hotel/anahata-canggu.mov" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Canggu · Anahata</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SÉPARATEUR LOGO -->
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+      </div>
+      <!-- VIDEO 2 : Hotels — Uma -->
+      <div class="video-card">
+        <video src="videos/Videos%20Hotel/Uma%20.MOV" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Ubud · Uma</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SÉPARATEUR LOGO -->
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+      </div>
+      <!-- VIDEO 3 : Hotels — Hotel Laos -->
+      <div class="video-card">
+        <video src="videos/Videos%20Hotel/hotel-laos.mov" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇱🇦 Laos · Hotel</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-link" style="display:inline-block; margin: 8px 0 0;">← Back to home</a>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — FOOD & DRINKS
+  ══════════════════════════════════════════ -->
+  <section class="category-section" id="food">
+    <div class="category-label">Category 02</div>
+    <h2 class="category-title">F&amp;B</h2>
+    <p class="category-subtitle">Authentic local cuisine, rooftop bars, beach restaurants and café culture.</p>
+
+    <div class="photo-grid">
+
+      <!-- PHOTO 1 : Food — Petit-déjeuner terrasse vue montagnes (portrait) -->
+      <div class="photo-card">
+        <img src="images/petit-dejeuner-terrasse-piscine-vue-montagnes.jpg" alt="Breakfast · Mountain View">
+        <div class="photo-overlay"><span class="photo-tag">🍳 Breakfast · Mountain View</span></div>
+      </div>
+
+
+
+      <!-- PHOTO 3 : Food — Restaurant plage palmiers (paysage) -->
+      <div class="photo-card">
+        <img src="images/food-beach-philippines.jpg" alt="Beach Restaurant · Philippines">
+        <div class="photo-overlay"><span class="photo-tag">🇵🇭 Beach Restaurant · Philippines</span></div>
+      </div>
+
+      <!-- PHOTO 4 : Food — Smoothie bowl café Bangkok (portrait) -->
+      <div class="photo-card">
+        <img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="Smoothie Bowl · Bangkok Café">
+        <div class="photo-overlay"><span class="photo-tag">🥤 Smoothie Bowl · Bangkok</span></div>
+      </div>
+
+      <!-- PHOTO 5 : Food — Restaurant terrasse rizière Laos (paysage) -->
+      <div class="photo-card">
+        <img src="images/restaurant-terrasse-riziere-vue-montagnes-laos.jpg" alt="Restaurant · Rice Field View · Laos">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Restaurant · Rice Fields</span></div>
+      </div>
+
+      <!-- PHOTO 6 : Food/Ambiance — Table dîner plage guirlandes Koh Chang (portrait) -->
+      <div class="photo-card">
+        <img src="images/coucher-soleil-plage-table-guirlandes-lumiere-koh-chang.jpg" alt="Beach Dinner · Koh Chang">
+        <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Chang · Beach Dinner</span></div>
+      </div>
+
+      <!-- PHOTO 7 : Food — Avo Toast -->
+      <div class="photo-card">
+        <img src="images/avo-toast.jpg" alt="Avo Toast">
+        <div class="photo-overlay"><span class="photo-tag">🥑 Avo Toast</span></div>
+      </div>
+
+      <!-- PHOTO 8 : Food — Nasi Goreng -->
+      <div class="photo-card">
+        <img src="images/nasi-goreng.jpg" alt="Nasi Goreng">
+        <div class="photo-overlay"><span class="photo-tag">🍳 Nasi Goreng</span></div>
+      </div>
+
+      <!-- PHOTO 8b : Food — Ha Giang Loop -->
+      <div class="photo-card">
+        <img src="images/food-ha-giang-loop.jpg" alt="Food · Ha Giang Loop">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Ha Giang Loop</span></div>
+      </div>
+
+      <!-- PHOTO 9 : Food — Acai -->
+      <div class="photo-card">
+        <img src="images/acai.jpg" alt="Acai Bowl">
+        <div class="photo-overlay"><span class="photo-tag">🫐 Acai Bowl</span></div>
+      </div>
+
+      <!-- PHOTO 10 : Food — Gaufre -->
+      <div class="photo-card">
+        <img src="images/gauffre.jpg" alt="Waffle">
+        <div class="photo-overlay"><span class="photo-tag">🧇 Waffle</span></div>
+      </div>
+
+      <!-- PHOTO 11 : Food — Fruits Peony -->
+      <div class="photo-card">
+        <img src="images/fruits-peony.jpg" alt="Fruits · Peony Cruise">
+        <div class="photo-overlay"><span class="photo-tag">🍉 Fruits · Peony Cruise</span></div>
+      </div>
+
+      <!-- PHOTO 12 : Food — Peony -->
+      <div class="photo-card">
+        <img src="images/peony.jpg" alt="Peony Cruise">
+        <div class="photo-overlay"><span class="photo-tag">🛳️ Peony Cruise</span></div>
+      </div>
+
+    </div>
+
+    <div class="video-row video-row--3">
+      <!-- VIDEO 1 : Food & Drinks — Danasol Da Nang -->
+      <div class="video-card">
+        <video src="videos/Video%20Food/Danasol%20Da%20Nang.MP4" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇻🇳 Da Nang · Danasol</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SÉPARATEUR LOGO -->
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+      </div>
+      <!-- VIDEO 2 : Food & Drinks — Nice Kitchen -->
+      <div class="video-card">
+        <video src="videos/Video%20Food/nice%20kitchen.mp4" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🍽️ Nice Kitchen</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SÉPARATEUR LOGO -->
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+      </div>
+      <!-- VIDEO 3 : Food & Drinks — Rosie's Café -->
+      <div class="video-card">
+        <video src="videos/Video%20Food/rosies-cafe.mov" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">☕ Rosie's Café</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-link" style="display:inline-block; margin: 8px 0 0;">← Back to home</a>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — EXPERIENCES
+  ══════════════════════════════════════════ -->
+  <section class="category-section" id="experiences">
+    <div class="category-label">Category 03</div>
+    <h2 class="category-title">Experiences</h2>
+    <p class="category-subtitle">Trekking, diving, markets, motorbike rides and everything in between.</p>
+
+    <div class="photo-grid">
+
+      <!-- PHOTO 1 : Experiences — Montgolfière Vang Vieng drone (paysage) -->
+      <div class="photo-card">
+        <img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Hot Air Balloon · Vang Vieng">
+        <div class="photo-overlay"><span class="photo-tag">🚁 Laos · Hot Air Balloon</span></div>
+      </div>
+
+      <!-- PHOTO 1b : Experiences — Kayak Sydney -->
+      <div class="photo-card">
+        <img src="images/kayak-sydney.jpg" alt="Kayak · Sydney">
+        <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Kayak</span></div>
+      </div>
+
+      <!-- PHOTO 2 : Experiences — Bateau Indonésie (portrait) -->
+      <div class="photo-card">
+        <img src="images/indonesie_bateau_001.jpg" alt="Indonesia · Boat">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Indonesia · Boat</span></div>
+      </div>
+
+      <!-- PHOTO 2b : Experiences — Rizière Sapa -->
+      <div class="photo-card">
+        <img src="images/riziere-sapa.jpg" alt="Rizière · Sapa · Vietnam">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Rice Fields</span></div>
+      </div>
+
+      <!-- PHOTO 3 : Experiences — Bateau plage tropicale drone (paysage) -->
+      <div class="photo-card">
+        <img src="images/plongee-thailande.jpg" alt="Plongée · Thaïlande">
+        <div class="photo-overlay"><span class="photo-tag">🤿 Thailand · Diving</span></div>
+      </div>
+
+      <!-- PHOTO 4 : Experiences — Bateau Komodo -->
+      <div class="photo-card">
+        <img src="images/bateau-komodo.jpg" alt="Komodo · Boat">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Komodo · Boat</span></div>
+      </div>
+
+      <!-- PHOTO 5 : Experiences — Sapa Drone -->
+      <div class="photo-card">
+        <img src="images/sapa-drone.jpg" alt="Sapa · Vietnam · Drone">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Drone</span></div>
+      </div>
+
+      <!-- PHOTO 6 : Experiences — Padar Island -->
+      <div class="photo-card">
+        <img src="images/padar-island.jpg" alt="Padar Island · Indonesia">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Padar Island</span></div>
+      </div>
+
+    </div>
+
+    <div class="video-row">
+      <!-- VIDEO 1 : Experiences — Padel Canggu -->
+      <div class="video-card">
+        <video src="videos/Video%20Activites/Padel%20Canggu.MP4" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Canggu · Padel</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- VIDEO 2 : Experiences — Sapa -->
+      <div class="video-card">
+        <video src="videos/Video%20Activites/Sapa.MP4" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇻🇳 Sapa · Vietnam</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- VIDEO 3 : Experiences — Port Barton -->
+      <div class="video-card">
+        <video src="videos/Video%20Activites/port-barton.mov" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇵🇭 Port Barton</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- VIDEO 4 : Experiences — Keelooma -->
+      <div class="video-card">
+        <video src="videos/Video%20Activites/keelooma.mov" muted playsinline loop preload="none"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇵🇭 Croisière Coron - El Nido avec Keelooma</div>
+            <div class="sound-btn" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDÉO DRONE HORIZONTALE -->
+    <div class="video-featured">
+      <video src="videos/Video%20drone/bateau-drone-komodo.mov" muted playsinline loop preload="none"></video>
+      <div class="video-featured-overlay">
+        <div class="video-featured-badge">🚁 Drone footage</div>
+        <div class="video-featured-title">Drone shots that reveal<br>your activities.</div>
+        <div class="video-featured-desc">Aerial perspectives captured from above — showing the scale, the landscape and the experience your guests will live.</div>
+      </div>
+      <div class="sound-btn" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+          <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+      </div>
+    </div>
+
+  </section>
+
+  <a href="index.html" class="back-link" style="display:inline-block; margin: 8px 0 16px;">← Back to home</a>
+
+</div><!-- end .page-wrap -->
+
+<!-- CONTACT RAPIDE -->
+<section style="background:var(--deep); padding:64px 48px; text-align:center; position:relative; overflow:hidden;">
+  <!-- Photo de fond pleine largeur, sujet ancré à droite -->
+  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;">
+  <!-- Dégradé depuis la gauche pour protéger la lisibilité du texte centré -->
+  <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
+  <!-- Contenu centré au-dessus -->
+  <div style="position:relative; z-index:1;">
+    <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;"></a>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; font-style:italic; color:white; margin-bottom:32px; line-height:1.1;">Ready to collaborate?</p>
+    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+      <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
+      <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline">Instagram DM</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER (identique à index.html) ── -->
+<footer>
+  <a href="index.html" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;"></a>
+  <span>Travel Content Creator · Bali 2026</span>
+</footer>
+
+<script>
+  // Autoplay vidéos au scroll
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('video').forEach(video => videoObserver.observe(video));
+
+  // Son
+  document.querySelectorAll('.sound-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const container = btn.closest('.video-card') || btn.closest('.video-featured');
+      const video = container.querySelector('video');
+      video.muted = !video.muted;
+      btn.classList.toggle('unmuted', !video.muted);
+      const line = btn.querySelector('.muted-line');
+      if (line) line.style.display = video.muted ? '' : 'none';
+    });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>

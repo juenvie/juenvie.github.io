@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julien — Travel Content Creator | Bali 2025</title>
+<meta name="description" content="Travel content creator for hotels & villas in Bali and Southeast Asia. Short-form video, photography and drone footage — in exchange for a hosted stay.">
+<meta property="og:title" content="Julien — Travel Content Creator for Hotels & Villas">
+<meta property="og:description" content="I produce short-form video, photography and drone footage for hotels & villas across Asia. Available in Bali — August 2026.">
+<meta property="og:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Julien — Travel Content Creator | Bali 2026">
+<meta name="twitter:description" content="Content that makes guests book. Photography, video & drone for hotels and villas in Bali.">
+<meta name="twitter:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<title>Julien — Travel Content Creator | Bali 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -40,11 +49,33 @@
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 300; font-style: italic;
+    font-size: 32px; font-weight: 300; font-style: italic;
     letter-spacing: 0.02em; color: var(--deep);
     text-decoration: none;
   }
   .nav-links { display: flex; gap: 32px; list-style: none; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--deep);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .nav-links a {
     font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--mid); text-decoration: none; transition: color 0.2s;
@@ -158,6 +189,7 @@
   /* BALI AVAILABILITY BANNER */
   .bali-banner {
     background: var(--terracotta);
+    margin-top: 92px;
     padding: 20px 48px;
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 12px;
@@ -197,33 +229,62 @@
 
   /* PORTFOLIO GRID */
   .portfolio-section { background: var(--white); }
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 220px;
-    gap: 4px;
+
+  /* Masonry 2 colonnes — zéro espace mort */
+  .portfolio-gallery {
+    columns: 3;
+    column-gap: 8px;
+    max-width: 1100px;
+    margin: 48px auto 0;
   }
-  .portfolio-item {
-    background: var(--sand); overflow: hidden;
-    position: relative; cursor: pointer;
+
+  .gallery-card {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
   }
-  .portfolio-item.wide { grid-column: span 2; }
-  .portfolio-item.tall { grid-row: span 2; }
-  .portfolio-item img {
-    width: 100%; height: 100%; object-fit: cover;
+
+  .gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
     transition: transform 0.5s ease;
   }
-  .portfolio-item:hover img { transform: scale(1.06); }
+
+  .gallery-card:hover img { transform: scale(1.03); }
+
   .portfolio-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(28,20,16,0.7) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(28,20,16,0.72) 0%, transparent 55%);
     opacity: 0; transition: opacity 0.3s;
-    display: flex; align-items: flex-end; padding: 20px;
+    display: flex; align-items: flex-end; padding: 16px;
   }
-  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+  .gallery-card:hover .portfolio-overlay { opacity: 1; }
+
   .portfolio-tag {
     font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     color: white;
+  }
+
+  /* BALI SECTION */
+  .bali-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 40px;
+  }
+  .bali-photo-placeholder {
+    background: var(--sand);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--light);
   }
 
   /* PROOF / RESULTS */
@@ -341,6 +402,74 @@
   }
   footer span { font-size: 12px; color: rgba(255,255,255,0.3); }
 
+  /* VIDEOS SECTION */
+  .videos-section { background: var(--white); }
+
+  .video-featured {
+    position: relative; width: 100%;
+    overflow: hidden; background: var(--deep); margin-bottom: 4px;
+  }
+  .video-featured video {
+    width: 100%; height: auto; display: block;
+  }
+  .video-featured-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,20,16,0.72) 0%, transparent 55%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 40px 48px; pointer-events: none;
+  }
+  .video-featured-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--terracotta); color: white;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 14px; margin-bottom: 16px; width: fit-content;
+  }
+  .video-featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 300; color: white; line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .video-featured-desc {
+    font-size: 14px; color: rgba(255,255,255,0.65); max-width: 420px;
+  }
+
+  .videos-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    margin-top: 0;
+  }
+  .video-card {
+    position: relative; aspect-ratio: 9/16;
+    background: var(--deep); overflow: hidden; cursor: pointer;
+  }
+  .video-card video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .video-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,20,16,0.55) 0%, transparent 50%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: flex-start;
+    padding: 12px;
+    transition: background 0.3s;
+  }
+  .video-card:hover .video-card-overlay { background: linear-gradient(to top, rgba(28,20,16,0.65) 0%, transparent 50%); }
+  .video-card-bottom {
+    width: 100%; display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .video-card-label {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: white;
+  }
+  .sound-btn {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .sound-btn:hover { background: rgba(255,255,255,0.3); }
+  .sound-btn.unmuted { background: rgba(196,113,74,0.7); border-color: rgba(196,113,74,0.9); }
+
   /* ANIMATIONS */
   .fade-up {
     opacity: 0; transform: translateY(24px);
@@ -351,18 +480,62 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
-    .nav-links { display: none; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(245,240,232,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 40px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 20px; letter-spacing: 0.12em; }
+    .hamburger { display: flex; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 40px; min-height: auto; }
     .hero-visual { height: 360px; }
     section { padding: 64px 24px; }
     .stats-bar { padding: 24px; }
     .bali-banner { padding: 16px 24px; }
     .services-grid { grid-template-columns: 1fr; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; }
-    .portfolio-item.wide { grid-column: span 1; }
+    .portfolio-gallery { columns: 2; }
+    .bali-photos { grid-template-columns: 1fr 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
     footer { padding: 16px 24px; }
+    .video-featured { height: auto; min-height: unset; }
+    .video-featured-overlay { padding: 24px; }
+    .video-featured-title { font-size: 26px; }
+    .videos-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 38px; }
+    .hero-sub { font-size: 14px; }
+    .hero-visual { height: 260px; }
+    .stat-number { font-size: 30px; }
+    .stat-label { font-size: 10px; }
+    .stat-divider { display: none; }
+    .stats-bar { gap: 16px; padding: 20px 16px; justify-content: center; }
+    .stat { min-width: 80px; }
+    .section-title { font-size: 28px; }
+    .bali-banner { flex-direction: column; text-align: center; padding: 14px 20px; }
+    .bali-banner-text { font-size: 13px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .portfolio-gallery { columns: 1; }
+    .bali-photos { grid-template-columns: 1fr; }
+    .videos-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 100%; text-align: center; }
+    section { padding: 48px 16px; }
+    .stats-bar { padding: 20px 16px; }
+    footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
   }
 </style>
 </head>
@@ -370,26 +543,35 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">ju.en.vie</a>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
+    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
+    ju.en.vie
+  </a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#results">Results</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
+    <li><a href="portfolio.html">Full Portfolio</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- BALI AVAILABILITY BANNER -->
 <div class="bali-banner">
   <div class="bali-banner-text">
-    <strong>Available in Bali — August 2025.</strong> Canggu · Ubud · Seminyak · Uluwatu · Anywhere on the island.
+    <strong>Available in Bali — August 2026.</strong> Canggu · Ubud · Seminyak · Uluwatu · Anywhere on the island.
   </div>
   <div class="bali-tag">Travel Content Creator for Hotels & Villas</div>
 </div>
 
 <!-- HERO -->
-<section class="hero" style="padding-top: 120px;">
+<section class="hero" style="padding-top: 80px;">
   <div class="hero-text fade-up">
     <div class="hero-eyebrow">Travel Content Creator</div>
     <h1 class="hero-title">
@@ -405,16 +587,16 @@
   </div>
   <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
     <div class="hero-img">
-      <img src="images/julien-portrait.jpg" alt="Julien — Travel Content Creator">
+      <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien — Travel Content Creator">
       <span class="hero-img-label">Julien · Content Creator</span>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Hotel">
-      <span class="hero-img-label">Drone · Aerial</span>
+      <img src="images/indonesie_komodo_bateau_drone_001.jpg" alt="Komodo · Drone">
+      <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Pool">
-      <span class="hero-img-label">Lifestyle · Pool</span>
+      <img src="images/cabane_bambou_plage_001.jpg" alt="Cabane plage">
+      <span class="hero-img-label">🇮🇩 Indonésie · Plage</span>
     </div>
   </div>
 </section>
@@ -440,11 +622,6 @@
     <div class="stat-number">48h</div>
     <div class="stat-label">Delivery time</div>
   </div>
-  <div class="stat-divider"></div>
-  <div class="stat">
-    <div class="stat-number">∞</div>
-    <div class="stat-label">Commercial usage rights</div>
-  </div>
 </div>
 
 <!-- WHAT I CREATE -->
@@ -465,7 +642,7 @@
     <div class="service-card fade-up" style="transition-delay:0.2s">
       <div class="service-icon">🚁</div>
       <div class="service-name">Drone Footage</div>
-      <p class="service-desc">Aerial shots that show your property's location, surroundings and unique scale. Available in Bali where regulations permit.</p>
+      <p class="service-desc">Aerial shots that show your property's location, surroundings and unique scale. Available where regulations permit.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.3s">
       <div class="service-icon">🎞️</div>
@@ -489,62 +666,225 @@
 <section id="work" class="portfolio-section">
   <div class="section-label">Selected work</div>
   <h2 class="section-title">Properties filmed<br>across Asia.</h2>
-  <div class="portfolio-grid" style="margin-top:48px">
-    <div class="portfolio-item wide tall">
-      <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=80" alt="Bali villa">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Villa · Drone</span></div>
+  <div class="portfolio-gallery">
+
+    <div class="gallery-card">
+      <img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool · Rice Field</span></div>
     </div>
-    <div class="portfolio-item">
-      <img src="https://images.unsplash.com/photo-1602002418082-a4443978a5b5?w=600&q=80" alt="Pool">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool</span></div>
+
+
+
+    <div class="gallery-card">
+      <img src="images/IMG_2456.JPG" alt="Bali · Villa">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Villa</span></div>
     </div>
-    <div class="portfolio-item">
-      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80" alt="Hotel">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Vietnam · Hotel</span></div>
+
+
+
+    <div class="gallery-card">
+      <img src="images/chambre-bungalow-bois-vue-jungle.jpg" alt="Bungalow · Jungle">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Bungalow · Jungle View</span></div>
     </div>
-    <div class="portfolio-item wide">
-      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80" alt="Bali resort">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Resort · Reel</span></div>
+
+    <div class="gallery-card">
+      <img src="images/portrait-piscine-lanna-tree-chiang-mai.jpg" alt="Chiang Mai · Pool">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Pool</span></div>
     </div>
-    <div class="portfolio-item">
-      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Hotel room">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Laos · Hotel collab</span></div>
+
+
+    <div class="gallery-card">
+      <img src="images/portrait-transat-piscine-arche-brique-chiang-mai.jpg" alt="Chiang Mai · Villa">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Villa</span></div>
     </div>
-    <div class="portfolio-item">
-      <img src="https://images.unsplash.com/photo-1582610116397-edb72a2d67b4?w=600&q=80" alt="Breakfast">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Thailand · F&B</span></div>
+
+    <div class="gallery-card">
+      <img src="images/drone-villa-piscine-jardin-montagnes-laos.jpg" alt="Laos · Drone · Villa">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Villa</span></div>
     </div>
+
+
+    <div class="gallery-card">
+      <img src="images/douche-exterieure-vue-terrasse-jungle.jpg" alt="Terrace · Jungle">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Terrace · Jungle</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Vang Vieng · Mountains">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Mountains</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/drone-village-riviere-jungle-montagnes-laos.jpg" alt="Laos · Drone · Village">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Village</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/dji_fly_20250222_164222_141_1740213844731_photo_optimized.JPG" alt="Drone · Aerial View">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Drone · Aerial View</span></div>
+    </div>
+
+
+    <div class="gallery-card">
+      <img src="images/IMG_2524.jpeg" alt="Komodo · Beach">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Komodo · Beach</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/chambre-double-peinture-elephant-lumiere-naturelle.jpg" alt="Room · Natural Light">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Room · Natural Light</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/IMG_2324.JPEG" alt="Da Nang · Pool Bar">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Da Nang · Pool Bar</span></div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Vang Vieng · Buggy · Sunset">
+      <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Buggy · Sunset</span></div>
+    </div>
+
   </div>
-  <p style="margin-top:16px; font-size:13px; color:var(--light); font-style:italic;">
+  <div style="margin-top:56px; text-align:center; padding:40px 24px; border-top:1px solid rgba(196,113,74,0.15);">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px; opacity:0.8;">Full Portfolio</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic; color:var(--deep); margin-bottom:8px;">Hotels · F&B · Experiences</p>
+    <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--light); margin-bottom:28px;">More photos and videos — organized by category.</p>
+    <a href="portfolio.html" style="display:inline-block; padding:14px 44px; background:var(--terracotta); color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:opacity 0.25s; font-family:'DM Sans',sans-serif; opacity:0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">View full portfolio →</a>
+  </div>
+  <p style="margin-top:16px; font-size:13px; color:var(--light); font-style:italic; text-align:center;">
     ↗ Full portfolio: <a href="https://www.instagram.com/ju.en.vie" target="_blank" style="color:var(--terracotta);">@ju.en.vie</a> on Instagram & <a href="https://www.tiktok.com/@juenvie" target="_blank" style="color:var(--terracotta);">@juenvie</a> on TikTok
   </p>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="videos-section" style="padding-bottom: 0;">
+  <div class="section-label">Showreel</div>
+  <h2 class="section-title">Filmed on location<br>— from ground to sky.</h2>
+
+  <!-- DRONE FEATURED -->
+  <div class="video-featured fade-up">
+    <video src="videos/Video%20drone/drone%20.mov" autoplay muted loop playsinline preload="auto"></video>
+    <div class="video-featured-overlay">
+      <div class="video-featured-badge">🚁 Drone footage</div>
+      <div class="video-featured-title">Aerial perspective</div>
+      <div class="video-featured-desc">Drone shots that reveal your property's true scale, surroundings and unique location — the view that makes guests book.</div>
+    </div>
+    <div class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+  </div>
+
+  <!-- VIDEO GRID -->
+  <div class="videos-grid">
+
+    <div class="video-card fade-up">
+      <video src="videos/Videos%20Hotel/UMA%20JALA%20VILLA%20UBUD%20.MP4" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇮🇩 Ubud · Uma Jala Villa</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="video-card fade-up" style="transition-delay:.1s">
+      <video src="videos/Videos%20Hotel/PEONY%20CRUISE%20.MP4" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🚢 Peony Cruise</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up" style="transition-delay:.15s">
+      <video src="videos/Videos%20Hotel/Chambre%20bateau%20Komodo%20.MP4" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇮🇩 Komodo · Bateau</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="video-card fade-up" style="transition-delay:.25s">
+      <video src="videos/Videos%20Hotel/Awaken%20Da%20Nang%20.mov" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇻🇳 Da Nang · Awaken</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="video-card fade-up" style="transition-delay:.35s">
+      <video src="videos/Videos%20Hotel/Senggigi.mov" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇮🇩 Senggigi · Lombok</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="video-card fade-up" style="transition-delay:.45s;grid-column:span 3;aspect-ratio:16/9;">
+      <video src="videos/Video%20drone/Canggu.MOV" muted playsinline loop preload="metadata"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇮🇩 Canggu</div>
+          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="margin-top:56px; text-align:center; padding:40px 24px 64px; border-top:1px solid rgba(196,113,74,0.15);">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px; opacity:0.8;">Full Portfolio</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic; color:var(--deep); margin-bottom:8px;">Hotels · F&B · Experiences</p>
+    <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--light); margin-bottom:28px;">More photos and videos — organized by category.</p>
+    <a href="portfolio.html" style="display:inline-block; padding:14px 44px; background:var(--terracotta); color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:opacity 0.25s; font-family:'DM Sans',sans-serif; opacity:0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">View full portfolio →</a>
+    <p style="margin-top:20px; font-size:13px; color:var(--light); font-style:italic;">
+      ↗ Full portfolio: <a href="https://www.instagram.com/ju.en.vie" target="_blank" style="color:var(--terracotta);">@ju.en.vie</a> on Instagram & <a href="https://www.tiktok.com/@juenvie" target="_blank" style="color:var(--terracotta);">@juenvie</a> on TikTok
+    </p>
+  </div>
+</section>
+
+<!-- BALI -->
+<section style="padding:100px 48px; background:var(--white);">
+  <div class="section-label">Why Bali</div>
+  <h2 class="section-title">I know this island.</h2>
+  <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:560px; margin-bottom:0;">I've already been to Bali — I know the light, the spots, the atmosphere. I'm not arriving blind.</p>
+  <div class="bali-photos">
+    <img src="images/riziere-bali.jpg" alt="Rizière · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
+    <img src="images/villa-canggu.jpg" alt="Villa · Canggu · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
+    <img src="images/mont-batur.jpg" alt="Mont Batur · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
+    <img src="images/uma-jala-villa-ubud.jpg" alt="Uma Jala Villa · Ubud · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
+  </div>
 </section>
 
 <!-- PROOF / RESULTS -->
 <section id="results" class="proof-section">
   <div class="section-label">Why it works</div>
   <h2 class="section-title">Real reach.<br>Reusable content.</h2>
-  <div class="proof-grid">
+  <div class="proof-grid" style="margin-top:48px;">
     <div class="proof-card fade-up">
       <div class="proof-card-number">50K+</div>
-      <div class="proof-card-label">Views on a single hotel video — organic, no paid promotion. Audience: travellers actively planning trips in Southeast Asia.</div>
+      <div class="proof-card-label">Views on a single hotel video — organic reach, no paid promotion. Audience: travellers actively planning trips in Southeast Asia.</div>
     </div>
-    <div class="proof-card fade-up" style="transition-delay:0.1s">
+    <div class="proof-card fade-up" style="transition-delay:0.15s">
       <div class="proof-card-number">48h</div>
-      <div class="proof-card-label">Delivery from shoot to final edited files. No waiting weeks. You get content you can use immediately across all your channels.</div>
-    </div>
-    <div class="proof-card fade-up" style="transition-delay:0.2s">
-      <div class="proof-card-number">∞</div>
-      <div class="proof-card-label">Commercial usage rights. Every photo and video I create is yours to use forever — website, OTAs, social media, ads. No recurring licence.</div>
-    </div>
-    <div class="proof-card fade-up" style="transition-delay:0.3s">
-      <div class="proof-card-number">3+</div>
-      <div class="proof-card-label">Countries covered: Bali, Vietnam, Laos, Thailand. Consistent quality across different properties, climates and aesthetics.</div>
+      <div class="proof-card-label">From shoot to final edited files delivered to you. Ready to post on your website, social media and OTAs immediately.</div>
     </div>
   </div>
-  <div class="proof-collab fade-up">
-    <div class="proof-collab-quote">"After our collaboration, the content was posted on both my account and used by the property — authentic hospitality storytelling that actually performs."</div>
-    <div class="proof-collab-meta">Julien — following hotel collaboration, Laos 2025</div>
+  <p style="font-size:11px; color:var(--light); font-style:italic; text-align:center; margin-top:24px;">* All content delivered with full commercial usage rights — yours to use forever, no licence renewal.</p>
+  <div class="proof-collab fade-up" style="margin-top:48px;">
+    <div class="proof-collab-quote">"After our collaboration, the content was posted on both my account and used by the property.<br>Authentic hospitality storytelling that actually performs."</div>
+    <div class="proof-collab-meta">Soksan — Marketing Manager, Zen Namkhan Boutique Resort<br><span style="opacity:0.6; font-size:0.9em;">Luang Prabang, Laos · 2026</span></div>
   </div>
 </section>
 
@@ -555,7 +895,7 @@
   <div class="packages-grid">
     <div class="package-card fade-up">
       <div class="package-name">UGC Content Kit</div>
-      <p class="package-desc">For properties that need high-quality content to use across their own platforms. No social exposure included.</p>
+      <p class="package-desc">For properties that need high-quality content — fully complimentary: offered in exchange for a hosted stay.</p>
       <ul class="package-items">
         <li>4 vertical videos (Reels / TikTok ready)</li>
         <li>10–15 edited photos (rooms, pool, lifestyle, F&B)</li>
@@ -564,44 +904,49 @@
         <li>Delivery in 48–72h after shoot</li>
         <li>Suitable for: website, Booking.com, Airbnb, social ads</li>
       </ul>
-      <div class="package-value">Market value: ~€600–800 | In exchange for complimentary stay</div>
     </div>
     <div class="package-card featured fade-up" style="transition-delay:0.15s">
       <span class="package-badge">Most popular</span>
       <div class="package-name">Visibility + Content</div>
-      <p class="package-desc">Content creation plus organic exposure to my travel audience. Best for properties targeting international travellers.</p>
+      <p class="package-desc">Content creation plus organic exposure — fully complimentary: offered in exchange for a hosted stay.</p>
       <ul class="package-items">
         <li>3 vertical UGC videos (Reels / TikTok)</li>
         <li>8–10 edited photos</li>
         <li>1 Reel or TikTok published on my account</li>
         <li>2–3 Instagram stories with location tag</li>
-        <li>Property tagged — reach: 6K+ engaged followers</li>
+        <li>100% organic audience — travellers &amp; digital nomads, zero paid following</li>
         <li>All content reusable on your platforms</li>
       </ul>
-      <div class="package-value">Market value: ~€800–1200 | In exchange for complimentary stay</div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
+  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:128px;width:auto;opacity:0.6;margin-bottom:24px;"></a>
   <div class="section-label">Get in touch</div>
   <h2 class="section-title" style="color:white;">Let's create something<br>your guests will book for.</h2>
-  <p class="contact-sub">I'm in Bali throughout August 2025. Send me a message with your property details and I'll get back to you within 24h.</p>
+  <p class="contact-sub">I'm in Bali throughout August 2026.<br>Send me a message with your property details and I'll get back to you within 24h.</p>
   <div class="contact-links">
     <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
     <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline">Instagram DM</a>
     <a href="https://bio.site/juenvie" target="_blank" class="contact-link outline">All my links</a>
   </div>
   <div class="social-handle">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align:middle;opacity:0.5;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    @ju.en.vie &nbsp;&nbsp;
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align:middle;opacity:0.5;"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>
-    @juenvie
+    <a href="https://www.instagram.com/ju.en.vie" target="_blank" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align:middle;opacity:0.5;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @ju.en.vie
+    </a>
+    &nbsp;&nbsp;
+    <a href="https://www.tiktok.com/@juenvie" target="_blank" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align:middle;opacity:0.5;"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>
+      @juenvie
+    </a>
   </div>
 </section>
 
 <footer>
+  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;"></a>
   <span>Travel Content Creator · Bali 2026</span>
 </footer>
 
@@ -617,10 +962,54 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  // Autoplay video cards when in view
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      if (!video) return;
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
+
+  // Sound toggle button
+  document.querySelectorAll('.sound-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const container = btn.closest('.video-card') || btn.closest('.video-featured');
+      const video = container.querySelector('video');
+      video.muted = !video.muted;
+      btn.classList.toggle('unmuted', !video.muted);
+      const line = btn.querySelector('.muted-line');
+      if (line) line.style.display = video.muted ? '' : 'none';
+    });
+  });
+
   // Nav scroll effect
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.borderBottomColor = 
+    document.querySelector('nav').style.borderBottomColor =
       window.scrollY > 40 ? 'rgba(92,74,58,0.2)' : 'rgba(92,74,58,0.12)';
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 </script>
 
