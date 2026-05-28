@@ -34,7 +34,7 @@
 
   /* ── NAV (identique à index.html) ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 48px;
     background: rgba(245,240,232,0.92);
@@ -47,7 +47,10 @@
     letter-spacing: 0.02em; color: var(--deep);
     text-decoration: none;
   }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none; margin: 0; padding: 0 48px;
+    position: fixed; top: 0; right: 0; height: 85px; align-items: center; z-index: 1001;
+  }
   .hamburger {
     display: none;
     flex-direction: column;
@@ -305,8 +308,12 @@
   }
 
   /* ── CONTACT RAPIDE ── */
+  .contact-links {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
   .contact-link {
-    display: inline-block; padding: 14px 36px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 36px; width: 280px;
     background: var(--terracotta); color: white;
     font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
     text-decoration: none; transition: background 0.2s;
@@ -336,16 +343,23 @@
       flex-direction: column;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
+      height: 100vh; width: 100vw;
       background: rgba(245,240,232,0.98);
       backdrop-filter: blur(16px);
-      z-index: 99;
+      z-index: 1000;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 20px;
       padding: 80px 40px;
+      overflow-y: auto;
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 20px; letter-spacing: 0.12em; }
+    .nav-links .nav-portfolio-btn {
+      background: none !important; color: var(--deep) !important;
+      padding: 0 !important; border: none !important;
+      letter-spacing: 0.12em; font-size: 20px !important;
+    }
     .hamburger { display: flex; }
     .back-link { padding: 0 24px 20px; }
     .page-header { padding: 24px 24px 40px; margin-bottom: 40px; }
@@ -364,29 +378,32 @@
     .category-title { font-size: 26px; }
     .page-title { font-size: 36px; }
     .page-header { padding: 20px 16px 36px; }
-    .video-row { grid-template-columns: 1fr; }
-    .video-row--3 { grid-template-columns: 1fr; }
+    .video-row { grid-template-columns: 1fr 1fr; }
+    .video-row--3 { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
     .video-featured-overlay { padding: 12px 16px; }
     .video-featured-title { font-size: 16px; margin-bottom: 4px; }
     .video-featured-badge { font-size: 9px; padding: 4px 10px; margin-bottom: 8px; }
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 280px; }
     .video-featured-desc { font-size: 10px; line-height: 1.4; opacity: 0.85; }
   }
 
   /* SOUND BUTTON */
   .sound-btn {
-    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-    background: rgba(0,0,0,0.55); border: 2px solid rgba(255,255,255,0.85);
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(0,0,0,0.55); border: 1.5px solid rgba(255,255,255,0.85);
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; backdrop-filter: blur(6px);
     transition: background 0.2s, transform 0.15s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
     color: white;
   }
+  .sound-btn svg { width: 13px; height: 13px; }
   .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
   .sound-btn.unmuted { background: rgba(196,113,74,0.85); border-color: rgba(196,113,74,1); }
   @media (max-width: 480px) {
-    .sound-btn { width: 48px; height: 48px; }
+    .sound-btn { width: 30px; height: 30px; }
   }
 
   /* WHATSAPP FLOATING BUTTON */
@@ -410,20 +427,20 @@
     <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
     ju.en.vie
   </a>
-  <ul class="nav-links">
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#results">Results</a></li>
-    <li><a href="index.html#packages">Packages</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
-    <li><a href="portfolio.html" style="color:var(--terracotta);">Full Portfolio</a></li>
-  </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
+<ul class="nav-links">
+  <li><a href="index.html#work">Work</a></li>
+  <li><a href="index.html#results">Results</a></li>
+  <li><a href="index.html#packages">Packages</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+  <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
+  <li><a href="portfolio.html" class="nav-portfolio-btn">Full Portfolio</a></li>
+</ul>
 
 <div class="page-wrap">
 
@@ -443,14 +460,14 @@
   <section class="category-section" id="hotels">
     <div class="category-label">Category 01</div>
     <h2 class="category-title">Hotels &amp; Accommodation</h2>
-    <p class="category-subtitle">Properties filmed across Southeast Asia — rooms, pools, atmosphere and unique stays.</p>
+    <p class="category-subtitle">Properties filmed across Southeast Asia, rooms, pools, atmosphere and unique stays.</p>
 
     <div class="photo-grid">
 
-      <!-- PHOTO 1 : Hotels — Bali villa piscine (paysage) -->
+      <!-- PHOTO 1 : Hotels — Senggigi Lombok piscine (paysage) -->
       <div class="photo-card">
-        <img src="images/bali_villa_piscine_001.jpeg" alt="Bali · Villa Pool">
-        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Villa Pool</span></div>
+        <img src="images/senguigui-lombok-piscine.jpg" alt="Lombok · Senggigi · Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Lombok · Senggigi · Pool</span></div>
       </div>
 
       <!-- PHOTO 2 : Hotels — Laos drone cabanes -->
@@ -483,10 +500,10 @@
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Canopy Bed</span></div>
       </div>
 
-      <!-- PHOTO 7 : Hotels — Bali villa pool (paysage) -->
+      <!-- PHOTO 7 : Hotels — Canggu piscine (paysage) -->
       <div class="photo-card">
-        <img src="images/IMG_4167.jpeg" alt="Bali · Villa Pool">
-        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Villa Pool</span></div>
+        <img src="images/canggu-piscine.jpg" alt="Bali · Canggu · Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Canggu · Pool</span></div>
       </div>
 
       <!-- PHOTO 8 : Hotels — Terrasse Laos -->
@@ -499,6 +516,48 @@
       <div class="photo-card">
         <img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Vang Vieng · Hotel</span></div>
+      </div>
+
+      <!-- PHOTO 10 : Hotels — Transat Uma Bali -->
+      <div class="photo-card">
+        <img src="images/transat-uma-bali.jpg" alt="Bali · Uma · Transat">
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Uma · Sun Lounger</span></div>
+      </div>
+
+      <!-- PHOTO 11 : Hotels — Piscine Tam Coc -->
+      <div class="photo-card">
+        <img src="images/piscine-tam-coc.jpg" alt="Vietnam · Tam Coc · Pool">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Tam Coc · Pool</span></div>
+      </div>
+
+      <!-- PHOTO 12 : Hotels — Cuisine Laos -->
+      <div class="photo-card">
+        <img src="images/cuisine-laos.jpg" alt="Laos · Kitchen">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Kitchen</span></div>
+      </div>
+
+      <!-- PHOTO 13 : Hotels — Hostel Koh Phi Phi -->
+      <div class="photo-card">
+        <img src="images/hostel-kohphiphi.jpg" alt="Thailand · Koh Phi Phi · Hostel">
+        <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · Hostel</span></div>
+      </div>
+
+      <!-- PHOTO 14 : Hotels — Hotel Bangkok -->
+      <div class="photo-card">
+        <img src="images/hotel-bangkok.jpg" alt="Thailand · Bangkok · Hotel">
+        <div class="photo-overlay"><span class="photo-tag">🇹🇭 Bangkok · Hotel</span></div>
+      </div>
+
+      <!-- PHOTO 15 : Hotels — Chambre arrière Laos -->
+      <div class="photo-card">
+        <img src="images/chambre-arriere-laos.jpg" alt="Laos · Room">
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Room</span></div>
+      </div>
+
+      <!-- PHOTO 16 : Hotels — Drone Da Nang -->
+      <div class="photo-card">
+        <img src="images/drone-da-nang.jpg" alt="Da Nang · Drone · Vietnam">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Da Nang · Drone</span></div>
       </div>
 
     </div>
@@ -777,6 +836,24 @@
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Padar Island</span></div>
       </div>
 
+      <!-- PHOTO 7 : Experiences — Drone Koh Lanta -->
+      <div class="photo-card">
+        <img src="images/drone-koh-lanta.jpg" alt="Koh Lanta · Drone · Thailand">
+        <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Lanta · Drone</span></div>
+      </div>
+
+      <!-- PHOTO 8 : Experiences — Piscine Hoi An -->
+      <div class="photo-card">
+        <img src="images/piscine-hoi-an.jpg" alt="Hoi An · Pool · Vietnam">
+        <div class="photo-overlay"><span class="photo-tag">🇻🇳 Hoi An · Pool</span></div>
+      </div>
+
+      <!-- PHOTO 9 : Experiences — Coeur Koh Phi Phi -->
+      <div class="photo-card">
+        <img src="images/coeur-kohphophi.jpg" alt="Koh Phi Phi · Heart · Thailand">
+        <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · View</span></div>
+      </div>
+
     </div>
 
     <div class="video-row">
@@ -856,7 +933,7 @@
       <div class="video-featured-overlay">
         <div class="video-featured-badge">🚁 Drone footage</div>
         <div class="video-featured-title">Drone shots that reveal<br>your activities.</div>
-        <div class="video-featured-desc">Aerial perspectives captured from above — showing the scale, the landscape and the experience your guests will live.</div>
+        <div class="video-featured-desc">Aerial perspectives captured from above, showing the scale, the landscape and the experience your guests will live.</div>
       </div>
       <div class="sound-btn" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
@@ -884,11 +961,11 @@
   <div style="position:relative; z-index:1;">
     <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;"></a>
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; font-style:italic; color:white; margin-bottom:32px; line-height:1.1;">Ready to collaborate?</p>
-    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+    <div class="contact-links">
       <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
-      <a href="https://wa.me/33629702303" target="_blank" class="contact-link" style="background:#25D366; display:inline-flex; align-items:center; gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
-      <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline">Instagram DM</a>
-      <a href="https://www.tiktok.com/@juenvie" target="_blank" class="contact-link outline" style="display:inline-flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>TikTok DM</a>
+      <a href="https://wa.me/33629702303" target="_blank" class="contact-link" style="background:#25D366;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+      <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram DM</a>
+      <a href="https://www.tiktok.com/@juenvie" target="_blank" class="contact-link outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok DM</a>
       <a href="https://bio.site/juenvie" target="_blank" class="contact-link outline">All my links</a>
     </div>
   </div>
