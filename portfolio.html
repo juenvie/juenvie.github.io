@@ -299,7 +299,7 @@
     font-size: 14px; color: rgba(255,255,255,0.65); max-width: 420px;
   }
   @media (max-width: 768px) {
-    .video-featured { height: 45vh; min-height: 280px; }
+    .video-featured { height: auto; min-height: unset; }
     .video-featured-overlay { padding: 24px; }
     .video-featured-title { font-size: 26px; }
   }
@@ -352,6 +352,8 @@
     .category-section { padding: 0 24px 56px; }
     .category-section + .category-section { padding-top: 48px; }
     footer { padding: 16px 24px; }
+    .video-featured-title { font-size: 22px; }
+    .video-featured-desc { font-size: 13px; }
   }
   @media (max-width: 768px) {
     .photo-grid { columns: 1; }
@@ -365,7 +367,39 @@
     .video-row { grid-template-columns: 1fr; }
     .video-row--3 { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
+    .video-featured-overlay { padding: 12px 16px; }
+    .video-featured-title { font-size: 16px; margin-bottom: 4px; }
+    .video-featured-badge { font-size: 9px; padding: 4px 10px; margin-bottom: 8px; }
+    .video-featured-desc { font-size: 10px; line-height: 1.4; opacity: 0.85; }
   }
+
+  /* SOUND BUTTON */
+  .sound-btn {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(0,0,0,0.55); border: 2px solid rgba(255,255,255,0.85);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(6px);
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    color: white;
+  }
+  .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
+  .sound-btn.unmuted { background: rgba(196,113,74,0.85); border-color: rgba(196,113,74,1); }
+  @media (max-width: 480px) {
+    .sound-btn { width: 48px; height: 48px; }
+  }
+
+  /* WHATSAPP FLOATING BUTTON */
+  .whatsapp-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); }
 </style>
 </head>
 <body>
@@ -422,7 +456,7 @@
       <!-- PHOTO 2 : Hotels — Laos drone cabanes -->
       <div class="photo-card">
         <img src="images/hotel-laos-drone-cabanes.JPG" alt="Laos · Hotel · Drone">
-        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Écolodge · Drone</span></div>
+        <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Ecolodge · Drone</span></div>
       </div>
 
       <!-- PHOTO 3 : Hotels — Piscine palmiers coucher de soleil (portrait) -->
@@ -539,7 +573,7 @@
   ══════════════════════════════════════════ -->
   <section class="category-section" id="food">
     <div class="category-label">Category 02</div>
-    <h2 class="category-title">F&amp;B</h2>
+    <h2 class="category-title">Food &amp; Beverage</h2>
     <p class="category-subtitle">Authentic local cuisine, rooftop bars, beach restaurants and café culture.</p>
 
     <div class="photo-grid">
@@ -751,7 +785,7 @@
         <video src="videos/Video%20Activites/Padel%20Canggu.MP4" muted playsinline loop preload="none"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
-            <div class="video-card-label">🇮🇩 Canggu · Padel</div>
+            <div class="video-card-label">🇮🇩 Canggu · Padel Court</div>
             <div class="sound-btn" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
@@ -802,7 +836,7 @@
         <video src="videos/Video%20Activites/keelooma.mov" muted playsinline loop preload="none"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
-            <div class="video-card-label">🇵🇭 Croisière Coron - El Nido avec Keelooma</div>
+            <div class="video-card-label">🇵🇭 Coron to El Nido · Keelooma Cruise</div>
             <div class="sound-btn" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
@@ -852,7 +886,10 @@
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; font-style:italic; color:white; margin-bottom:32px; line-height:1.1;">Ready to collaborate?</p>
     <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
       <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
+      <a href="https://wa.me/33629702303" target="_blank" class="contact-link" style="background:#25D366; display:inline-flex; align-items:center; gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
       <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline">Instagram DM</a>
+      <a href="https://www.tiktok.com/@juenvie" target="_blank" class="contact-link outline" style="display:inline-flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>TikTok DM</a>
+      <a href="https://bio.site/juenvie" target="_blank" class="contact-link outline">All my links</a>
     </div>
   </div>
 </section>
@@ -907,5 +944,11 @@
     });
   });
 </script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/33629702303" target="_blank" class="whatsapp-float" title="Contact me on WhatsApp" aria-label="Contact via WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 </body>
 </html>

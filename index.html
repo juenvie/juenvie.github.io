@@ -40,7 +40,7 @@
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 48px;
     background: rgba(245,240,232,0.92);
@@ -53,7 +53,10 @@
     letter-spacing: 0.02em; color: var(--deep);
     text-decoration: none;
   }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none; margin: 0; padding: 0 48px;
+    position: fixed; top: 0; right: 0; height: 85px; align-items: center; z-index: 1001;
+  }
   .hamburger {
     display: none;
     flex-direction: column;
@@ -81,6 +84,35 @@
     color: var(--mid); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--terracotta); }
+  .nav-portfolio-btn {
+    background: var(--terracotta) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    letter-spacing: 0.08em;
+    transition: background 0.2s !important;
+  }
+  .nav-portfolio-btn:hover { background: #b05e38 !important; color: white !important; }
+  .btn-portfolio {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 32px;
+    border: 1px solid var(--terracotta); color: var(--terracotta);
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.25s;
+  }
+  .btn-portfolio:hover { background: var(--terracotta); color: white; }
+  .portfolio-cta-block {
+    margin-top: 56px; padding: 48px 32px;
+    background: var(--deep); text-align: center;
+  }
+  .portfolio-cta-block p { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight:300; font-style:italic; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+  .btn-portfolio-big {
+    display: inline-block; padding: 18px 56px;
+    background: var(--terracotta); color: white;
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.25s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-portfolio-big:hover { background: #b05e38; }
 
   /* HERO */
   .hero {
@@ -230,17 +262,23 @@
   /* PORTFOLIO GRID */
   .portfolio-section { background: var(--white); }
 
-  /* Masonry 2 colonnes — zéro espace mort */
+  /* Portfolio gallery — 3 explicit flex columns (parallax-ready) */
   .portfolio-gallery {
-    columns: 3;
-    column-gap: 8px;
+    display: flex;
+    gap: 8px;
     max-width: 1100px;
     margin: 48px auto 0;
+    align-items: flex-start;
+  }
+  .portfolio-gallery .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
   }
 
   .gallery-card {
-    break-inside: avoid;
-    margin-bottom: 8px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -364,6 +402,7 @@
   .contact-section {
     background: var(--deep); color: var(--white);
     text-align: center; padding: 100px 48px;
+    position: relative; overflow: hidden;
   }
   .contact-section .section-title { margin-bottom: 20px; }
   .contact-section .section-title,
@@ -461,14 +500,18 @@
     color: white;
   }
   .sound-btn {
-    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(0,0,0,0.55); border: 2px solid rgba(255,255,255,0.85);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; backdrop-filter: blur(4px);
-    transition: background 0.2s;
+    cursor: pointer; backdrop-filter: blur(6px);
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
   }
-  .sound-btn:hover { background: rgba(255,255,255,0.3); }
-  .sound-btn.unmuted { background: rgba(196,113,74,0.7); border-color: rgba(196,113,74,0.9); }
+  .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
+  .sound-btn.unmuted { background: rgba(196,113,74,0.85); border-color: rgba(196,113,74,1); }
+  @media (max-width: 480px) {
+    .sound-btn { width: 48px; height: 48px; }
+  }
 
   /* ANIMATIONS */
   .fade-up {
@@ -485,16 +528,23 @@
       flex-direction: column;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
+      height: 100vh; width: 100vw;
       background: rgba(245,240,232,0.98);
       backdrop-filter: blur(16px);
-      z-index: 99;
+      z-index: 1000;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 20px;
       padding: 80px 40px;
+      overflow-y: auto;
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 20px; letter-spacing: 0.12em; }
+    .nav-links .nav-portfolio-btn {
+      background: none !important; color: var(--deep) !important;
+      padding: 0 !important; border: none !important;
+      letter-spacing: 0.12em; font-size: 20px !important;
+    }
     .hamburger { display: flex; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 40px; min-height: auto; }
     .hero-visual { height: 360px; }
@@ -502,15 +552,21 @@
     .stats-bar { padding: 24px; }
     .bali-banner { padding: 16px 24px; }
     .services-grid { grid-template-columns: 1fr; }
-    .portfolio-gallery { columns: 2; }
+    .portfolio-gallery { display: block; column-count: 2; column-gap: 8px; }
+    .portfolio-gallery .col { display: contents; }
+    .portfolio-gallery .gallery-card { break-inside: avoid; margin-bottom: 8px; }
     .bali-photos { grid-template-columns: 1fr 1fr; }
+    .bali-isle-deco { display: none; }
     .proof-grid { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
     footer { padding: 16px 24px; }
     .video-featured { height: auto; min-height: unset; }
     .video-featured-overlay { padding: 24px; }
-    .video-featured-title { font-size: 26px; }
+    .video-featured-title { font-size: 22px; }
+    .video-featured-desc { font-size: 13px; }
     .videos-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .audience-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 480px) {
@@ -526,7 +582,7 @@
     .bali-banner { flex-direction: column; text-align: center; padding: 14px 20px; }
     .bali-banner-text { font-size: 13px; }
     .services-grid { grid-template-columns: 1fr; }
-    .portfolio-gallery { columns: 1; }
+    .portfolio-gallery { column-count: 1; }
     .bali-photos { grid-template-columns: 1fr; }
     .videos-grid { grid-template-columns: 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
@@ -536,6 +592,141 @@
     section { padding: 48px 16px; }
     .stats-bar { padding: 20px 16px; }
     footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-step + .process-step { border-top: 1px solid rgba(92,74,58,0.12); padding-top: 24px; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .video-featured-overlay { padding: 12px 16px; }
+    .video-featured-title { font-size: 16px; margin-bottom: 4px; }
+    .video-featured-badge { font-size: 9px; padding: 4px 10px; margin-bottom: 8px; }
+    .video-featured-desc { font-size: 10px; line-height: 1.4; opacity: 0.85; }
+  }
+
+  /* PROCESS SECTION */
+  .process-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 32px; margin-top: 48px;
+  }
+
+  /* AUDIENCE SNAPSHOT */
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 48px; margin-top: 48px;
+  }
+
+  /* FLAG CHIPS */
+  .flag-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .flag-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 54px; height: 54px; border-radius: 50%;
+    font-size: 26px;
+    background: rgba(196,113,74,0.07);
+    backdrop-filter: blur(4px);
+    position: relative;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .flag-chip:hover { transform: scale(1.08); background: rgba(196,113,74,0.14); }
+  .flag-chip::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    padding: 1.5px;
+    background: linear-gradient(135deg, rgba(196,113,74,0.85) 0%, rgba(92,74,58,0.15) 50%, rgba(196,113,74,0.55) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* WHATSAPP FLOATING BUTTON */
+  .whatsapp-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); }
+
+  /* WHY BALI — Indonesian flag as CSS ::before pseudo-element (MODIFICATION 1) */
+  .section-why-bali {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .section-why-bali::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    width: 420px;
+    height: 280px;
+    transform: translateY(-50%) rotate(-5deg);
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, #CE1126 50%, #D8CBBF 50%);
+    border-radius: 4px;
+    opacity: 0.07;
+    mix-blend-mode: multiply;
+  }
+
+  /* PROCESS — horizontal reveal line */
+  .process-grid { position: relative; }
+  .process-grid::after {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: var(--terracotta);
+    opacity: 0.25;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .process-grid.line-visible::after { transform: scaleX(1); }
+
+  /* CONTACT — decorative parallax warm-glow layer */
+  .contact-bg-layer {
+    position: absolute;
+    inset: -60px;
+    background: radial-gradient(ellipse at 50% 110%, rgba(196,113,74,0.13) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+  }
+
+  /* WHATSAPP — entrance + heartbeat pulse */
+  @keyframes wa-slide-in {
+    from { transform: translateY(80px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  @keyframes wa-pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+    50%       { box-shadow: 0 4px 32px rgba(37,211,102,0.65), 0 0 0 8px rgba(37,211,102,0.12); }
+  }
+  .whatsapp-float {
+    animation: wa-slide-in 0.5s 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+               wa-pulse 2.4s 2.5s ease-in-out infinite;
+  }
+  .whatsapp-float:hover {
+    animation: none !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.55) !important;
+  }
+
+  /* REDUCED MOTION — show everything instantly, disable all animations */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .process-grid::after { transition: none !important; transform: scaleX(1) !important; }
+    .whatsapp-float { animation: none !important; }
+    .gallery-card img { transition: none !important; }
+    .service-card { transition: none !important; }
   }
 </style>
 </head>
@@ -547,20 +738,21 @@
     <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
     ju.en.vie
   </a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
-    <li><a href="portfolio.html">Full Portfolio</a></li>
-  </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
+<ul class="nav-links">
+  <li><a href="#work">Work</a></li>
+  <li><a href="#results">Results</a></li>
+  <li><a href="#packages">Packages</a></li>
+  <li><a href="#process">Process</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
+  <li><a href="portfolio.html" class="nav-portfolio-btn">Full Portfolio</a></li>
+</ul>
 
 <!-- BALI AVAILABILITY BANNER -->
 <div class="bali-banner">
@@ -583,6 +775,7 @@
     <div class="hero-ctas">
       <a href="#packages" class="btn-primary">See packages</a>
       <a href="#work" class="btn-secondary">View work</a>
+      <a href="portfolio.html" class="btn-portfolio">Full Portfolio →</a>
     </div>
   </div>
   <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
@@ -596,7 +789,7 @@
     </div>
     <div class="hero-img">
       <img src="images/cabane_bambou_plage_001.jpg" alt="Cabane plage">
-      <span class="hero-img-label">🇮🇩 Indonésie · Plage</span>
+      <span class="hero-img-label">🇮🇩 Indonesia · Beach</span>
     </div>
   </div>
 </section>
@@ -611,6 +804,11 @@
   <div class="stat">
     <div class="stat-number">6.6K</div>
     <div class="stat-label">TikTok Followers</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Organic — travellers & digital nomads</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -633,31 +831,37 @@
       <div class="service-icon">🎬</div>
       <div class="service-name">Short-form Video</div>
       <p class="service-desc">Vertical Reels and TikToks optimised for organic reach — rooms, pool, atmosphere, F&B. Edited, captioned, ready to post.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">The format driving 80% of hotel discovery on Instagram and TikTok in 2025.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.1s">
       <div class="service-icon">📸</div>
       <div class="service-name">Photography</div>
       <p class="service-desc">Property-driven imagery for your website, OTAs (Booking.com, Airbnb) and social media. Rooms, exterior, lifestyle shots.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">Professional visuals proven to increase click-through rates on Booking.com and Airbnb listings.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.2s">
       <div class="service-icon">🚁</div>
       <div class="service-name">Drone Footage</div>
       <p class="service-desc">Aerial shots that show your property's location, surroundings and unique scale. Available where regulations permit.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">The aerial shot that makes guests say: I need to go there.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.3s">
       <div class="service-icon">🎞️</div>
       <div class="service-name">Cinematic Walkthrough</div>
       <p class="service-desc">A full property showcase — from entrance to rooms to pool — perfect for your website hero video or YouTube listing.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">Your best 60-second sales pitch — playing on loop on your website.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.4s">
       <div class="service-icon">📱</div>
       <div class="service-name">Social Media Exposure</div>
       <p class="service-desc">On the Visibility package: 1 Reel or TikTok posted on my account with your property tagged. Audience: travellers & digital nomads.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">Real reach, real travellers — zero paid followers, zero fake engagement.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.5s">
       <div class="service-icon">⚡</div>
       <div class="service-name">Fast Turnaround</div>
       <p class="service-desc">Full delivery in 48–72h after the shoot. Commercial usage rights included with no hidden fees or licence renewals.</p>
+      <p style="font-size: 12px; color: var(--terracotta); font-style: italic; margin-top: 12px;">No waiting. Your team can start posting within 48 hours of the shoot.</p>
     </div>
   </div>
 </section>
@@ -668,93 +872,75 @@
   <h2 class="section-title">Properties filmed<br>across Asia.</h2>
   <div class="portfolio-gallery">
 
-    <div class="gallery-card">
-      <img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool · Rice Field</span></div>
+    <!-- Column 1 -->
+    <div class="col col-1">
+      <div class="gallery-card">
+        <img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool · Rice Field</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/portrait-transat-piscine-arche-brique-chiang-mai.jpg" alt="Chiang Mai · Villa">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Villa</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Vang Vieng · Mountains">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Mountains</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/IMG_2524.jpeg" alt="Komodo · Beach">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Komodo · Beach</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Vang Vieng · Buggy · Sunset">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Buggy · Sunset</span></div>
+      </div>
     </div>
 
-
-
-    <div class="gallery-card">
-      <img src="images/IMG_2456.JPG" alt="Bali · Villa">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Villa</span></div>
+    <!-- Column 2 -->
+    <div class="col col-2">
+      <div class="gallery-card">
+        <img src="images/chambre-bungalow-bois-vue-jungle.jpg" alt="Bungalow · Jungle">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Bungalow · Jungle View</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/drone-villa-piscine-jardin-montagnes-laos.jpg" alt="Laos · Drone · Villa">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Villa</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/drone-village-riviere-jungle-montagnes-laos.jpg" alt="Laos · Drone · Village">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Village</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/chambre-double-peinture-elephant-lumiere-naturelle.jpg" alt="Room · Natural Light">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Room · Natural Light</span></div>
+      </div>
     </div>
 
-
-
-    <div class="gallery-card">
-      <img src="images/chambre-bungalow-bois-vue-jungle.jpg" alt="Bungalow · Jungle">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Bungalow · Jungle View</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/portrait-piscine-lanna-tree-chiang-mai.jpg" alt="Chiang Mai · Pool">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Pool</span></div>
-    </div>
-
-
-    <div class="gallery-card">
-      <img src="images/portrait-transat-piscine-arche-brique-chiang-mai.jpg" alt="Chiang Mai · Villa">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Villa</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/drone-villa-piscine-jardin-montagnes-laos.jpg" alt="Laos · Drone · Villa">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Villa</span></div>
-    </div>
-
-
-    <div class="gallery-card">
-      <img src="images/douche-exterieure-vue-terrasse-jungle.jpg" alt="Terrace · Jungle">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Terrace · Jungle</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Vang Vieng · Mountains">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Mountains</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/drone-village-riviere-jungle-montagnes-laos.jpg" alt="Laos · Drone · Village">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Village</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/dji_fly_20250222_164222_141_1740213844731_photo_optimized.JPG" alt="Drone · Aerial View">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Drone · Aerial View</span></div>
-    </div>
-
-
-    <div class="gallery-card">
-      <img src="images/IMG_2524.jpeg" alt="Komodo · Beach">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Komodo · Beach</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/chambre-double-peinture-elephant-lumiere-naturelle.jpg" alt="Room · Natural Light">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Room · Natural Light</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/IMG_2324.JPEG" alt="Da Nang · Pool Bar">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Da Nang · Pool Bar</span></div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Vang Vieng · Buggy · Sunset">
-      <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Buggy · Sunset</span></div>
+    <!-- Column 3 -->
+    <div class="col col-3">
+      <div class="gallery-card">
+        <img src="images/portrait-piscine-lanna-tree-chiang-mai.jpg" alt="Chiang Mai · Pool">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Pool</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/douche-exterieure-vue-terrasse-jungle.jpg" alt="Terrace · Jungle">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Terrace · Jungle</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dji_fly_20250222_164222_141_1740213844731_photo_optimized.JPG" alt="Drone · Aerial View">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Drone · Aerial View</span></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/IMG_2324.JPEG" alt="Da Nang · Pool Bar">
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Da Nang · Pool Bar</span></div>
+      </div>
     </div>
 
   </div>
-  <div style="margin-top:56px; text-align:center; padding:40px 24px; border-top:1px solid rgba(196,113,74,0.15);">
-    <p style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px; opacity:0.8;">Full Portfolio</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic; color:var(--deep); margin-bottom:8px;">Hotels · F&B · Experiences</p>
-    <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--light); margin-bottom:28px;">More photos and videos — organized by category.</p>
-    <a href="portfolio.html" style="display:inline-block; padding:14px 44px; background:var(--terracotta); color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:opacity 0.25s; font-family:'DM Sans',sans-serif; opacity:0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">View full portfolio →</a>
+  <div class="portfolio-cta-block">
+    <p>More photos &amp; videos — hotels, food &amp; beverage, experiences across Asia.</p>
+    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
   </div>
-  <p style="margin-top:16px; font-size:13px; color:var(--light); font-style:italic; text-align:center;">
-    ↗ Full portfolio: <a href="https://www.instagram.com/ju.en.vie" target="_blank" style="color:var(--terracotta);">@ju.en.vie</a> on Instagram & <a href="https://www.tiktok.com/@juenvie" target="_blank" style="color:var(--terracotta);">@juenvie</a> on TikTok
-  </p>
 </section>
 
 <!-- VIDEOS -->
@@ -770,7 +956,7 @@
       <div class="video-featured-title">Aerial perspective</div>
       <div class="video-featured-desc">Drone shots that reveal your property's true scale, surroundings and unique location — the view that makes guests book.</div>
     </div>
-    <div class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
   </div>
 
   <!-- VIDEO GRID -->
@@ -781,7 +967,7 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Ubud · Uma Jala Villa</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -792,7 +978,7 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🚢 Peony Cruise</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -801,8 +987,8 @@
       <video src="videos/Videos%20Hotel/Chambre%20bateau%20Komodo%20.MP4" muted playsinline loop preload="metadata"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
-          <div class="video-card-label">🇮🇩 Komodo · Bateau</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="video-card-label">🇮🇩 Komodo · Boat</div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -813,7 +999,7 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇻🇳 Da Nang · Awaken</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -824,7 +1010,7 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Senggigi · Lombok</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -835,7 +1021,7 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Canggu</div>
-          <div class="sound-btn" title="Activer le son"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
         </div>
       </div>
     </div>
@@ -843,23 +1029,22 @@
 
   </div>
 
-  <div style="margin-top:56px; text-align:center; padding:40px 24px 64px; border-top:1px solid rgba(196,113,74,0.15);">
-    <p style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px; opacity:0.8;">Full Portfolio</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic; color:var(--deep); margin-bottom:8px;">Hotels · F&B · Experiences</p>
-    <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--light); margin-bottom:28px;">More photos and videos — organized by category.</p>
-    <a href="portfolio.html" style="display:inline-block; padding:14px 44px; background:var(--terracotta); color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:opacity 0.25s; font-family:'DM Sans',sans-serif; opacity:0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">View full portfolio →</a>
-    <p style="margin-top:20px; font-size:13px; color:var(--light); font-style:italic;">
-      ↗ Full portfolio: <a href="https://www.instagram.com/ju.en.vie" target="_blank" style="color:var(--terracotta);">@ju.en.vie</a> on Instagram & <a href="https://www.tiktok.com/@juenvie" target="_blank" style="color:var(--terracotta);">@juenvie</a> on TikTok
-    </p>
+  <div class="portfolio-cta-block">
+    <p>More photos &amp; videos — hotels, food &amp; beverage, experiences across Asia.</p>
+    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
   </div>
 </section>
 
 <!-- BALI -->
-<section style="padding:100px 48px; background:var(--white);">
-  <div class="section-label">Why Bali</div>
-  <h2 class="section-title">I know this island.</h2>
-  <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:560px; margin-bottom:0;">I've already been to Bali — I know the light, the spots, the atmosphere. I'm not arriving blind.</p>
-  <div class="bali-photos">
+<section class="section-why-bali" style="padding:100px 48px; background:var(--white);">
+
+  <div style="position:relative; z-index:1;">
+    <div class="section-label">Why Bali</div>
+    <h2 class="section-title">I know this island.</h2>
+    <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:560px; margin-bottom:0;">Bali has a visual identity unlike anywhere else in Asia — the quality of the light at golden hour, the texture of rice terraces, the architectural detail of boutique villas. I've already been here. I know the spots. I know the aesthetics your guests are looking for. Your guests will recognise it. They'll book for it.</p>
+  </div>
+
+  <div class="bali-photos" style="position:relative; z-index:1;">
     <img src="images/riziere-bali.jpg" alt="Rizière · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
     <img src="images/villa-canggu.jpg" alt="Villa · Canggu · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
     <img src="images/mont-batur.jpg" alt="Mont Batur · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
@@ -875,6 +1060,7 @@
     <div class="proof-card fade-up">
       <div class="proof-card-number">50K+</div>
       <div class="proof-card-label">Views on a single hotel video — organic reach, no paid promotion. Audience: travellers actively planning trips in Southeast Asia.</div>
+      <p style="margin-top: 8px; font-size: 12px; color: var(--terracotta); font-style: italic;">Average watch time: 65%+ — well above the platform average.</p>
     </div>
     <div class="proof-card fade-up" style="transition-delay:0.15s">
       <div class="proof-card-number">48h</div>
@@ -921,15 +1107,71 @@
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section id="process" style="background: var(--cream); padding: 100px 48px;">
+  <div class="section-label">Simple process</div>
+  <h2 class="section-title">How it works.</h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">01</div>
+      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You reach out</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Share your property details and availability. I'll confirm if we're a match and answer any questions within 24h.</p>
+    </div>
+    <div class="process-step" style="transition-delay:0.1s">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">02</div>
+      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">I arrive on-site</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">I spend 1 to 2 days at your property — shooting rooms, pool, F&B, lifestyle and aerial drone footage.</p>
+    </div>
+    <div class="process-step" style="transition-delay:0.2s">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">03</div>
+      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You receive your assets</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">All edited files delivered within 48h after the shoot. Organised, labelled, ready to post.</p>
+    </div>
+    <div class="process-step" style="transition-delay:0.3s">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">04</div>
+      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You publish and grow</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Use the content on Instagram, TikTok, your website, Booking.com, Airbnb, Google listings — forever. No licence renewal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE SNAPSHOT -->
+<section style="background: var(--white); padding: 80px 48px;">
+  <div class="section-label">Who will see your property</div>
+  <h2 class="section-title">A qualified audience.</h2>
+  <div class="audience-grid">
+    <div class="proof-card fade-up">
+      <div class="proof-card-number">18–34</div>
+      <div class="proof-card-label">Average age of my audience — active travellers in trip-planning mode</div>
+    </div>
+    <div class="proof-card fade-up" style="transition-delay:0.1s">
+      <div class="flag-row">
+        <span class="flag-chip">🇫🇷</span>
+        <span class="flag-chip">🇧🇪</span>
+        <span class="flag-chip">🇨🇦</span>
+        <span class="flag-chip">🇨🇭</span>
+      </div>
+      <div class="proof-card-label">Top audience countries — French-speaking + English international travellers</div>
+    </div>
+    <div class="proof-card fade-up" style="transition-delay:0.2s">
+      <div class="proof-card-number" style="font-size:22px; font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.2;">Instagram · TikTok</div>
+      <div class="proof-card-label">100% organic following — travellers and digital nomads, zero paid promotion</div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
+  <div class="contact-bg-layer" aria-hidden="true"></div>
   <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:128px;width:auto;opacity:0.6;margin-bottom:24px;"></a>
   <div class="section-label">Get in touch</div>
   <h2 class="section-title" style="color:white;">Let's create something<br>your guests will book for.</h2>
   <p class="contact-sub">I'm in Bali throughout August 2026.<br>Send me a message with your property details and I'll get back to you within 24h.</p>
   <div class="contact-links">
     <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
+    <a href="https://wa.me/33629702303" target="_blank" class="contact-link" style="background:#25D366; display:inline-flex; align-items:center; gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
     <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline">Instagram DM</a>
+    <a href="https://www.tiktok.com/@juenvie" target="_blank" class="contact-link outline" style="display:inline-flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>TikTok DM</a>
     <a href="https://bio.site/juenvie" target="_blank" class="contact-link outline">All my links</a>
   </div>
   <div class="social-handle">
@@ -951,52 +1193,14 @@
 </footer>
 
 <script>
-  // Intersection Observer for fade-up animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.classList.add('visible');
-      }
+  // ─── REDUCED MOTION: show everything immediately and exit ───────────────────
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      el.classList.add('visible');
     });
-  }, { threshold: 0.1 });
+  }
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Autoplay video cards when in view
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target.querySelector('video');
-      if (!video) return;
-      if (entry.isIntersecting) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.3 });
-
-  document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
-
-  // Sound toggle button
-  document.querySelectorAll('.sound-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const container = btn.closest('.video-card') || btn.closest('.video-featured');
-      const video = container.querySelector('video');
-      video.muted = !video.muted;
-      btn.classList.toggle('unmuted', !video.muted);
-      const line = btn.querySelector('.muted-line');
-      if (line) line.style.display = video.muted ? '' : 'none';
-    });
-  });
-
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.borderBottomColor =
-      window.scrollY > 40 ? 'rgba(92,74,58,0.2)' : 'rgba(92,74,58,0.12)';
-  });
-
-  // Hamburger menu
+  // ─── HAMBURGER MENU ──────────────────────────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.querySelector('.nav-links');
   hamburger.addEventListener('click', () => {
@@ -1011,7 +1215,198 @@
       document.body.style.overflow = '';
     });
   });
+
+  // ─── NAV SCROLL EFFECT ───────────────────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.borderBottomColor =
+      window.scrollY > 40 ? 'rgba(92,74,58,0.2)' : 'rgba(92,74,58,0.12)';
+  }, { passive: true });
+
+  // ─── A: FADE-UP (IntersectionObserver) ───────────────────────────────────────
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  // ─── VIDEO: autoplay when in view ────────────────────────────────────────────
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      if (!video) return;
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
+
+  // ─── SOUND TOGGLE ────────────────────────────────────────────────────────────
+  document.querySelectorAll('.sound-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const container = btn.closest('.video-card') || btn.closest('.video-featured');
+      const video = container.querySelector('video');
+      video.muted = !video.muted;
+      btn.classList.toggle('unmuted', !video.muted);
+      const line = btn.querySelector('.muted-line');
+      if (line) line.style.display = video.muted ? '' : 'none';
+    });
+  });
+
+  // ─── B: STATS BAR staggered entrance ─────────────────────────────────────────
+  const statsBar = document.querySelector('.stats-bar');
+  if (statsBar) {
+    const stats = statsBar.querySelectorAll('.stat');
+    stats.forEach((s, i) => {
+      s.style.opacity = '0';
+      s.style.transform = 'translateY(18px)';
+      s.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      s.style.transitionDelay = (i * 100) + 'ms';
+    });
+    const statsObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        stats.forEach(s => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; });
+        statsObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    statsObserver.observe(statsBar);
+  }
+
+  // ─── C: SERVICE CARDS 3D tilt (desktop only) ─────────────────────────────────
+  const isMobile = () => window.innerWidth <= 900;
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      if (isMobile()) return;
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+      const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+      card.style.transform = `perspective(600px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg) translateZ(4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ─── D: GALLERY COLUMN PARALLAX (desktop only) ───────────────────────────────
+  const col1 = document.querySelector('.col-1');
+  const col3 = document.querySelector('.col-3');
+  let galleryRect = null;
+
+  function updateGalleryRect() {
+    const gallery = document.querySelector('.portfolio-gallery');
+    if (gallery) galleryRect = gallery.getBoundingClientRect();
+  }
+  updateGalleryRect();
+  window.addEventListener('resize', updateGalleryRect, { passive: true });
+
+  function applyGalleryParallax() {
+    if (isMobile() || !col1 || !col3) return;
+    const scrollY = window.scrollY;
+    const gallery = document.querySelector('.portfolio-gallery');
+    if (!gallery) return;
+    const rect = gallery.getBoundingClientRect();
+    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+    col1.style.transform = `translateY(${centerOffset * -0.05}px)`;
+    col3.style.transform = `translateY(${centerOffset *  0.05}px)`;
+  }
+
+  // ─── E: COUNT-UP numbers ─────────────────────────────────────────────────────
+  function countUp(el, target, suffix, duration) {
+    const start = performance.now();
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      el.textContent = Math.round(ease * target).toLocaleString() + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function typewriter(el, text, duration) {
+    const start = performance.now();
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      el.textContent = text.slice(0, Math.round(t * text.length));
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const proofNumbers = document.querySelectorAll('.proof-card-number');
+  const proofObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const raw = el.textContent.trim();
+      if (raw === '50K+') { el.textContent = '0'; countUp(el, 50, 'K+', 1200); }
+      else if (raw === '48h') { el.textContent = ''; typewriter(el, '48h', 800); }
+      proofObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  proofNumbers.forEach(el => proofObserver.observe(el));
+
+  // ─── F: PROCESS STEPS sequential reveal + progress line ──────────────────────
+  const processGrid = document.querySelector('.process-grid');
+  if (processGrid) {
+    const steps = processGrid.querySelectorAll('.process-step');
+    steps.forEach(s => {
+      s.style.opacity = '0';
+      s.style.transform = 'translateX(-20px)';
+      s.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    const processObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      steps.forEach((s, i) => {
+        setTimeout(() => {
+          s.style.opacity = '1';
+          s.style.transform = 'translateX(0)';
+        }, i * 200);
+      });
+      setTimeout(() => processGrid.classList.add('line-visible'), 100);
+      processObserver.disconnect();
+    }, { threshold: 0.2 });
+    processObserver.observe(processGrid);
+  }
+
+  // ─── G: CONTACT BACKGROUND PARALLAX ─────────────────────────────────────────
+  const contactBgLayer = document.querySelector('.contact-bg-layer');
+  function applyContactParallax() {
+    if (!contactBgLayer) return;
+    const section = contactBgLayer.parentElement;
+    const rect = section.getBoundingClientRect();
+    const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.3;
+    contactBgLayer.style.transform = `translateY(${offset}px)`;
+  }
+
+  // ─── UNIFIED SCROLL LISTENER ─────────────────────────────────────────────────
+  let rafPending = false;
+  function onScroll() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      applyGalleryParallax();
+      applyContactParallax();
+      rafPending = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Disable parallax transforms on resize to mobile
+  window.addEventListener('resize', () => {
+    if (isMobile()) {
+      if (col1) col1.style.transform = '';
+      if (col3) col3.style.transform = '';
+    }
+  }, { passive: true });
+
+  // Run once on load
+  applyGalleryParallax();
+  applyContactParallax();
 </script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/33629702303" target="_blank" class="whatsapp-float" title="Contact me on WhatsApp" aria-label="Contact via WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 </body>
 </html>
