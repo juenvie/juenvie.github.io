@@ -6,9 +6,19 @@
 <meta name="description" content="Full portfolio of Julien — travel content creator for hotels & villas in Southeast Asia. Hotels, Food & Beverage, experiences across Bali, Thailand, Laos, Vietnam and Indonesia.">
 <meta property="og:title" content="Full Portfolio — Julien · Travel Content Creator">
 <meta property="og:description" content="Hotels, Food & Beverage, and experiences across Southeast Asia — photos, videos and drone footage.">
-<meta property="og:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<meta property="og:image" content="https://juenvie.github.io/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://juenvie.github.io/portfolio.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://juenvie.github.io/images/og-image.jpg">
+<link rel="canonical" href="https://juenvie.github.io/portfolio.html">
 <title>Full Portfolio — Julien · Travel Content Creator</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -370,10 +380,13 @@
     .video-featured-desc { font-size: 13px; }
   }
   @media (max-width: 768px) {
+    .photo-grid { columns: 2; column-gap: 6px; }
+  }
+  @media (max-width: 400px) {
     .photo-grid { columns: 1; }
   }
   @media (max-width: 480px) {
-    .photo-grid { columns: 1; }
+    .photo-grid { columns: 1; /* ≤400px handles this */ }
     .category-section { padding: 0 16px 48px; }
     .category-title { font-size: 26px; }
     .page-title { font-size: 36px; }
@@ -398,6 +411,7 @@
     transition: background 0.2s, transform 0.15s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
     color: white;
+    font: inherit; padding: 0; appearance: none; -webkit-appearance: none;
   }
   .sound-btn svg { width: 13px; height: 13px; }
   .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
@@ -424,7 +438,7 @@
 <!-- ── NAV (identique à index.html, liens vers index.html#section) ── -->
 <nav>
   <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
-    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
+    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));" width="1254" height="1254" loading="lazy">
     ju.en.vie
   </a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -466,97 +480,97 @@
 
       <!-- PHOTO 1 : Hotels — Senggigi Lombok piscine (paysage) -->
       <div class="photo-card">
-        <img src="images/senguigui-lombok-piscine.jpg" alt="Lombok · Senggigi · Pool">
+        <img src="images/senguigui-lombok-piscine.jpg" alt="Lombok · Senggigi · Pool" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Lombok · Senggigi · Pool</span></div>
       </div>
 
       <!-- PHOTO 2 : Hotels — Laos drone cabanes -->
       <div class="photo-card">
-        <img src="images/hotel-laos-drone-cabanes.JPG" alt="Laos · Hotel · Drone">
+        <img src="images/hotel-laos-drone-cabanes.jpg" alt="Laos · Hotel · Drone" width="1600" height="899" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Ecolodge · Drone</span></div>
       </div>
 
       <!-- PHOTO 3 : Hotels — Piscine palmiers coucher de soleil (portrait) -->
       <div class="photo-card">
-        <img src="images/coucher-soleil-piscine-palmiers-hotel-plage.jpg" alt="Pool · Sunset">
+        <img src="images/coucher-soleil-piscine-palmiers-hotel-plage.jpg" alt="Pool · Sunset" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🌅 Pool · Sunset</span></div>
       </div>
 
       <!-- PHOTO 4 : Hotels — 2 lits Laos -->
       <div class="photo-card">
-        <img src="images/2lits-laos.jpg" alt="Room · Laos">
+        <img src="images/2lits-laos.jpg" alt="Room · Laos" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Twin Room</span></div>
       </div>
 
       <!-- PHOTO 5 : Hotels — Vietnam piscine Ha Giang (portrait) -->
       <div class="photo-card">
-        <img src="images/piscine-ha-giang-loop.jpg" alt="Ha Giang Loop · Pool">
+        <img src="images/piscine-ha-giang-loop.jpg" alt="Ha Giang Loop · Pool" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Ha Giang · Pool</span></div>
       </div>
 
       <!-- PHOTO 6 : Hotels — Lit voilage Laos -->
       <div class="photo-card">
-        <img src="images/lit-laos-voilage.jpg" alt="Room · Canopy Bed · Laos">
+        <img src="images/lit-laos-voilage.jpg" alt="Room · Canopy Bed · Laos" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Canopy Bed</span></div>
       </div>
 
       <!-- PHOTO 7 : Hotels — Canggu piscine (paysage) -->
       <div class="photo-card">
-        <img src="images/canggu-piscine.jpg" alt="Bali · Canggu · Pool">
+        <img src="images/canggu-piscine.jpg" alt="Bali · Canggu · Pool" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Canggu · Pool</span></div>
       </div>
 
       <!-- PHOTO 8 : Hotels — Terrasse Laos -->
       <div class="photo-card">
-        <img src="images/hotel-laos-terasse.jpg" alt="Terrace · Laos">
+        <img src="images/hotel-laos-terasse.jpg" alt="Terrace · Laos" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Terrace</span></div>
       </div>
 
       <!-- PHOTO 9 : Hotels — Vang Vieng Laos -->
       <div class="photo-card">
-        <img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos">
+        <img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Vang Vieng · Hotel</span></div>
       </div>
 
       <!-- PHOTO 10 : Hotels — Transat Uma Bali -->
       <div class="photo-card">
-        <img src="images/transat-uma-bali.jpg" alt="Bali · Uma · Transat">
+        <img src="images/transat-uma-bali.jpg" alt="Bali · Uma · Transat" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Bali · Uma · Sun Lounger</span></div>
       </div>
 
       <!-- PHOTO 11 : Hotels — Piscine Tam Coc -->
       <div class="photo-card">
-        <img src="images/piscine-tam-coc.jpg" alt="Vietnam · Tam Coc · Pool">
+        <img src="images/piscine-tam-coc.jpg" alt="Vietnam · Tam Coc · Pool" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Tam Coc · Pool</span></div>
       </div>
 
       <!-- PHOTO 12 : Hotels — Cuisine Laos -->
       <div class="photo-card">
-        <img src="images/cuisine-laos.jpg" alt="Laos · Kitchen">
+        <img src="images/cuisine-laos.jpg" alt="Laos · Kitchen" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Kitchen</span></div>
       </div>
 
       <!-- PHOTO 13 : Hotels — Hostel Koh Phi Phi -->
       <div class="photo-card">
-        <img src="images/hostel-kohphiphi.jpg" alt="Thailand · Koh Phi Phi · Hostel">
+        <img src="images/hostel-kohphiphi.jpg" alt="Thailand · Koh Phi Phi · Hostel" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · Hostel</span></div>
       </div>
 
       <!-- PHOTO 14 : Hotels — Hotel Bangkok -->
       <div class="photo-card">
-        <img src="images/hotel-bangkok.jpg" alt="Thailand · Bangkok · Hotel">
+        <img src="images/hotel-bangkok.jpg" alt="Thailand · Bangkok · Hotel" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Bangkok · Hotel</span></div>
       </div>
 
       <!-- PHOTO 15 : Hotels — Chambre arrière Laos -->
       <div class="photo-card">
-        <img src="images/chambre-arriere-laos.jpg" alt="Laos · Room">
+        <img src="images/chambre-arriere-laos.jpg" alt="Laos · Room" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Room</span></div>
       </div>
 
       <!-- PHOTO 16 : Hotels — Drone Da Nang -->
       <div class="photo-card">
-        <img src="images/drone-da-nang.jpg" alt="Da Nang · Drone · Vietnam">
+        <img src="images/drone-da-nang.jpg" alt="Da Nang · Drone · Vietnam" width="1600" height="900" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Da Nang · Drone</span></div>
       </div>
 
@@ -565,60 +579,60 @@
     <div class="video-row video-row--3">
       <!-- VIDEO 1 : Hotels — Anahata Canggu -->
       <div class="video-card">
-        <video src="videos/Videos%20Hotel/anahata-canggu.mov" muted playsinline loop preload="none"></video>
+        <video src="videos/hotels/anahata-canggu.mp4" muted playsinline loop preload="none" poster="videos/hotels/anahata-canggu-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇮🇩 Canggu · Anahata</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- SÉPARATEUR LOGO -->
       <div class="video-row-logo-sep">
-        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy">
       </div>
       <!-- VIDEO 2 : Hotels — Uma -->
       <div class="video-card">
-        <video src="videos/Videos%20Hotel/Uma%20.MOV" muted playsinline loop preload="none"></video>
+        <video src="videos/hotels/uma-ubud.mp4" muted playsinline loop preload="none" poster="videos/hotels/uma-ubud-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇮🇩 Ubud · Uma</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- SÉPARATEUR LOGO -->
       <div class="video-row-logo-sep">
-        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy">
       </div>
       <!-- VIDEO 3 : Hotels — Hotel Laos -->
       <div class="video-card">
-        <video src="videos/Videos%20Hotel/hotel-laos.mov" muted playsinline loop preload="none"></video>
+        <video src="videos/hotels/hotel-laos.mp4" muted playsinline loop preload="none" poster="videos/hotels/hotel-laos-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇱🇦 Laos · Hotel</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -639,7 +653,7 @@
 
       <!-- PHOTO 1 : Food — Petit-déjeuner terrasse vue montagnes (portrait) -->
       <div class="photo-card">
-        <img src="images/petit-dejeuner-terrasse-piscine-vue-montagnes.jpg" alt="Breakfast · Mountain View">
+        <img src="images/petit-dejeuner-terrasse-piscine-vue-montagnes.jpg" alt="Breakfast · Mountain View" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🍳 Breakfast · Mountain View</span></div>
       </div>
 
@@ -647,67 +661,67 @@
 
       <!-- PHOTO 3 : Food — Restaurant plage palmiers (paysage) -->
       <div class="photo-card">
-        <img src="images/food-beach-philippines.jpg" alt="Beach Restaurant · Philippines">
+        <img src="images/food-beach-philippines.jpg" alt="Beach Restaurant · Philippines" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇵🇭 Beach Restaurant · Philippines</span></div>
       </div>
 
       <!-- PHOTO 4 : Food — Smoothie bowl café Bangkok (portrait) -->
       <div class="photo-card">
-        <img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="Smoothie Bowl · Bangkok Café">
+        <img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="Smoothie Bowl · Bangkok Café" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🥤 Smoothie Bowl · Bangkok</span></div>
       </div>
 
       <!-- PHOTO 5 : Food — Restaurant terrasse rizière Laos (paysage) -->
       <div class="photo-card">
-        <img src="images/restaurant-terrasse-riziere-vue-montagnes-laos.jpg" alt="Restaurant · Rice Field View · Laos">
+        <img src="images/restaurant-terrasse-riziere-vue-montagnes-laos.jpg" alt="Restaurant · Rice Field View · Laos" width="1600" height="1200" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Restaurant · Rice Fields</span></div>
       </div>
 
       <!-- PHOTO 6 : Food/Ambiance — Table dîner plage guirlandes Koh Chang (portrait) -->
       <div class="photo-card">
-        <img src="images/coucher-soleil-plage-table-guirlandes-lumiere-koh-chang.jpg" alt="Beach Dinner · Koh Chang">
+        <img src="images/coucher-soleil-plage-table-guirlandes-lumiere-koh-chang.jpg" alt="Beach Dinner · Koh Chang" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Chang · Beach Dinner</span></div>
       </div>
 
       <!-- PHOTO 7 : Food — Avo Toast -->
       <div class="photo-card">
-        <img src="images/avo-toast.jpg" alt="Avo Toast">
+        <img src="images/avo-toast.jpg" alt="Avo Toast" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🥑 Avo Toast</span></div>
       </div>
 
       <!-- PHOTO 8 : Food — Nasi Goreng -->
       <div class="photo-card">
-        <img src="images/nasi-goreng.jpg" alt="Nasi Goreng">
+        <img src="images/nasi-goreng.jpg" alt="Nasi Goreng" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🍳 Nasi Goreng</span></div>
       </div>
 
       <!-- PHOTO 8b : Food — Ha Giang Loop -->
       <div class="photo-card">
-        <img src="images/food-ha-giang-loop.jpg" alt="Food · Ha Giang Loop">
+        <img src="images/food-ha-giang-loop.jpg" alt="Food · Ha Giang Loop" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Ha Giang Loop</span></div>
       </div>
 
       <!-- PHOTO 9 : Food — Acai -->
       <div class="photo-card">
-        <img src="images/acai.jpg" alt="Acai Bowl">
+        <img src="images/acai.jpg" alt="Acai Bowl" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🫐 Acai Bowl</span></div>
       </div>
 
       <!-- PHOTO 10 : Food — Gaufre -->
       <div class="photo-card">
-        <img src="images/gauffre.jpg" alt="Waffle">
+        <img src="images/gauffre.jpg" alt="Waffle" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🧇 Waffle</span></div>
       </div>
 
       <!-- PHOTO 11 : Food — Fruits Peony -->
       <div class="photo-card">
-        <img src="images/fruits-peony.jpg" alt="Fruits · Peony Cruise">
+        <img src="images/fruits-peony.jpg" alt="Fruits · Peony Cruise" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🍉 Fruits · Peony Cruise</span></div>
       </div>
 
       <!-- PHOTO 12 : Food — Peony -->
       <div class="photo-card">
-        <img src="images/peony.jpg" alt="Peony Cruise">
+        <img src="images/peony.jpg" alt="Peony Cruise" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🛳️ Peony Cruise</span></div>
       </div>
 
@@ -716,60 +730,60 @@
     <div class="video-row video-row--3">
       <!-- VIDEO 1 : Food & Drinks — Danasol Da Nang -->
       <div class="video-card">
-        <video src="videos/Video%20Food/Danasol%20Da%20Nang.MP4" muted playsinline loop preload="none"></video>
+        <video src="videos/food/danasol-da-nang.mp4" muted playsinline loop preload="none" poster="videos/food/danasol-da-nang-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇻🇳 Da Nang · Danasol</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- SÉPARATEUR LOGO -->
       <div class="video-row-logo-sep">
-        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy">
       </div>
       <!-- VIDEO 2 : Food & Drinks — Nice Kitchen -->
       <div class="video-card">
-        <video src="videos/Video%20Food/nice%20kitchen.mp4" muted playsinline loop preload="none"></video>
+        <video src="videos/food/nice-kitchen.mp4" muted playsinline loop preload="none" poster="videos/food/nice-kitchen-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🍽️ Nice Kitchen</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- SÉPARATEUR LOGO -->
       <div class="video-row-logo-sep">
-        <img src="images/logo_transparent.png" alt="" aria-hidden="true">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy">
       </div>
       <!-- VIDEO 3 : Food & Drinks — Rosie's Café -->
       <div class="video-card">
-        <video src="videos/Video%20Food/rosies-cafe.mov" muted playsinline loop preload="none"></video>
+        <video src="videos/food/rosies-cafe.mp4" muted playsinline loop preload="none" poster="videos/food/rosies-cafe-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">☕ Rosie's Café</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -790,67 +804,67 @@
 
       <!-- PHOTO 1 : Experiences — Montgolfière Vang Vieng drone (paysage) -->
       <div class="photo-card">
-        <img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Hot Air Balloon · Vang Vieng">
+        <img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Hot Air Balloon · Vang Vieng" width="1600" height="1066" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🚁 Laos · Hot Air Balloon</span></div>
       </div>
 
       <!-- PHOTO 1b : Experiences — Kayak Sydney -->
       <div class="photo-card">
-        <img src="images/kayak-sydney.jpg" alt="Kayak · Sydney">
+        <img src="images/kayak-sydney.jpg" alt="Kayak · Sydney" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Kayak</span></div>
       </div>
 
       <!-- PHOTO 2 : Experiences — Bateau Indonésie (portrait) -->
       <div class="photo-card">
-        <img src="images/indonesie_bateau_001.jpg" alt="Indonesia · Boat">
+        <img src="images/indonesie-bateau.jpg" alt="Indonesia · Boat" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Indonesia · Boat</span></div>
       </div>
 
       <!-- PHOTO 2b : Experiences — Rizière Sapa -->
       <div class="photo-card">
-        <img src="images/riziere-sapa.jpg" alt="Rizière · Sapa · Vietnam">
+        <img src="images/riziere-sapa.jpg" alt="Rizière · Sapa · Vietnam" width="1600" height="900" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Rice Fields</span></div>
       </div>
 
       <!-- PHOTO 3 : Experiences — Bateau plage tropicale drone (paysage) -->
       <div class="photo-card">
-        <img src="images/plongee-thailande.jpg" alt="Plongée · Thaïlande">
+        <img src="images/plongee-thailande.jpg" alt="Plongée · Thaïlande" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🤿 Thailand · Diving</span></div>
       </div>
 
       <!-- PHOTO 4 : Experiences — Bateau Komodo -->
       <div class="photo-card">
-        <img src="images/bateau-komodo.jpg" alt="Komodo · Boat">
+        <img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Komodo · Boat</span></div>
       </div>
 
       <!-- PHOTO 5 : Experiences — Sapa Drone -->
       <div class="photo-card">
-        <img src="images/sapa-drone.jpg" alt="Sapa · Vietnam · Drone">
+        <img src="images/sapa-drone.jpg" alt="Sapa · Vietnam · Drone" width="1600" height="900" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Drone</span></div>
       </div>
 
       <!-- PHOTO 6 : Experiences — Padar Island -->
       <div class="photo-card">
-        <img src="images/padar-island.jpg" alt="Padar Island · Indonesia">
+        <img src="images/padar-island.jpg" alt="Padar Island · Indonesia" width="1600" height="2133" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Padar Island</span></div>
       </div>
 
       <!-- PHOTO 7 : Experiences — Drone Koh Lanta -->
       <div class="photo-card">
-        <img src="images/drone-koh-lanta.jpg" alt="Koh Lanta · Drone · Thailand">
+        <img src="images/drone-koh-lanta.jpg" alt="Koh Lanta · Drone · Thailand" width="1600" height="900" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Lanta · Drone</span></div>
       </div>
 
       <!-- PHOTO 8 : Experiences — Piscine Hoi An -->
       <div class="photo-card">
-        <img src="images/piscine-hoi-an.jpg" alt="Hoi An · Pool · Vietnam">
+        <img src="images/piscine-hoi-an.jpg" alt="Hoi An · Pool · Vietnam" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Hoi An · Pool</span></div>
       </div>
 
       <!-- PHOTO 9 : Experiences — Coeur Koh Phi Phi -->
       <div class="photo-card">
-        <img src="images/coeur-kohphophi.jpg" alt="Koh Phi Phi · Heart · Thailand">
+        <img src="images/coeur-kohphophi.jpg" alt="Koh Phi Phi · Heart · Thailand" width="1200" height="1599" loading="lazy">
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · View</span></div>
       </div>
 
@@ -859,69 +873,69 @@
     <div class="video-row">
       <!-- VIDEO 1 : Experiences — Padel Canggu -->
       <div class="video-card">
-        <video src="videos/Video%20Activites/Padel%20Canggu.MP4" muted playsinline loop preload="none"></video>
+        <video src="videos/experiences/padel-canggu.mp4" muted playsinline loop preload="none" poster="videos/experiences/padel-canggu-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇮🇩 Canggu · Padel Court</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- VIDEO 2 : Experiences — Sapa -->
       <div class="video-card">
-        <video src="videos/Video%20Activites/Sapa.MP4" muted playsinline loop preload="none"></video>
+        <video src="videos/experiences/sapa.mp4" muted playsinline loop preload="none" poster="videos/experiences/sapa-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇻🇳 Sapa · Vietnam</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- VIDEO 3 : Experiences — Port Barton -->
       <div class="video-card">
-        <video src="videos/Video%20Activites/port-barton.mov" muted playsinline loop preload="none"></video>
+        <video src="videos/experiences/port-barton.mp4" muted playsinline loop preload="none" poster="videos/experiences/port-barton-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇵🇭 Port Barton</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
       <!-- VIDEO 4 : Experiences — Keelooma -->
       <div class="video-card">
-        <video src="videos/Video%20Activites/keelooma.mov" muted playsinline loop preload="none"></video>
+        <video src="videos/experiences/keelooma.mp4" muted playsinline loop preload="none" poster="videos/experiences/keelooma-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇵🇭 Coron to El Nido · Keelooma Cruise</div>
-            <div class="sound-btn" title="Toggle sound">
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
                 <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -929,20 +943,20 @@
 
     <!-- VIDÉO DRONE HORIZONTALE -->
     <div class="video-featured">
-      <video src="videos/Video%20drone/bateau-drone-komodo.mov" muted playsinline loop preload="none"></video>
+      <video src="videos/drone/bateau-drone-komodo.mp4" muted playsinline loop preload="none" poster="videos/drone/bateau-drone-komodo-poster.jpg"></video>
       <div class="video-featured-overlay">
         <div class="video-featured-badge">🚁 Drone footage</div>
         <div class="video-featured-title">Drone shots that reveal<br>your activities.</div>
         <div class="video-featured-desc">Aerial perspectives captured from above, showing the scale, the landscape and the experience your guests will live.</div>
       </div>
-      <div class="sound-btn" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;">
+      <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
           <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
           <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
         </svg>
-      </div>
+      </button>
     </div>
 
   </section>
@@ -954,12 +968,12 @@
 <!-- CONTACT RAPIDE -->
 <section style="background:var(--deep); padding:64px 48px; text-align:center; position:relative; overflow:hidden;">
   <!-- Photo de fond pleine largeur, sujet ancré à droite -->
-  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;">
+  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy">
   <!-- Dégradé depuis la gauche pour protéger la lisibilité du texte centré -->
   <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
   <!-- Contenu centré au-dessus -->
   <div style="position:relative; z-index:1;">
-    <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;"></a>
+    <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="1254" height="1254" loading="lazy"></a>
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; font-style:italic; color:white; margin-bottom:32px; line-height:1.1;">Ready to collaborate?</p>
     <div class="contact-links">
       <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
@@ -973,7 +987,7 @@
 
 <!-- ── FOOTER (identique à index.html) ── -->
 <footer>
-  <a href="index.html" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;"></a>
+  <a href="index.html" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;" width="1254" height="1254" loading="lazy"></a>
   <span>Travel Content Creator · Bali 2026</span>
 </footer>
 

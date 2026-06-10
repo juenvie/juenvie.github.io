@@ -1,0 +1,6 @@
+_originals/
+.DS_Store
+.claude/
+compress_images.py
+encode_videos.sh
+patch_html.py

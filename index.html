@@ -6,13 +6,21 @@
 <meta name="description" content="Travel content creator for hotels & villas in Bali and Southeast Asia. Short-form video, photography and drone footage — in exchange for a hosted stay.">
 <meta property="og:title" content="Julien — Travel Content Creator for Hotels & Villas">
 <meta property="og:description" content="I produce short-form video, photography and drone footage for hotels & villas across Asia. Available in Bali, August 2026.">
-<meta property="og:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<meta property="og:image" content="https://juenvie.github.io/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://juenvie.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Julien — Travel Content Creator | Bali 2026">
 <meta name="twitter:description" content="Content that makes guests book. Photography, video & drone for hotels and villas in Bali.">
-<meta name="twitter:image" content="images/portrait-rooftop-skyline-bangkok.jpg">
+<meta name="twitter:image" content="https://juenvie.github.io/images/og-image.jpg">
+<link rel="canonical" href="https://juenvie.github.io/">
 <title>Julien — Travel Content Creator | Bali 2026</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -508,6 +516,7 @@
     cursor: pointer; backdrop-filter: blur(6px);
     transition: background 0.2s, transform 0.15s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    font: inherit; padding: 0; appearance: none; -webkit-appearance: none;
   }
   .sound-btn svg { width: 13px; height: 13px; }
   .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
@@ -610,8 +619,7 @@
     .mobile-br { display: inline; }
     .hero-ctas { flex-direction: column; align-items: center; }
     .hero-ctas .btn-primary,
-    .hero-ctas .btn-secondary,
-    .hero-ctas .btn-portfolio { width: 260px; text-align: center; }
+    .hero-ctas .btn-secondary { width: 260px; text-align: center; }
     .hero-visual { height: 260px; }
     .stat-number { font-size: 30px; }
     .stat-label { font-size: 10px; }
@@ -622,7 +630,7 @@
     .bali-banner { flex-direction: column; text-align: center; padding: 14px 20px; }
     .bali-banner-text { font-size: 13px; }
     .services-grid { grid-template-columns: 1fr; }
-    .portfolio-gallery { column-count: 1; }
+    .portfolio-gallery { column-count: 2; column-gap: 6px; }
     .bali-photos { grid-template-columns: 1fr; }
     .videos-grid { grid-template-columns: 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
@@ -824,7 +832,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
-    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));">
+    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));" width="1254" height="1254" loading="lazy">
     ju.en.vie
   </a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -862,22 +870,21 @@
       I produce short-form video, photography and drone footage for hotels & villas across Asia. Content you can use on your social media, website and OTAs.
     </p>
     <div class="hero-ctas">
-      <a href="#packages" class="btn-primary">See packages</a>
-      <a href="#work" class="btn-secondary">View work</a>
-      <a href="portfolio.html" class="btn-portfolio">Full Portfolio →</a>
+      <a href="#work" class="btn-primary">View my work</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
     </div>
   </div>
   <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
     <div class="hero-img">
-      <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien — Travel Content Creator">
+      <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien — Travel Content Creator" width="2000" height="2666" fetchpriority="high">
       <span class="hero-img-label">Julien · Content Creator</span>
     </div>
     <div class="hero-img">
-      <img src="images/indonesie_komodo_bateau_drone_001.jpg" alt="Komodo · Drone">
+      <img src="images/indonesie-komodo-bateau-drone.jpg" alt="Komodo · Drone" width="1600" height="900">
       <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
     </div>
     <div class="hero-img">
-      <img src="images/cabane_bambou_plage_001.jpg" alt="Cabane plage">
+      <img src="images/cabane-bambou-plage.jpg" alt="Cabane plage" width="1200" height="900">
       <span class="hero-img-label">🇮🇩 Indonesia · Beach</span>
     </div>
   </div>
@@ -886,13 +893,8 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">6.7K</div>
-    <div class="stat-label">Instagram Followers</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat">
-    <div class="stat-number">6.6K</div>
-    <div class="stat-label">TikTok Followers</div>
+    <div class="stat-number">13K+</div>
+    <div class="stat-label">Combined followers (Instagram + TikTok)</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -964,23 +966,23 @@
     <!-- Column 1 -->
     <div class="col col-1">
       <div class="gallery-card">
-        <img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field">
+        <img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field" width="900" height="1199" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool · Rice Field</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/portrait-transat-piscine-arche-brique-chiang-mai.jpg" alt="Chiang Mai · Villa">
+        <img src="images/portrait-transat-piscine-arche-brique-chiang-mai.jpg" alt="Chiang Mai · Villa" width="1200" height="1599" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Villa</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/balancoire-philippines.jpg" alt="Balançoire · Philippines">
+        <img src="images/balancoire-philippines.jpg" alt="Balançoire · Philippines" width="1600" height="2133" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇵🇭 Philippines · Beach</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/beach-club-canggu.jpg" alt="Bali · Beach Club · Canggu">
+        <img src="images/beach-club-canggu.jpg" alt="Bali · Beach Club · Canggu" width="1600" height="2133" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Beach Club</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/drone-villa-piscine-jardin-montagnes-laos.jpg" alt="Laos · Drone · Villa">
+        <img src="images/drone-villa-piscine-jardin-montagnes-laos.jpg" alt="Laos · Drone · Villa" width="1600" height="900" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Villa</span></div>
       </div>
     </div>
@@ -988,27 +990,27 @@
     <!-- Column 2 -->
     <div class="col col-2">
       <div class="gallery-card">
-        <img src="images/chambre-bungalow-bois-vue-jungle.jpg" alt="Bungalow · Jungle">
+        <img src="images/chambre-bungalow-bois-vue-jungle.jpg" alt="Bungalow · Jungle" width="1600" height="1200" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Bungalow · Jungle View</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Vang Vieng · Mountains">
+        <img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Vang Vieng · Mountains" width="1200" height="1599" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Mountains</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/drone-village-riviere-jungle-montagnes-laos.jpg" alt="Laos · Drone · Village">
+        <img src="images/drone-village-riviere-jungle-montagnes-laos.jpg" alt="Laos · Drone · Village" width="1600" height="900" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Laos · Drone · Village</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/chambre-double-peinture-elephant-lumiere-naturelle.jpg" alt="Room · Natural Light">
+        <img src="images/chambre-double-peinture-elephant-lumiere-naturelle.jpg" alt="Room · Natural Light" width="1600" height="1200" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Room · Natural Light</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Vang Vieng · Buggy · Sunset">
+        <img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Vang Vieng · Buggy · Sunset" width="1600" height="2133" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇱🇦 Vang Vieng · Buggy · Sunset</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/brunch-labuan-bajo.jpg" alt="Labuan Bajo · Brunch">
+        <img src="images/brunch-labuan-bajo.jpg" alt="Labuan Bajo · Brunch" width="1200" height="1599" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Labuan Bajo · Brunch</span></div>
       </div>
     </div>
@@ -1016,31 +1018,27 @@
     <!-- Column 3 -->
     <div class="col col-3">
       <div class="gallery-card">
-        <img src="images/portrait-piscine-lanna-tree-chiang-mai.jpg" alt="Chiang Mai · Pool">
+        <img src="images/portrait-piscine-lanna-tree-chiang-mai.jpg" alt="Chiang Mai · Pool" width="1200" height="1599" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇹🇭 Chiang Mai · Pool</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/douche-exterieure-vue-terrasse-jungle.jpg" alt="Terrace · Jungle">
+        <img src="images/douche-exterieure-vue-terrasse-jungle.jpg" alt="Terrace · Jungle" width="1600" height="1200" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🏨 Terrace · Jungle</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/dji_fly_20250222_164222_141_1740213844731_photo_optimized.JPG" alt="Drone · Aerial View">
+        <img src="images/drone-aerial-view.jpg" alt="Drone · Aerial View" width="1200" height="2132" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🚁 Drone · Aerial View</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/IMG_2324.JPEG" alt="Da Nang · Pool Bar">
+        <img src="images/da-nang-pool-bar.jpg" alt="Da Nang · Pool Bar" width="1200" height="1599" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Da Nang · Pool Bar</span></div>
       </div>
       <div class="gallery-card">
-        <img src="images/salon-tam-coc.jpg" alt="Vietnam · Tam Coc · Salon">
+        <img src="images/salon-tam-coc.jpg" alt="Vietnam · Tam Coc · Salon" width="1600" height="2133" loading="lazy">
         <div class="portfolio-overlay"><span class="portfolio-tag">🇻🇳 Tam Coc · Living Room</span></div>
       </div>
     </div>
 
-  </div>
-  <div class="portfolio-cta-block">
-    <p>More photos &amp; videos, hotels, food &amp; beverage, experiences across Asia.</p>
-    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
   </div>
 </section>
 
@@ -1051,79 +1049,79 @@
 
   <!-- DRONE FEATURED -->
   <div class="video-featured fade-up">
-    <video src="videos/Video%20drone/drone%20.mov" autoplay muted loop playsinline preload="auto"></video>
+    <video src="videos/drone/drone-featured.mp4" autoplay muted loop playsinline preload="metadata" poster="videos/drone/drone-featured-poster.jpg"></video>
     <div class="video-featured-overlay">
       <div class="video-featured-badge">🚁 Drone footage</div>
       <div class="video-featured-title">Aerial perspective</div>
       <div class="video-featured-desc">Drone shots that reveal your property's true scale, surroundings and unique location. The view that makes guests book.</div>
     </div>
-    <div class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <button type="button" aria-label="Toggle sound" class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
 
   <!-- VIDEO GRID -->
   <div class="videos-grid">
 
     <div class="video-card fade-up">
-      <video src="videos/Videos%20Hotel/UMA%20JALA%20VILLA%20UBUD%20.MP4" muted playsinline loop preload="metadata"></video>
+      <video src="videos/hotels/uma-jala-villa-ubud.mp4" muted playsinline loop preload="none" poster="videos/hotels/uma-jala-villa-ubud-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Ubud · Uma Jala Villa</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
 
     <div class="video-card fade-up" style="transition-delay:.1s">
-      <video src="videos/Videos%20Hotel/PEONY%20CRUISE%20.MP4" muted playsinline loop preload="metadata"></video>
+      <video src="videos/hotels/peony-cruise.mp4" muted playsinline loop preload="none" poster="videos/hotels/peony-cruise-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🚢 Peony Cruise</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
     <div class="video-card fade-up" style="transition-delay:.15s">
-      <video src="videos/Videos%20Hotel/Chambre%20bateau%20Komodo%20.MP4" muted playsinline loop preload="metadata"></video>
+      <video src="videos/hotels/chambre-bateau-komodo.mp4" muted playsinline loop preload="none" poster="videos/hotels/chambre-bateau-komodo-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Komodo · Boat</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
 
     <div class="video-card fade-up" style="transition-delay:.25s">
-      <video src="videos/Videos%20Hotel/Awaken%20Da%20Nang%20.mov" muted playsinline loop preload="metadata"></video>
+      <video src="videos/hotels/awaken-da-nang.mp4" muted playsinline loop preload="none" poster="videos/hotels/awaken-da-nang-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇻🇳 Da Nang · Awaken</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
 
     <div class="video-card fade-up" style="transition-delay:.35s">
-      <video src="videos/Videos%20Hotel/Senggigi.mov" muted playsinline loop preload="metadata"></video>
+      <video src="videos/hotels/senggigi-lombok.mp4" muted playsinline loop preload="none" poster="videos/hotels/senggigi-lombok-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Senggigi · Lombok</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
 
     <div class="video-card fade-up" style="transition-delay:.45s;grid-column:span 3;aspect-ratio:16/9;">
-      <video src="videos/Video%20drone/Canggu.MOV" muted playsinline loop preload="metadata"></video>
+      <video src="videos/drone/canggu.mp4" muted playsinline loop preload="none" poster="videos/drone/canggu-poster.jpg"></video>
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Canggu</div>
-          <div class="sound-btn" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        </div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </button>
       </div>
     </div>
 
@@ -1146,10 +1144,10 @@
   </div>
 
   <div class="bali-photos" style="position:relative; z-index:1;">
-    <img src="images/riziere-bali.jpg" alt="Rizière · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
-    <img src="images/villa-canggu.jpg" alt="Villa · Canggu · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
-    <img src="images/mont-batur.jpg" alt="Mont Batur · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
-    <img src="images/uma-jala-villa-ubud.jpg" alt="Uma Jala Villa · Ubud · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;">
+    <img src="images/riziere-bali.jpg" alt="Rizière · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;" width="1200" height="1599" loading="lazy">
+    <img src="images/villa-canggu.jpg" alt="Villa · Canggu · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
+    <img src="images/mont-batur.jpg" alt="Mont Batur · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
+    <img src="images/uma-jala-villa-ubud.jpg" alt="Uma Jala Villa · Ubud · Bali" style="width:100%; aspect-ratio:5/6; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
   </div>
 </section>
 
@@ -1295,7 +1293,7 @@
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="contact-bg-layer" aria-hidden="true"></div>
-  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:128px;width:auto;opacity:0.6;margin-bottom:24px;"></a>
+  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:128px;width:auto;opacity:0.6;margin-bottom:24px;" width="1254" height="1254" loading="lazy"></a>
   <div class="section-label">Get in touch</div>
   <h2 class="section-title" style="color:white;">Let's create something<br>your guests will book for.</h2>
   <p class="contact-sub">I'm in Bali throughout August 2026.<br>Send me a message with your property details and I'll get back to you within 24h.</p>
@@ -1309,7 +1307,7 @@
 </section>
 
 <footer>
-  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;"></a>
+  <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;" width="1254" height="1254" loading="lazy"></a>
   <span>Travel Content Creator · Bali 2026</span>
 </footer>
 
