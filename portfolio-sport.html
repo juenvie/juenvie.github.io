@@ -89,7 +89,27 @@
   }
   @media (max-width: 768px) { .photo-grid { columns: 2; column-gap: 6px; } }
   @media (max-width: 480px) { .photo-grid { columns: 1; } .category-section { padding: 0 16px 48px; } .page-title { font-size: 36px; } .page-header { padding: 20px 16px 36px; } footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; } .contact-links { flex-direction: column; align-items: center; } .contact-link { width: 280px; } }
+
+  /* ── REVEAL SYS (shared) ── */
+  .has-js .page-eyebrow  { animation: rsRise .7s .05s both cubic-bezier(.22,1,.36,1); }
+  .has-js .page-title    { animation: rsRise .8s .15s both cubic-bezier(.22,1,.36,1); }
+  .has-js .page-subtitle { animation: rsRise .8s .30s both cubic-bezier(.22,1,.36,1); }
+  .has-js .portfolio-nav { animation: rsRise .8s .45s both cubic-bezier(.22,1,.36,1); }
+  @keyframes rsRise { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+  .has-js .rs-card { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1); transition-delay:var(--d,0s); }
+  .has-js .rs-card.rs-in { opacity:1; transform:none; }
+  .has-js .category-title { opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .9s cubic-bezier(.22,1,.36,1); }
+  .has-js .category-title.rs-in { opacity:1; transform:none; }
+  nav { transition: box-shadow .3s ease, background .3s ease; }
+  nav.scrolled { box-shadow:0 6px 24px rgba(28,20,16,.07); background:rgba(245,240,232,.97); }
+  .btn-portfolio .arr, .btn-portfolio-big .arr { display:inline-block; transition:transform .3s cubic-bezier(.22,1,.36,1); }
+  .btn-portfolio:hover .arr, .btn-portfolio-big:hover .arr { transform:translateX(5px); }
+  @media (prefers-reduced-motion: reduce) {
+    .has-js .page-eyebrow,.has-js .page-title,.has-js .page-subtitle,.has-js .portfolio-nav { animation:none!important; }
+    .has-js .rs-card,.has-js .category-title { opacity:1!important; transform:none!important; transition:none!important; }
+  }
 </style>
+<script>document.documentElement.className += " has-js";</script>
 </head>
 <body>
 
@@ -249,5 +269,35 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.querySelector('nav');
+  if (nav) window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+  var cards = document.querySelectorAll('.photo-card, .photo-placeholder, .video-card, .video-placeholder');
+  cards.forEach(function(el,i){ el.classList.add('rs-card'); el.style.setProperty('--d', ((i%4)*0.05)+'s'); });
+  var targets = [].slice.call(document.querySelectorAll('.rs-card, .category-title'));
+  function reveal(el){ el.classList.add('rs-in'); }
+  if (reduce) { targets.forEach(reveal); return; }
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } });
+  }, {threshold:0.1, rootMargin:'0px 0px -20px 0px'}) : null;
+  if (io) targets.forEach(function(el){ io.observe(el); });
+  // Safety net: reveal anything that has reached the viewport (covers fast scroll & anchor jumps)
+  function sweep(){
+    var vh = window.innerHeight, remaining = false;
+    targets.forEach(function(el){
+      if (el.classList.contains('rs-in')) return;
+      if (el.getBoundingClientRect().top < vh * 0.92) { reveal(el); if (io) io.unobserve(el); }
+      else remaining = true;
+    });
+    if (!remaining) window.removeEventListener('scroll', onScroll);
+  }
+  var ticking = false;
+  function onScroll(){ if (ticking) return; ticking = true; requestAnimationFrame(function(){ sweep(); ticking = false; }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  setTimeout(sweep, 120);
+})();
+</script>
 </body>
 </html>

@@ -1460,6 +1460,22 @@
     });
   }
 
+  // ─── SAFETY NET: reveal anything that has reached the viewport ───────────────
+  // (covers fast scroll & anchor jumps where IO may skip transient intersections)
+  if (!reduceMotion) {
+    let sweepTick = false;
+    const sweep = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('.fade-up:not(.visible), .img-reveal:not(.visible), .title-reveal:not(.visible), .section-title:not(.visible)')
+        .forEach(el => { if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add('visible'); });
+    };
+    window.addEventListener('scroll', () => {
+      if (sweepTick) return; sweepTick = true;
+      requestAnimationFrame(() => { sweep(); sweepTick = false; });
+    }, { passive: true });
+    setTimeout(sweep, 120);
+  }
+
   // ─── VIDEO: play only when in view (saves data on slow connections) ──────────
   const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
