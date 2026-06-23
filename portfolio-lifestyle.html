@@ -51,6 +51,12 @@
   .portfolio-nav a:hover { color: var(--white); background: var(--terracotta); border-color: var(--terracotta); }
   .category-section { padding: 0 48px 80px; }
   .photo-grid { columns: 3; column-gap: 8px; }
+  .photo-card { break-inside: avoid; margin-bottom: 8px; position: relative; overflow: hidden; cursor: pointer; }
+  .photo-card img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+  .photo-card:hover img { transform: scale(1.03); }
+  .photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,16,0.72) 0%, transparent 55%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 14px; }
+  .photo-card:hover .photo-overlay { opacity: 1; }
+  .photo-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: white; }
   .photo-placeholder { break-inside: avoid; margin-bottom: 8px; background: var(--sand); aspect-ratio: 4 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px dashed rgba(92,74,58,0.25); cursor: default; }
   .photo-placeholder.portrait { aspect-ratio: 3 / 4; }
   .photo-placeholder svg { opacity: 0.4; }
@@ -197,6 +203,10 @@
     </div>
 
     <div class="photo-grid">
+      <div class="photo-card">
+        <img src="images/skyline-sydney.jpg" alt="Sydney · Skyline · Urban" width="3024" height="4032" loading="lazy">
+        <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Skyline</span></div>
+      </div>
       <div class="photo-placeholder portrait">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         👟 Activewear · Sydney 2026
