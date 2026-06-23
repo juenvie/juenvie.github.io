@@ -62,9 +62,10 @@
     text-decoration: none;
   }
   .nav-links {
-    display: flex; gap: 32px; list-style: none; margin: 0; padding: 0 48px;
+    display: flex; gap: 20px; list-style: none; margin: 0; padding: 0 48px;
     position: fixed; top: 0; right: 0; height: 85px; align-items: center; z-index: 1001;
   }
+  .nav-active { color: var(--terracotta) !important; }
   .hamburger {
     display: none;
     flex-direction: column;
@@ -92,14 +93,9 @@
     color: var(--mid); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--terracotta); }
-  .nav-portfolio-btn {
-    background: var(--terracotta) !important;
-    color: white !important;
-    padding: 8px 16px !important;
-    letter-spacing: 0.08em;
-    transition: background 0.2s !important;
-  }
-  .nav-portfolio-btn:hover { background: #b05e38 !important; color: white !important; }
+  .nav-links .nav-cat a { border: 1px solid var(--terracotta) !important; color: var(--terracotta) !important; padding: 4px 10px !important; border-radius: 2px !important; font-size: 11px !important; letter-spacing: 0.1em !important; }
+  .nav-links .nav-cat a:hover, .nav-links .nav-cat a.nav-active { background: var(--terracotta) !important; color: white !important; }
+  .nav-sep { display: none; }
   .btn-portfolio {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 13px 32px;
@@ -253,7 +249,7 @@
 
   /* WHAT I CREATE */
   .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(5, 1fr);
     gap: 2px; background: var(--sand);
     margin-top: 48px;
   }
@@ -607,6 +603,9 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
+    .nav-links .nav-cat a { font-size: 16px !important; font-family: 'DM Sans', sans-serif !important; font-style: normal !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; border: 1px solid rgba(196,113,74,0.5) !important; color: var(--terracotta) !important; padding: 8px 22px !important; border-radius: 2px !important; }
+    .nav-links .nav-cat a:hover, .nav-links .nav-cat a.nav-active { background: var(--terracotta) !important; color: white !important; border-color: var(--terracotta) !important; }
+    .nav-sep { display: block; width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 4px auto; }
     nav { padding: 16px 24px; }
     .nav-links {
       display: flex;
@@ -644,20 +643,6 @@
       letter-spacing: 0.02em;
     }
     .nav-links a:hover { color: var(--terracotta); }
-    .nav-links .nav-portfolio-btn {
-      background: var(--terracotta) !important;
-      color: white !important;
-      padding: 14px 40px !important;
-      border: none !important;
-      font-family: 'DM Sans', sans-serif !important;
-      font-style: normal !important;
-      font-size: 13px !important;
-      letter-spacing: 0.08em !important;
-      text-transform: uppercase !important;
-      width: 200px;
-      text-align: center;
-      display: inline-block;
-    }
     .hamburger { display: flex; }
     .hamburger span { background: var(--deep); }
     .hamburger.open span { background: white; }
@@ -904,42 +889,6 @@
     .shot-on-banner { flex-direction: column; text-align: center; gap: 8px; padding: 20px 24px; }
   }
 
-  /* ── NAV CATEGORY DROPDOWN ── */
-  .nav-dropdown { position: relative; }
-  .nav-caret { font-size: 9px; margin-left: 5px; display: inline-block; transition: transform .25s; }
-  .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
-  .nav-dropdown-menu {
-    position: absolute; top: 100%; right: 0; margin: 16px 0 0 0;
-    min-width: 234px; list-style: none; padding: 8px;
-    background: var(--white); border: 1px solid rgba(92,74,58,0.12);
-    box-shadow: 0 14px 38px rgba(28,20,16,0.14);
-    opacity: 0; visibility: hidden; transform: translateY(-8px);
-    transition: opacity .22s ease, transform .22s ease, visibility .22s;
-    z-index: 1002;
-  }
-  .nav-dropdown-menu::before { content: ''; position: absolute; bottom: 100%; left: 0; right: 0; height: 16px; }
-  .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-  .nav-links .nav-dropdown-menu a {
-    display: block; padding: 11px 16px;
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-style: normal;
-    letter-spacing: 0.02em; text-transform: none; color: var(--mid);
-    border-radius: 2px; transition: background .15s, color .15s;
-  }
-  .nav-links .nav-dropdown-menu a:hover { background: var(--cream); color: var(--terracotta); }
-  .nav-links .nav-dropdown-menu .dd-all { margin-top: 6px; padding-top: 13px; border-top: 1px solid rgba(92,74,58,0.1); color: var(--terracotta); font-weight: 500; }
-  @media (max-width: 900px) {
-    .nav-links .nav-dropdown { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-    .nav-caret { display: none; }
-    .nav-links .nav-dropdown-menu {
-      position: static; opacity: 1; visibility: visible; transform: none;
-      margin: 0; padding: 0; min-width: 0; background: transparent; border: none; box-shadow: none;
-      display: flex; flex-direction: column; align-items: center; gap: 14px;
-    }
-    .nav-links .nav-dropdown-menu::before { display: none; }
-    .nav-links .nav-dropdown-menu a { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: rgba(255,255,255,0.85); padding: 0; }
-    .nav-links .nav-dropdown-menu a:hover { background: transparent; color: var(--terracotta); }
-    .nav-links .nav-dropdown-menu .dd-all { border-top: none; margin-top: 4px; padding-top: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; font-style: normal; }
-  }
 </style>
 <script>document.documentElement.className += ' has-js';</script>
 </head>
@@ -958,21 +907,14 @@
   </button>
 </nav>
 <ul class="nav-links" id="nav-links">
-  <li><a href="#work">Work</a></li>
-  <li><a href="#results">Results</a></li>
+  <li class="nav-cat"><a href="portfolio-hotels.html">Hotels</a></li>
+  <li class="nav-cat"><a href="portfolio-food.html">Food</a></li>
+  <li class="nav-cat"><a href="portfolio-sport.html">Sport</a></li>
+  <li class="nav-cat"><a href="portfolio-experiences.html">Experiences</a></li>
+  <li class="nav-cat"><a href="portfolio-lifestyle.html">Lifestyle</a></li>
+  <li class="nav-sep"></li>
   <li><a href="#contact">Contact</a></li>
   <li><a href="https://bio.site/juenvie" target="_blank">Links</a></li>
-  <li class="nav-dropdown">
-  <a href="portfolio.html" class="nav-portfolio-btn">Portfolio <span class="nav-caret">&#9662;</span></a>
-  <ul class="nav-dropdown-menu">
-    <li><a href="portfolio-hotels.html">Hotels &amp; Stays</a></li>
-    <li><a href="portfolio-food.html">Food &amp; Coffee</a></li>
-    <li><a href="portfolio-sport.html">Sport &amp; Running</a></li>
-    <li><a href="portfolio-experiences.html">Experiences &amp; Travel</a></li>
-    <li><a href="portfolio-lifestyle.html">Lifestyle &amp; Brands</a></li>
-    <li><a href="portfolio.html" class="dd-all">All categories &rarr;</a></li>
-  </ul>
-</li>
 </ul>
 
 <!-- AVAILABILITY BANNER -->
@@ -994,7 +936,7 @@
       French content creator on a Working Holiday Visa, based in Sydney from September 7. Short form video, photography and drone footage for hotels, cafés, sport brands and travel experiences.
     </p>
     <div class="hero-ctas hero-anim" style="--d:.45s">
-      <a href="portfolio.html" class="btn-primary">View Portfolio <span class="arr">→</span></a>
+      <a href="#work" class="btn-primary">View Portfolio <span class="arr">→</span></a>
       <a href="#contact" class="btn-secondary">Contact me</a>
     </div>
   </div>
@@ -1017,13 +959,8 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">10K</div>
-    <div class="stat-label">Instagram followers</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat">
-    <div class="stat-number">50K</div>
-    <div class="stat-label">TikTok followers</div>
+    <div class="stat-number">15K+</div>
+    <div class="stat-label">followers (Instagram &amp; TikTok)</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -1068,12 +1005,21 @@
       <p class="service-desc">Product shots, city content and brand lifestyle. For activewear, accessories and urban brands.</p>
     </a>
   </div>
+  <div style="margin-top:32px; padding: 20px 28px; border: 1px solid rgba(196,113,74,0.25); display:flex; align-items:center; gap:20px; background: rgba(196,113,74,0.04);">
+    <span style="flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--terracotta); border-radius:2px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </span>
+    <div>
+      <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:4px;">Drone · Aerial Photography &amp; Video</p>
+      <p style="font-size:13px; color:var(--mid); line-height:1.6;">Available on all packages — drone footage for hotels, resorts, experiences and travel brands across Asia and Australia.</p>
+    </div>
+  </div>
 </section>
 
 <!-- PORTFOLIO -->
 <section class="portfolio-section">
   <div class="section-label">Selected work</div>
-  <h2 class="section-title">Real collaborations<br>across Asia.</h2>
+  <h2 class="section-title">Collaborations<br>across Asia.</h2>
   <div class="portfolio-gallery">
 
     <!-- Column 1 -->
@@ -1157,7 +1103,14 @@
 
 <!-- PORTFOLIO CTA -->
 <div class="portfolio-cta-center">
-  <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
+  <p style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);margin-bottom:24px;">Explore by category</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a href="portfolio-hotels.html" class="btn-portfolio">Hotels &amp; Stays <span class="arr">→</span></a>
+    <a href="portfolio-food.html" class="btn-portfolio">Food &amp; Coffee <span class="arr">→</span></a>
+    <a href="portfolio-sport.html" class="btn-portfolio">Sport <span class="arr">→</span></a>
+    <a href="portfolio-experiences.html" class="btn-portfolio">Experiences <span class="arr">→</span></a>
+    <a href="portfolio-lifestyle.html" class="btn-portfolio">Lifestyle <span class="arr">→</span></a>
+  </div>
 </div>
 
 <!-- VIDEOS -->
@@ -1171,7 +1124,7 @@
     <div class="video-featured-overlay">
       <div class="video-featured-badge">🚁 Drone footage</div>
       <div class="video-featured-title">Aerial perspective</div>
-      <div class="video-featured-desc">Drone shots that reveal your location's true scale and surroundings — the shot that makes people stop and book.</div>
+      <div class="video-featured-desc">Drone shots that reveal your location's true scale and surroundings. The shot that makes people stop and book.</div>
     </div>
     <button type="button" aria-label="Toggle sound" class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
@@ -1247,8 +1200,14 @@
   </div>
 
   <div class="portfolio-cta-block">
-    <p>Hotels, food and coffee, sport, experiences and lifestyle brands.</p>
-    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
+    <p>Hotels, food and coffee, sport and lifestyle brands.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <a href="portfolio-hotels.html" class="btn-portfolio-big" style="padding:14px 28px;">Hotels <span class="arr">→</span></a>
+      <a href="portfolio-food.html" class="btn-portfolio-big" style="padding:14px 28px;">Food <span class="arr">→</span></a>
+      <a href="portfolio-sport.html" class="btn-portfolio-big" style="padding:14px 28px;">Sport <span class="arr">→</span></a>
+      <a href="portfolio-experiences.html" class="btn-portfolio-big" style="padding:14px 28px;">Experiences <span class="arr">→</span></a>
+      <a href="portfolio-lifestyle.html" class="btn-portfolio-big" style="padding:14px 28px;">Lifestyle <span class="arr">→</span></a>
+    </div>
   </div>
 </section>
 
@@ -1258,7 +1217,7 @@
   <h2 class="section-title">French creator.<br><em>Sydney-based.</em></h2>
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:48px;">
     <div>
-      <p style="font-size:16px; line-height:1.7; color:var(--mid); margin-bottom:24px;">I'm Julien — a French content creator on a Working Holiday Visa, based in Sydney from September 7, 2026. I create short form video, photography and drone footage for brands across hotels, cafés, sport, travel and lifestyle.</p>
+      <p style="font-size:16px; line-height:1.7; color:var(--mid); margin-bottom:24px;">I'm Julien, a French content creator on a Working Holiday Visa, based in Sydney from September 7, 2026. I create short form video, photography and drone footage for brands across hotels, cafés, sport, travel and lifestyle.</p>
       <p style="font-size:16px; line-height:1.7; color:var(--mid); margin-bottom:32px;">I've spent the past year across Southeast Asia building a portfolio of real brand collaborations. Now I'm bringing that eye to Australia.</p>
       <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta);">Available in Sydney · September 2026 onwards</p>
     </div>
@@ -1296,7 +1255,7 @@
   <div class="section-label">The collaboration</div>
   <h2 class="section-title title-reveal">Two ways to work<br>together.</h2>
   <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:540px; margin-top:-24px; margin-bottom:8px;">
-    Hotels, cafés, sport and lifestyle brands — same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product. No invoice, full content.
+    Hotels, cafés, sport and lifestyle brands. Same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product. No invoice, full content.
   </p>
   <div class="packages-grid">
     <div class="package-card fade-up">
@@ -1313,7 +1272,7 @@
     </div>
     <div class="package-card featured fade-up" style="transition-delay:0.15s">
       <span class="package-badge">Most popular</span>
-      <div class="package-name">Content + Reach</div>
+      <div class="package-name">Content Kit + Reach</div>
       <p class="package-desc">Everything in the Content Kit, plus a published feature to my organic audience of active travellers.</p>
       <ul class="package-items">
         <li>3 vertical UGC videos (Reels / TikTok)</li>
@@ -1418,8 +1377,12 @@
     <span class="shot-on-banner-left">All assets delivered within 48 hours.</span>
     <span class="shot-on-banner-right">Commercial usage rights included, forever.</span>
   </div>
-  <div style="text-align:center; margin-top:48px;">
-    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:48px;">
+    <a href="portfolio-hotels.html" class="btn-portfolio-big" style="padding:14px 28px;">Hotels <span class="arr">→</span></a>
+    <a href="portfolio-food.html" class="btn-portfolio-big" style="padding:14px 28px;">Food <span class="arr">→</span></a>
+    <a href="portfolio-sport.html" class="btn-portfolio-big" style="padding:14px 28px;">Sport <span class="arr">→</span></a>
+    <a href="portfolio-experiences.html" class="btn-portfolio-big" style="padding:14px 28px;">Experiences <span class="arr">→</span></a>
+    <a href="portfolio-lifestyle.html" class="btn-portfolio-big" style="padding:14px 28px;">Lifestyle <span class="arr">→</span></a>
   </div>
 </section>
 
