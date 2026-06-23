@@ -530,8 +530,80 @@
   .fade-up {
     opacity: 0; transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--d, 0s);
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* Section-title reveal — soft rise (auto-applied to every .section-title when JS is on) */
+  .title-reveal,
+  .has-js .section-title {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .title-reveal.visible,
+  .has-js .section-title.visible { opacity: 1; transform: none; }
+
+  /* Hero entrance — staggered lines */
+  .has-js .hero-anim {
+    opacity: 0; transform: translateY(26px);
+    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .hero-loaded .hero-anim { opacity: 1; transform: none; }
+
+  /* Image reveal — gentle fade + zoom-out (IO-safe: keeps layout area) */
+  .img-reveal { opacity: 0; transform: scale(1.05); transition: opacity 0.9s ease, transform 1.1s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: var(--d, 0s); }
+  .img-reveal.visible { opacity: 1; transform: none; }
+
+  /* Fine line icons (verticals / equipment) */
+  .vert-icon { display: block; width: 34px; height: 34px; margin-bottom: 20px; color: var(--terracotta); }
+  .vert-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+  .service-card:hover .vert-icon { transform: translateY(-3px); }
+  .vert-icon { transition: transform 0.3s ease; }
+  .shot-on-icon-line { display: block; width: 40px; height: 40px; margin-bottom: 20px; color: var(--terracotta); }
+  .shot-on-icon-line svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Button arrow micro-interaction */
+  .btn-portfolio-big .arr, .btn-primary .arr, .btn-portfolio .arr {
+    display: inline-block; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-portfolio-big:hover .arr, .btn-primary:hover .arr, .btn-portfolio:hover .arr { transform: translateX(5px); }
+
+  /* Nav elevates on scroll */
+  nav { transition: box-shadow 0.3s ease, background 0.3s ease; }
+  nav.scrolled { box-shadow: 0 6px 24px rgba(28,20,16,0.07); background: rgba(245,240,232,0.97); border-bottom-color: rgba(92,74,58,0.2); }
+
+  /* Guarantee / urgency badges */
+  .offer-meta-row {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    margin-top: 40px;
+  }
+  .offer-chip {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 11px 20px; background: var(--white);
+    border: 1px solid rgba(92,74,58,0.16);
+    font-size: 13px; color: var(--mid); letter-spacing: 0.01em;
+  }
+  .offer-chip svg { width: 16px; height: 16px; stroke: var(--terracotta); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  .offer-chip strong { color: var(--deep); font-weight: 500; }
+
+  /* Spots-left urgency pill */
+  .urgency-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 20px; padding: 9px 18px;
+    background: rgba(196,113,74,0.1);
+    border: 1px solid rgba(196,113,74,0.3);
+    font-size: 13px; letter-spacing: 0.02em; color: var(--terracotta);
+  }
+  .urgency-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta);
+    box-shadow: 0 0 0 0 rgba(196,113,74,0.5);
+    animation: urgency-blink 2s ease-in-out infinite;
+  }
+  @keyframes urgency-blink {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196,113,74,0.5); opacity: 1; }
+    50%      { box-shadow: 0 0 0 6px rgba(196,113,74,0); opacity: 0.7; }
+  }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -767,10 +839,14 @@
   /* REDUCED MOTION — show everything instantly, disable all animations */
   @media (prefers-reduced-motion: reduce) {
     .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .title-reveal, .has-js .section-title,
+    .has-js .hero-anim { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .img-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     .process-grid::after { transition: none !important; transform: scaleX(1) !important; }
     .whatsapp-float { animation: none !important; }
+    .urgency-dot { animation: none !important; }
     .gallery-card img { transition: none !important; }
-    .service-card { transition: none !important; }
+    .service-card, .vert-icon { transition: none !important; }
   }
 
   /* ── SHOT ON ── */
@@ -828,12 +904,13 @@
     .shot-on-banner { flex-direction: column; text-align: center; gap: 8px; padding: 20px 24px; }
   }
 </style>
+<script>document.documentElement.className += ' has-js';</script>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
+<nav id="top">
+  <a href="#top" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
     <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));" width="1254" height="1254" loading="lazy">
     ju.en.vie
   </a>
@@ -861,29 +938,29 @@
 
 <!-- HERO -->
 <section class="hero" style="padding-top: 80px;">
-  <div class="hero-text fade-up">
-    <div class="hero-eyebrow">Sydney, Australia · Available from September 7, 2026</div>
-    <h1 class="hero-title">
+  <div class="hero-text">
+    <div class="hero-eyebrow hero-anim" style="--d:.05s">Sydney, Australia · Available from September 7, 2026</div>
+    <h1 class="hero-title hero-anim" style="--d:.15s">
       Content<br>that <em>moves</em><br>brands.
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub hero-anim" style="--d:.3s">
       French content creator on a Working Holiday Visa, based in Sydney from September 7. Short form video, photography and drone footage for hotels, cafés, sport brands and travel experiences.
     </p>
-    <div class="hero-ctas">
-      <a href="portfolio-hotels.html" class="btn-primary">View Portfolio</a>
+    <div class="hero-ctas hero-anim" style="--d:.45s">
+      <a href="portfolio.html" class="btn-primary">View Portfolio <span class="arr">→</span></a>
       <a href="#contact" class="btn-secondary">Contact me</a>
     </div>
   </div>
-  <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
-    <div class="hero-img">
+  <div class="hero-visual">
+    <div class="hero-img img-reveal">
       <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien — Travel Content Creator" width="2000" height="2666" fetchpriority="high">
       <span class="hero-img-label">Julien · Content Creator</span>
     </div>
-    <div class="hero-img">
+    <div class="hero-img img-reveal" style="transition-delay:.15s">
       <img src="images/indonesie-komodo-bateau-drone.jpg" alt="Komodo · Drone" width="1600" height="900">
       <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
     </div>
-    <div class="hero-img">
+    <div class="hero-img img-reveal" style="transition-delay:.3s">
       <img src="images/cabane-bambou-plage.jpg" alt="Cabane plage" width="1200" height="900">
       <span class="hero-img-label">🇮🇩 Indonesia · Beach</span>
     </div>
@@ -899,7 +976,7 @@
   <div class="stat-divider"></div>
   <div class="stat">
     <div class="stat-number">50K</div>
-    <div class="stat-label">TikTok (finance)</div>
+    <div class="stat-label">TikTok followers</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -919,27 +996,27 @@
   <h2 class="section-title">Five verticals.<br>One portfolio.</h2>
   <div class="services-grid">
     <a href="portfolio-hotels.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;">
-      <div class="service-icon">🏨</div>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 17V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h12a2 2 0 0 1 2 2v5"/><path d="M2 13h20"/><path d="M2 17v2"/><path d="M22 17v2"/></svg></span>
       <div class="service-name">Hotels &amp; Stays</div>
       <p class="service-desc">From boutique guesthouses to design hotels. Rooms, pools, atmosphere and unique stays across Asia and Australia.</p>
     </a>
     <a href="portfolio-food.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.1s">
-      <div class="service-icon">☕</div>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></span>
       <div class="service-name">Food &amp; Coffee</div>
       <p class="service-desc">Cafés, restaurants and food brands. Content that makes audiences hungry and places bookable.</p>
     </a>
     <a href="portfolio-sport.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.2s">
-      <div class="service-icon">🏃</div>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
       <div class="service-name">Sport &amp; Running</div>
       <p class="service-desc">Training content, race days, activewear and sport lifestyle. Built for brands that move.</p>
     </a>
     <a href="portfolio-experiences.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.3s">
-      <div class="service-icon">🏄</div>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
       <div class="service-name">Experiences &amp; Travel</div>
       <p class="service-desc">Adventures, activities, surf, hikes and road trips. Content for travel agencies and experience brands.</p>
     </a>
     <a href="portfolio-lifestyle.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.4s">
-      <div class="service-icon">🎒</div>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
       <div class="service-name">Lifestyle &amp; Brands</div>
       <p class="service-desc">Product shots, city content and brand lifestyle. For activewear, accessories and urban brands.</p>
     </a>
@@ -1033,7 +1110,7 @@
 
 <!-- PORTFOLIO CTA -->
 <div class="portfolio-cta-center">
-  <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
+  <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
 </div>
 
 <!-- VIDEOS -->
@@ -1043,11 +1120,11 @@
 
   <!-- DRONE FEATURED -->
   <div class="video-featured fade-up">
-    <video src="videos/drone/drone-featured.mp4" autoplay muted loop playsinline preload="metadata" poster="videos/drone/drone-featured-poster.jpg"></video>
+    <video src="videos/drone/drone-featured.mp4" muted loop playsinline preload="none" poster="videos/drone/drone-featured-poster.jpg"></video>
     <div class="video-featured-overlay">
       <div class="video-featured-badge">🚁 Drone footage</div>
       <div class="video-featured-title">Aerial perspective</div>
-      <div class="video-featured-desc">Drone shots that reveal your property's true scale, surroundings and unique location. The view that makes guests book.</div>
+      <div class="video-featured-desc">Drone shots that reveal your location's true scale and surroundings — the shot that makes people stop and book.</div>
     </div>
     <button type="button" aria-label="Toggle sound" class="sound-btn sound-btn--featured" title="Toggle sound" style="position:absolute;bottom:20px;right:20px;z-index:10;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
@@ -1061,7 +1138,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Ubud · Uma Jala Villa</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1072,7 +1149,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🚢 Peony Cruise</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1082,7 +1159,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Komodo · Boat</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1093,7 +1170,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🇻🇳 Da Nang · Awaken</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1104,7 +1181,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Senggigi · Lombok</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1115,7 +1192,7 @@
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Canggu</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Activer le son"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </button>
+        </div>
       </div>
     </div>
 
@@ -1124,7 +1201,7 @@
 
   <div class="portfolio-cta-block">
     <p>Hotels, food and coffee, sport, experiences and lifestyle brands.</p>
-    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
+    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
   </div>
 </section>
 
@@ -1139,8 +1216,8 @@
       <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta);">Available in Sydney · September 2026 onwards</p>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-      <img src="images/kayak-sydney.jpg" alt="Sydney · Kayak" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
-      <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Content Creator" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block;" width="2000" height="2666" loading="lazy">
+      <img class="img-reveal from-bottom" src="images/kayak-sydney.jpg" alt="Sydney · Kayak" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
+      <img class="img-reveal from-bottom" src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Content Creator" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; transition-delay:.15s;" width="2000" height="2666" loading="lazy">
     </div>
   </div>
 </section>
@@ -1152,12 +1229,12 @@
   <div class="proof-grid" style="margin-top:48px;">
     <div class="proof-card fade-up">
       <div class="proof-card-number">50K+</div>
-      <div class="proof-card-label">Views on a single hotel video, organic reach, no paid promotion. Audience: travellers actively planning trips in Southeast Asia.</div>
+      <div class="proof-card-label">Views on a single organic video, no paid promotion. An audience of travellers and locals actively planning where to go, eat and stay next.</div>
       <p style="margin-top: 8px; font-size: 12px; color: var(--terracotta); font-style: italic;">Average watch time: 65%+, well above the platform average.</p>
     </div>
     <div class="proof-card fade-up" style="transition-delay:0.15s">
       <div class="proof-card-number">48h</div>
-      <div class="proof-card-label">From shoot to final edited files delivered to you. Ready to post on your website, social media and OTAs immediately.</div>
+      <div class="proof-card-label">From shoot to final edited files delivered to you. Ready to post on your website, socials and listings immediately.</div>
     </div>
   </div>
   <p style="font-size:11px; color:var(--light); font-style:italic; text-align:center; margin-top:24px;">* All content delivered with full commercial usage rights. Yours to use forever, no licence renewal.</p>
@@ -1169,34 +1246,46 @@
 
 <!-- PACKAGES -->
 <section id="packages" class="packages-section">
-  <div class="section-label">Collaboration models</div>
-  <h2 class="section-title">Two ways to work<br>together.</h2>
+  <div class="section-label">The collaboration</div>
+  <h2 class="section-title title-reveal">Two ways to work<br>together.</h2>
+  <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:540px; margin-top:-24px; margin-bottom:8px;">
+    Hotels, cafés, sport and lifestyle brands — same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product. No invoice, full content.
+  </p>
   <div class="packages-grid">
     <div class="package-card fade-up">
-      <div class="package-name">UGC Content Kit</div>
-      <p class="package-desc">For properties that need high-quality content, fully complimentary: offered in exchange for a hosted stay.</p>
+      <div class="package-name">Content Kit</div>
+      <p class="package-desc">For brands that need scroll-stopping content to own. Everything shot on location, edited, and yours to keep.</p>
       <ul class="package-items">
         <li>4 vertical videos (Reels / TikTok ready)</li>
-        <li>10–15 edited photos (rooms, pool, lifestyle, F&B)</li>
-        <li>Optional drone footage</li>
+        <li>10–15 edited photos of your space, product and atmosphere</li>
+        <li>Optional aerial drone footage</li>
         <li>Commercial usage rights, forever</li>
-        <li>Delivery in 48–72h after shoot</li>
-        <li>Suitable for: website, Booking.com, Airbnb, social ads</li>
+        <li>Delivered within 48h after the shoot</li>
+        <li>Ready for your website, socials, Google, Booking &amp; ads</li>
       </ul>
     </div>
     <div class="package-card featured fade-up" style="transition-delay:0.15s">
       <span class="package-badge">Most popular</span>
-      <div class="package-name">Visibility + Content</div>
-      <p class="package-desc">Content creation plus organic exposure, fully complimentary: offered in exchange for a hosted stay.</p>
+      <div class="package-name">Content + Reach</div>
+      <p class="package-desc">Everything in the Content Kit, plus a published feature to my organic audience of active travellers.</p>
       <ul class="package-items">
         <li>3 vertical UGC videos (Reels / TikTok)</li>
         <li>8–10 edited photos</li>
-        <li>1 Reel or TikTok published on my account</li>
-        <li>2–3 Instagram stories with location tag</li>
-        <li>100% organic audience, travellers &amp; digital nomads, zero paid following</li>
-        <li>All content reusable on your platforms</li>
+        <li>1 Reel or TikTok published on my account, tagged to you</li>
+        <li>2–3 Instagram stories with location / brand tag</li>
+        <li>100% organic reach, travellers &amp; digital nomads, zero paid following</li>
+        <li>All content reusable on your platforms, forever</li>
       </ul>
     </div>
+  </div>
+  <div class="offer-meta-row">
+    <span class="offer-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Delivered in <strong>48h</strong></span>
+    <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><polyline points="9 12 11 14 15 10"/></svg><strong>Full usage rights</strong>, forever</span>
+    <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9z"/></svg><strong>100% organic</strong> audience</span>
+    <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Reply within <strong>24h</strong></span>
+  </div>
+  <div style="text-align:center;">
+    <span class="urgency-pill"><span class="urgency-dot"></span>Limited collaboration slots for the September 2026 Sydney launch</span>
   </div>
 </section>
 
@@ -1208,12 +1297,12 @@
     <div class="process-step">
       <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">01</div>
       <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You reach out</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Share your property details and availability. I'll confirm if we're a match and answer any questions within 24h.</p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Tell me about your brand, your space and your dates. I'll confirm if we're a match and answer any questions within 24h.</p>
     </div>
     <div class="process-step" style="transition-delay:0.1s">
       <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">02</div>
-      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">I arrive on-site</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">I spend 1 to 2 days at your property, shooting rooms, pool, F&B, lifestyle and aerial drone footage.</p>
+      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">I come to you</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Half a day to two days on location, capturing your space, product, atmosphere, lifestyle and aerial drone footage.</p>
     </div>
     <div class="process-step" style="transition-delay:0.2s">
       <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">03</div>
@@ -1223,7 +1312,7 @@
     <div class="process-step" style="transition-delay:0.3s">
       <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">04</div>
       <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You publish and grow</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Use the content on Instagram, TikTok, your website, Booking.com, Airbnb, Google listings. Forever. No licence renewal.</p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Use the content on Instagram, TikTok, your website, Google, Booking or in-store. Forever. No licence renewal.</p>
     </div>
   </div>
 </section>
@@ -1260,19 +1349,19 @@
   <p class="shot-on-sub">Every asset delivered with cinema-grade quality, drone footage, iPhone ProRes video and professional post-production.</p>
   <div class="shot-on-grid">
     <div class="shot-on-card fade-up">
-      <div class="shot-on-icon">🚁</div>
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="6.8" y1="6.8" x2="9.5" y2="9.5"/><line x1="17.2" y1="6.8" x2="14.5" y2="9.5"/><line x1="6.8" y1="17.2" x2="9.5" y2="14.5"/><line x1="17.2" y1="17.2" x2="14.5" y2="14.5"/></svg></span>
       <h3 class="shot-on-title">DJI Mini 4K</h3>
-      <p class="shot-on-desc">4K drone footage, aerial shots that reveal your property's scale, setting and surroundings.</p>
+      <p class="shot-on-desc">4K drone footage, aerial shots that reveal your location's scale, setting and surroundings.</p>
       <span class="shot-on-tag">Drone</span>
     </div>
     <div class="shot-on-card fade-up" style="transition-delay:0.1s">
-      <div class="shot-on-icon">📱</div>
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
       <h3 class="shot-on-title">iPhone 16 Pro Max</h3>
       <p class="shot-on-desc">ProRes 4K video and Dolby HDR photography, the same chip that powers Hollywood productions.</p>
       <span class="shot-on-tag">Photo &amp; Video</span>
     </div>
     <div class="shot-on-card fade-up" style="transition-delay:0.2s">
-      <div class="shot-on-icon">✂️</div>
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
       <h3 class="shot-on-title">Pro Post-Production</h3>
       <p class="shot-on-desc">Colour grading, sound design, captions and format optimisation, all included, zero extra cost.</p>
       <span class="shot-on-tag">Editing</span>
@@ -1283,7 +1372,7 @@
     <span class="shot-on-banner-right">Commercial usage rights included, forever.</span>
   </div>
   <div style="text-align:center; margin-top:48px;">
-    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio →</a>
+    <a href="portfolio.html" class="btn-portfolio-big">View full portfolio <span class="arr">→</span></a>
   </div>
 </section>
 
@@ -1292,7 +1381,7 @@
   <div class="contact-bg-layer" aria-hidden="true"></div>
   <a href="#top" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:128px;width:auto;opacity:0.6;margin-bottom:24px;" width="1254" height="1254" loading="lazy"></a>
   <div class="section-label">Get in touch</div>
-  <h2 class="section-title" style="color:white;">Let's create something<br>your guests will book for.</h2>
+  <h2 class="section-title title-reveal" style="color:white;">Let's create something<br>your audience will book for.</h2>
   <p class="contact-sub">Based in Sydney from September 7, 2026. Open to collaborations across all categories: hotels, cafés, sport brands, travel agencies and lifestyle brands.</p>
   <div class="contact-links">
     <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
@@ -1309,11 +1398,19 @@
 </footer>
 
 <script>
-  // ─── REDUCED MOTION: show everything immediately and exit ───────────────────
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.fade-up').forEach(el => {
-      el.classList.add('visible');
-    });
+  // ─── REDUCED MOTION: show everything immediately ────────────────────────────
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    document.querySelectorAll('.fade-up, .img-reveal, .title-reveal, .section-title')
+      .forEach(el => el.classList.add('visible'));
+    const h = document.querySelector('.hero');
+    if (h) h.classList.add('hero-loaded');
+  }
+
+  // ─── HERO STAGGERED ENTRANCE ────────────────────────────────────────────────
+  if (!reduceMotion) {
+    const heroEl = document.querySelector('.hero');
+    if (heroEl) requestAnimationFrame(() => requestAnimationFrame(() => heroEl.classList.add('hero-loaded')));
   }
 
   // ─── HAMBURGER MENU ──────────────────────────────────────────────────────────
@@ -1340,18 +1437,30 @@
   });
 
   // ─── NAV SCROLL EFFECT ───────────────────────────────────────────────────────
+  const navEl = document.querySelector('nav');
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.borderBottomColor =
-      window.scrollY > 40 ? 'rgba(92,74,58,0.2)' : 'rgba(92,74,58,0.12)';
+    navEl.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // ─── A: FADE-UP (IntersectionObserver) ───────────────────────────────────────
+  // ─── A: REVEAL ON SCROLL (fade-up, titles, images) ──────────────────────────
   const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up, .img-reveal, .title-reveal, .section-title')
+    .forEach(el => fadeObserver.observe(el));
 
-  // ─── VIDEO: autoplay when in view ────────────────────────────────────────────
+  // ─── GALLERY CARDS: staggered reveal ────────────────────────────────────────
+  if (!reduceMotion) {
+    document.querySelectorAll('.gallery-card').forEach((card, i) => {
+      card.classList.add('fade-up');
+      card.style.setProperty('--d', ((i % 6) * 0.05) + 's');
+      fadeObserver.observe(card);
+    });
+  }
+
+  // ─── VIDEO: play only when in view (saves data on slow connections) ──────────
   const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const video = entry.target.querySelector('video');
@@ -1360,7 +1469,7 @@
       else video.pause();
     });
   }, { threshold: 0.3 });
-  document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
+  document.querySelectorAll('.video-card, .video-featured').forEach(card => videoObserver.observe(card));
 
   // ─── SOUND TOGGLE ────────────────────────────────────────────────────────────
   document.querySelectorAll('.sound-btn').forEach(btn => {
