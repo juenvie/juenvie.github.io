@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Kit — Julien · Content Creator · Sydney 2026</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8; --sand: #E8DDD0; --terracotta: #C4714A;
+    --deep: #1C1410; --mid: #5C4A3A; --light: #9A8878; --white: #FDFAF6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--deep); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+
+  /* ── PRINT BUTTON ── */
+  .print-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--deep); padding: 10px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .print-bar span { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+  .print-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--terracotta); color: white; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 8px 20px; transition: background 0.2s;
+  }
+  .print-btn:hover { background: #b05e38; }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 860px; margin: 0 auto; padding: 52px 40px 80px; }
+
+  /* ── HEADER ── */
+  .mk-header {
+    display: grid; grid-template-columns: auto 1fr; gap: 32px;
+    align-items: center; padding-bottom: 40px;
+    border-bottom: 2px solid var(--terracotta); margin-bottom: 40px;
+  }
+  .mk-logo { display: flex; align-items: center; gap: 12px; }
+  .mk-logo img { height: 64px; width: auto; }
+  .mk-logo-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 38px;
+    font-weight: 300; font-style: italic; color: var(--deep);
+  }
+  .mk-header-right { text-align: right; }
+  .mk-title { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 6px; }
+  .mk-location { font-size: 13px; color: var(--mid); margin-bottom: 10px; }
+  .mk-handles { display: flex; gap: 14px; justify-content: flex-end; flex-wrap: wrap; }
+  .mk-handle {
+    font-size: 11px; letter-spacing: 0.08em; color: var(--mid);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    transition: color 0.2s;
+  }
+  .mk-handle:hover { color: var(--terracotta); }
+  .mk-handle svg { opacity: 0.6; }
+
+  /* ── BIO ── */
+  .mk-bio {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-bio-text p { font-size: 14px; line-height: 1.75; color: var(--mid); }
+  .mk-bio-text p + p { margin-top: 14px; }
+  .mk-bio-text strong { color: var(--deep); font-weight: 500; }
+  .mk-bio-photo { position: relative; }
+  .mk-bio-photo img { width: 100%; height: 280px; object-fit: cover; display: block; }
+  .mk-bio-photo-tag {
+    position: absolute; bottom: 10px; left: 10px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: white; background: rgba(28,20,16,0.65); padding: 4px 8px;
+  }
+
+  /* ── STATS ── */
+  .mk-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(92,74,58,0.12); margin-bottom: 40px;
+    border: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-stat { background: var(--white); padding: 20px 16px; text-align: center; }
+  .mk-stat-value {
+    font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300;
+    color: var(--terracotta); line-height: 1; margin-bottom: 6px;
+  }
+  .mk-stat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); }
+  .mk-stat-sub { font-size: 11px; color: var(--light); margin-top: 3px; }
+
+  /* ── FORMATS ── */
+  .mk-section-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 16px;
+  }
+  .mk-formats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-format { background: var(--sand); padding: 22px 20px; }
+  .mk-format-icon { margin-bottom: 12px; color: var(--terracotta); }
+  .mk-format-icon svg { width: 22px; height: 22px; }
+  .mk-format-name { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep); margin-bottom: 8px; font-weight: 500; }
+  .mk-format-desc { font-size: 12px; line-height: 1.6; color: var(--mid); }
+
+  /* ── VERTICALS ── */
+  .mk-verticals {
+    display: flex; gap: 0; margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+    border: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-vertical {
+    flex: 1; padding: 18px 14px; text-align: center;
+    border-right: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-vertical:last-child { border-right: none; }
+  .mk-vertical svg { width: 18px; height: 18px; color: var(--terracotta); display: block; margin: 0 auto 8px; }
+  .mk-vertical-name { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--deep); font-weight: 500; }
+
+  /* ── SELECTED WORK ── */
+  .mk-work-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-work-img { position: relative; overflow: hidden; }
+  .mk-work-img img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .mk-work-img span {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: white; background: linear-gradient(to top, rgba(28,20,16,0.75) 0%, transparent 100%);
+    padding: 18px 8px 6px;
+  }
+
+  /* ── DELIVERABLES ── */
+  .mk-deliverables {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92,74,58,0.12);
+  }
+  .mk-deliverable-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--deep); margin-bottom: 14px; }
+  .mk-deliverable-list { list-style: none; }
+  .mk-deliverable-list li { font-size: 13px; color: var(--mid); padding: 7px 0; border-bottom: 1px solid rgba(92,74,58,0.08); display: flex; gap: 10px; align-items: baseline; }
+  .mk-deliverable-list li::before { content: '—'; color: var(--terracotta); flex-shrink: 0; }
+
+  /* ── CONTACT ── */
+  .mk-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+  .mk-contact-left p { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: var(--deep); line-height: 1.3; margin-bottom: 8px; }
+  .mk-contact-left span { font-size: 12px; color: var(--light); }
+  .mk-contact-right { display: flex; flex-direction: column; gap: 10px; }
+  .mk-contact-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--mid); text-decoration: none;
+    padding: 10px 14px; border: 1px solid rgba(92,74,58,0.15);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .mk-contact-item:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .mk-contact-item svg { width: 14px; height: 14px; color: var(--terracotta); flex-shrink: 0; }
+
+  /* ── BACK HOME ── */
+  .mk-back-home {
+    text-align: center; padding: 32px 0 16px;
+  }
+  .mk-back-home a {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--light); text-decoration: none;
+    border: 1px solid rgba(92,74,58,0.2); padding: 10px 24px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .mk-back-home a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+  /* ── FOOTER ── */
+  .mk-footer {
+    margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid rgba(92,74,58,0.12);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .mk-footer span { font-size: 11px; color: var(--light); letter-spacing: 0.04em; }
+
+  /* ── PRINT ── */
+  @media print {
+    @page { size: A4 portrait; margin: 12mm 16mm; }
+
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .print-bar { display: none !important; }
+    .mk-back-home { display: none !important; }
+
+    body {
+      background: white !important;
+      padding-top: 0 !important;
+    }
+
+    .page {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Section labels never orphaned from their content */
+    .mk-section-label { break-after: avoid; page-break-after: avoid; }
+
+    /* Keep key blocks together */
+    .mk-header  { break-inside: avoid; page-break-inside: avoid; }
+    .mk-bio     { break-inside: avoid; page-break-inside: avoid; }
+    .mk-stats   { break-inside: avoid; page-break-inside: avoid; }
+    .mk-formats { break-inside: avoid; page-break-inside: avoid; }
+    .mk-verticals { break-inside: avoid; page-break-inside: avoid; }
+    .mk-work-grid { break-inside: avoid; page-break-inside: avoid; }
+    .mk-deliverables { break-inside: avoid; page-break-inside: avoid; }
+    .mk-contact { break-inside: avoid; page-break-inside: avoid; }
+    .mk-footer  { break-inside: avoid; page-break-inside: avoid; }
+
+    /* Image heights tuned for A4 */
+    .mk-bio-photo img  { height: 200px; }
+    .mk-work-img img   { height: 140px; }
+
+    /* Reduce vertical spacing slightly for print */
+    .mk-bio, .mk-stats, .mk-formats, .mk-verticals,
+    .mk-work-grid, .mk-deliverables {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+    }
+    .mk-header { margin-bottom: 24px; padding-bottom: 24px; }
+  }
+
+  @media screen and (max-width: 720px) {
+    body { padding-top: 46px; }
+    .mk-header { grid-template-columns: 1fr; gap: 16px; }
+    .mk-header-right { text-align: left; }
+    .mk-handles { justify-content: flex-start; }
+    .mk-bio { grid-template-columns: 1fr; }
+    .mk-bio-photo { order: -1; }
+    .mk-stats { grid-template-columns: repeat(3, 1fr); }
+    .mk-stat { padding: 16px 8px; }
+    .mk-stat-sub { font-size: 10px; }
+    .mk-formats { grid-template-columns: 1fr; }
+    .mk-verticals { flex-wrap: wrap; }
+    .mk-vertical { flex: 0 0 50%; border-bottom: 1px solid rgba(92,74,58,0.12); }
+    .mk-work-grid { grid-template-columns: 1fr 1fr; }
+    .mk-deliverables { grid-template-columns: 1fr; }
+    .mk-contact { grid-template-columns: 1fr; }
+    .page { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body style="padding-top: 42px;">
+
+<!-- Print bar (hidden in print) -->
+<div class="print-bar">
+  <span>juenvie.github.io · Media Kit 2026</span>
+  <button class="print-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="mk-header">
+    <a href="index.html" class="mk-logo" style="text-decoration:none;">
+      <img src="images/logo_transparent.png" alt="ju.en.vie" width="1254" height="1254">
+      <span class="mk-logo-name">ju.en.vie</span>
+    </a>
+    <div class="mk-header-right">
+      <div class="mk-title">Content Creator · Media Kit</div>
+      <div class="mk-location">Sydney, Australia · Available from September 2026</div>
+      <div class="mk-handles">
+        <a href="https://www.instagram.com/ju.en.vie/" target="_blank" class="mk-handle">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @ju.en.vie
+        </a>
+        <a href="mailto:juenvie75@gmail.com" class="mk-handle">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          juenvie75@gmail.com
+        </a>
+        <a href="https://juenvie.github.io" target="_blank" class="mk-handle">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          juenvie.github.io
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="mk-bio">
+    <div class="mk-bio-text">
+      <p>I'm <strong>Julien</strong>, a French content creator specializing in short-form video, photography and drone footage for lifestyle, hospitality and travel brands.</p>
+      <p>After two years producing content across <strong>Southeast Asia</strong> (Vietnam, Bali, Thailand, Laos, the Philippines and Indonesia), I'm relocating to <strong>Sydney in September 2026</strong> on a Working Holiday Visa, available for brand collaborations across Australia and the Asia-Pacific.</p>
+      <p>I'm also the community manager and content creator for <strong>Le Ciel Est Bleu</strong>, a running club in Paris, producing weekly brand content across Instagram and TikTok.</p>
+    </div>
+    <div class="mk-bio-photo">
+      <img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Bangkok">
+
+    </div>
+  </div>
+
+  <!-- REACH -->
+  <p class="mk-section-label">Audience &amp; Reach</p>
+  <div class="mk-stats">
+    <div class="mk-stat">
+      <div class="mk-stat-value">2M+</div>
+      <div class="mk-stat-label">Views</div>
+      <div class="mk-stat-sub">Instagram · last 30 days</div>
+    </div>
+    <div class="mk-stat">
+      <div class="mk-stat-value">15K+</div>
+      <div class="mk-stat-label">Total Followers</div>
+      <div class="mk-stat-sub">Instagram &amp; TikTok</div>
+    </div>
+    <div class="mk-stat">
+      <div class="mk-stat-value">7+</div>
+      <div class="mk-stat-label">Markets Covered</div>
+      <div class="mk-stat-sub">Asia &amp; Australia</div>
+    </div>
+  </div>
+
+  <!-- CONTENT FORMATS -->
+  <p class="mk-section-label" style="margin-top:40px;">Content Formats</p>
+  <div class="mk-formats">
+    <div class="mk-format">
+      <div class="mk-format-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="mk-format-name">Photography</div>
+      <div class="mk-format-desc">Edited, brand-ready photos delivered within 48h. Portrait, product, architecture and lifestyle. Commercial usage rights included.</div>
+    </div>
+    <div class="mk-format">
+      <div class="mk-format-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="mk-format-name">Short-form Video</div>
+      <div class="mk-format-desc">Reels and TikToks, 15–60 seconds. Colour grading, sound design, captions and format optimisation included. Vertical 9:16.</div>
+    </div>
+    <div class="mk-format">
+      <div class="mk-format-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="mk-format-name">Drone</div>
+      <div class="mk-format-desc">Aerial photography and video for hotels, resorts, experiences and travel brands. Available across Asia and Australia. 4K footage.</div>
+    </div>
+  </div>
+
+  <!-- VERTICALS -->
+  <p class="mk-section-label">Content Verticals</p>
+  <div class="mk-verticals" style="margin-bottom:40px; padding-bottom:0;">
+    <div class="mk-vertical">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 17V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h12a2 2 0 0 1 2 2v5"/><path d="M2 13h20"/><path d="M2 17v2"/><path d="M22 17v2"/></svg>
+      <div class="mk-vertical-name">Hotels &amp; Stays</div>
+    </div>
+    <div class="mk-vertical">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      <div class="mk-vertical-name">Food &amp; Coffee</div>
+    </div>
+    <div class="mk-vertical">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <div class="mk-vertical-name">Sport &amp; Running</div>
+    </div>
+    <div class="mk-vertical">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <div class="mk-vertical-name">Experiences</div>
+    </div>
+    <div class="mk-vertical">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <div class="mk-vertical-name">Lifestyle &amp; Brands</div>
+    </div>
+  </div>
+
+  <!-- SELECTED WORK -->
+  <p class="mk-section-label" style="margin-top:40px;">Selected Work</p>
+  <div class="mk-work-grid">
+    <div class="mk-work-img">
+      <img src="images/senguigui-lombok-piscine.jpg" alt="Hotels — Lombok">
+      <span>Hotels · Lombok, Indonesia</span>
+    </div>
+    <div class="mk-work-img">
+      <img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Drone — Laos">
+      <span>Drone · Vang Vieng, Laos</span>
+    </div>
+    <div class="mk-work-img">
+      <img src="images/beach-club-canggu.jpg" alt="Lifestyle — Canggu">
+      <span>Lifestyle · Canggu, Bali</span>
+    </div>
+    <div class="mk-work-img">
+      <img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="Food — Bangkok">
+      <span>Food · Bangkok, Thailand</span>
+    </div>
+    <div class="mk-work-img">
+      <img src="images/padar-island.jpg" alt="Experiences — Komodo">
+      <span>Experiences · Padar Island</span>
+    </div>
+    <div class="mk-work-img">
+      <img src="images/uma-jala-villa-ubud.jpg" alt="Hotels — Ubud">
+      <span>Hotels · Uma Jala, Ubud</span>
+    </div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <p class="mk-section-label" style="margin-top:40px;">What's Included</p>
+  <div class="mk-deliverables">
+    <div>
+      <div class="mk-deliverable-title">Content Kit</div>
+      <ul class="mk-deliverable-list">
+        <li>Photo selection (edited, brand-ready)</li>
+        <li>Short-form video (Reels / TikTok format)</li>
+        <li>Drone footage (if applicable)</li>
+        <li>Post captions + hashtag sets</li>
+        <li>All assets delivered within 48 hours</li>
+        <li>Commercial usage rights, forever</li>
+      </ul>
+    </div>
+    <div>
+      <div class="mk-deliverable-title">Content Kit + Reach</div>
+      <ul class="mk-deliverable-list">
+        <li>Everything in Content Kit</li>
+        <li>Publication on @ju.en.vie Instagram</li>
+        <li>Publication on @juenvie TikTok</li>
+        <li>Story sequence with link &amp; tag</li>
+        <li>Engagement report (28 days)</li>
+        <li>Brand mention + geotag</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <p class="mk-section-label">Let's Work Together</p>
+  <div class="mk-contact">
+    <div class="mk-contact-left">
+      <p>Open to collaborations,<br><em>exchange and paid projects.</em></p>
+      <span>Sydney, Australia · Available September 2026</span>
+    </div>
+    <div class="mk-contact-right">
+      <a href="mailto:juenvie75@gmail.com" class="mk-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        juenvie75@gmail.com
+      </a>
+      <a href="https://wa.me/33629702303" target="_blank" class="mk-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp · +33 6 29 70 23 03
+      </a>
+      <a href="https://www.instagram.com/ju.en.vie/" target="_blank" class="mk-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @ju.en.vie
+      </a>
+      <a href="https://juenvie.github.io" target="_blank" class="mk-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        juenvie.github.io
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="mk-footer">
+    <span>ju.en.vie · Content Creator · Sydney 2026</span>
+    <span>juenvie.github.io/mediakit</span>
+  </div>
+
+  <!-- Back to portfolio (hidden in print) -->
+  <div class="mk-back-home">
+    <a href="index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to portfolio
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

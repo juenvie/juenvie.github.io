@@ -359,6 +359,81 @@
     line-height: 1.4; margin-bottom: 20px;
   }
   .proof-collab-meta { font-size: 13px; color: var(--light); }
+  .proof-collabs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+  .proof-collab-meta a { color: var(--terracotta); text-decoration: none; }
+  .proof-collab-meta a:hover { text-decoration: underline; }
+
+  /* BRAND WALL / PROOF */
+  .brands-section { background: var(--sand); padding: 80px 48px; }
+  .brands-sub {
+    font-size: 14px; color: var(--mid); line-height: 1.6;
+    max-width: 520px; margin-top: -28px; margin-bottom: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .proof-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px; max-width: 1140px; margin: 40px auto 0;
+  }
+  .proof-card-link {
+    position: relative; display: block; aspect-ratio: 9 / 16;
+    overflow: hidden; background: var(--deep); text-decoration: none;
+  }
+  .proof-card-link img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+  }
+  .proof-card-link:hover img { transform: scale(1.06); }
+  .pcl-overlay {
+    position: absolute; inset: 0; padding: 14px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: linear-gradient(to top, rgba(28,20,16,0.82) 0%, rgba(28,20,16,0.15) 42%, transparent 100%);
+  }
+  .pcl-platform {
+    position: absolute; top: 10px; right: 10px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pcl-platform svg { width: 15px; height: 15px; fill: white; }
+  .pcl-play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    background: rgba(28,20,16,0.25);
+    backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .pcl-play svg { width: 18px; height: 18px; fill: white; margin-left: 2px; }
+  .proof-card-link:hover .pcl-play { background: rgba(196,113,74,0.92); border-color: var(--terracotta); }
+  .pcl-brand {
+    color: white; font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 400; line-height: 1.2;
+  }
+  .pcl-views {
+    margin-top: 4px; font-size: 12px; letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .pcl-views strong { color: white; font-weight: 500; }
+  .brands-also-label {
+    text-align: center; font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--light); margin: 48px 0 0;
+  }
+  .brands-wall {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    column-gap: 38px; row-gap: 14px;
+    max-width: 840px; margin: 18px auto 0;
+  }
+  .brand-name {
+    line-height: 1.2; text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 1.8vw, 21px); font-weight: 300; color: var(--mid);
+    transition: color 0.25s;
+  }
+  .brand-name:hover { color: var(--terracotta); }
 
   /* PACKAGES */
   .packages-section { background: var(--sand); }
@@ -659,6 +734,7 @@
     .bali-photos { grid-template-columns: 1fr 1fr; }
     .bali-isle-deco { display: none; }
     .proof-grid { grid-template-columns: 1fr; }
+    .proof-collabs { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
     footer { padding: 16px 24px; }
     .video-featured { height: auto; min-height: unset; }
@@ -693,7 +769,10 @@
     .bali-photos { grid-template-columns: 1fr 1fr; gap: 4px; margin-left: -12px; margin-right: -12px; }
     .videos-grid { grid-template-columns: 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
+    .proof-collabs { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
+    .brands-section { padding: 48px 16px; }
+    .proof-cards { gap: 8px; }
     .contact-links { flex-direction: column; align-items: center; }
     .contact-link { width: 100%; text-align: center; }
     section { padding: 48px 16px; }
@@ -884,9 +963,50 @@
     font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
     color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif;
   }
+
+  /* FAQ */
+  .faq-section { background: var(--white); padding: 100px 48px; }
+  .faq-list { max-width: 760px; margin-top: 40px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(92,74,58,0.15);
+  }
+  .faq-item summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--deep);
+    transition: color 0.2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--terracotta); }
+  .faq-item summary .faq-icon {
+    flex-shrink: 0; width: 22px; height: 22px;
+    position: relative; transition: transform 0.3s ease;
+  }
+  .faq-item summary .faq-icon::before,
+  .faq-item summary .faq-icon::after {
+    content: ''; position: absolute; background: var(--terracotta);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .faq-item summary .faq-icon::before { width: 16px; height: 1.5px; }
+  .faq-item summary .faq-icon::after  { width: 1.5px; height: 16px; transition: transform 0.3s ease; }
+  .faq-item[open] summary .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+  .faq-answer {
+    font-size: 14px; line-height: 1.75; color: var(--mid);
+    padding: 0 46px 26px 0; max-width: 640px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .faq-answer strong { color: var(--deep); font-weight: 500; }
+
   @media (max-width: 900px) {
     .shot-on-grid { grid-template-columns: 1fr; }
     .shot-on-banner { flex-direction: column; text-align: center; gap: 8px; padding: 20px 24px; }
+  }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:48px; }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns:1fr; gap:32px; }
+    .about-grid .about-imgs { display:none; }
   }
 
 </style>
@@ -1011,7 +1131,7 @@
     </span>
     <div>
       <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:4px;">Drone · Aerial Photography &amp; Video</p>
-      <p style="font-size:13px; color:var(--mid); line-height:1.6;">Available on all packages — drone footage for hotels, resorts, experiences and travel brands across Asia and Australia.</p>
+      <p style="font-size:13px; color:var(--mid); line-height:1.6;">Available on all packages. Drone footage for hotels, resorts, experiences and travel brands across Asia and Australia.</p>
     </div>
   </div>
 </section>
@@ -1215,16 +1335,104 @@
 <section style="padding:100px 48px; background:var(--white);">
   <div class="section-label">About</div>
   <h2 class="section-title">French creator.<br><em>Sydney-based.</em></h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:48px;">
+  <div class="about-grid">
     <div>
       <p style="font-size:16px; line-height:1.7; color:var(--mid); margin-bottom:24px;">I'm Julien, a French content creator on a Working Holiday Visa, based in Sydney from September 7, 2026. I create short form video, photography and drone footage for brands across hotels, cafés, sport, travel and lifestyle.</p>
       <p style="font-size:16px; line-height:1.7; color:var(--mid); margin-bottom:32px;">I've spent the past year across Southeast Asia building a portfolio of real brand collaborations. Now I'm bringing that eye to Australia.</p>
       <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta);">Available in Sydney · September 2026 onwards</p>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+    <div class="about-imgs" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <img class="img-reveal from-bottom" src="images/kayak-sydney.jpg" alt="Sydney · Kayak" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy">
       <img class="img-reveal from-bottom" src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Content Creator" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; transition-delay:.15s;" width="2000" height="2666" loading="lazy">
     </div>
+  </div>
+</section>
+
+<!-- BRAND WALL / PROOF -->
+<section class="brands-section">
+  <div class="section-label">Collaborations</div>
+  <h2 class="section-title">Brands I've created for.</h2>
+  <p class="brands-sub">Real posts, real reach. Tap any video to watch it live on Instagram or TikTok.</p>
+  <div class="proof-cards">
+
+    <a class="proof-card-link fade-up" href="https://vm.tiktok.com/ZNRTa9Ngt/" target="_blank" rel="noopener">
+      <img src="videos/experiences/sapa-poster.jpg" alt="Guide Sapa · Vietnam" loading="lazy">
+      <span class="pcl-platform" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">Guide Sapa</span>
+        <span class="pcl-views"><strong>77K</strong> views · TikTok</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://www.facebook.com/share/r/1ENhUUkMTC/" target="_blank" rel="noopener">
+      <img src="images/drone-koh-lanta.jpg" alt="New Coconut Lanta Bungalow · Koh Lanta, Thailand" loading="lazy">
+      <span class="pcl-platform" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">New Coconut Lanta Bungalow</span>
+        <span class="pcl-views"><strong>71K</strong> views · Facebook</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://vm.tiktok.com/ZNRTaSYBC/" target="_blank" rel="noopener">
+      <img src="videos/hotels/awaken-da-nang-poster.jpg" alt="Awaken Da Nang · Vietnam" loading="lazy">
+      <span class="pcl-platform" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">Awaken Da Nang</span>
+        <span class="pcl-views"><strong>60K</strong> views · TikTok</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://www.instagram.com/reel/DLX0hS-MjwZ/" target="_blank" rel="noopener">
+      <img src="videos/sport/cielbleu-10k-poster.jpg" alt="Le Ciel Est Bleu · Running Club, Paris" loading="lazy">
+      <span class="pcl-platform" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">CIEL BLEU</span>
+        <span class="pcl-views"><strong>36K</strong> views · Instagram</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://vm.tiktok.com/ZNRTaPFRd/" target="_blank" rel="noopener">
+      <img src="videos/hotels/uma-jala-villa-ubud-poster.jpg" alt="Uma Jala Villa · Ubud, Bali" loading="lazy">
+      <span class="pcl-platform" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">Uma Jala Villa</span>
+        <span class="pcl-views"><strong>25K</strong> views · TikTok</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://www.instagram.com/reel/DUfxLmLjIKL/" target="_blank" rel="noopener">
+      <img src="videos/hotels/peony-cruise-poster.jpg" alt="Peony Cruise" loading="lazy">
+      <span class="pcl-platform" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">Peony Cruise</span>
+        <span class="pcl-views"><strong>22K</strong> views · Instagram</span>
+      </div>
+    </a>
+
+    <a class="proof-card-link fade-up" href="https://vm.tiktok.com/ZNRTaPwmw/" target="_blank" rel="noopener">
+      <img src="images/vietnam-hagiang-piscine.jpg" alt="Jasmine · Ha Giang, Vietnam" loading="lazy">
+      <span class="pcl-platform" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+      <span class="pcl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pcl-overlay">
+        <span class="pcl-brand">Jasmine · Ha Giang</span>
+        <span class="pcl-views"><strong>15.8K</strong> views · TikTok</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="brands-also-label">Also created for</p>
+  <div class="brands-wall">
+    <div class="brand-name">Zen Namkhan Boutique Resort</div>
+    <div class="brand-name">Danasol</div>
+    <div class="brand-name">Keelooma Cruise</div>
+    <div class="brand-name">Anahata</div>
   </div>
 </section>
 
@@ -1244,9 +1452,15 @@
     </div>
   </div>
   <p style="font-size:11px; color:var(--light); font-style:italic; text-align:center; margin-top:24px;">* All content delivered with full commercial usage rights. Yours to use forever, no licence renewal.</p>
-  <div class="proof-collab fade-up" style="margin-top:48px;">
-    <div class="proof-collab-quote">"After our collaboration, the content was posted on both my account and used by the property.<br>Authentic hospitality storytelling that actually performs."</div>
-    <div class="proof-collab-meta">Soksan, Marketing Manager, Zen Namkhan Boutique Resort<br><span style="opacity:0.6; font-size:0.9em;">Luang Prabang, Laos · 2026</span></div>
+  <div class="proof-collabs">
+    <div class="proof-collab fade-up">
+      <div class="proof-collab-quote">"After our collaboration, the content was posted on both my account and used by the property. Authentic hospitality storytelling that actually performs."</div>
+      <div class="proof-collab-meta">Soksan, Marketing Manager, Zen Namkhan Boutique Resort<br><span style="opacity:0.6; font-size:0.9em;">Luang Prabang, Laos · 2026</span></div>
+    </div>
+    <div class="proof-collab fade-up" style="transition-delay:0.15s;">
+      <div class="proof-collab-quote">"Julien creates content for us every week, delivered within 24 hours, content that captures the atmosphere of the club and its members. The art direction he built for the club does a lot to keep our runners coming back."</div>
+      <div class="proof-collab-meta">Le Ciel Est Bleu Running Club<br><span style="opacity:0.6; font-size:0.9em;">Paris, France · <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank">@lecielestbleu_runningclub</a></span></div>
+    </div>
   </div>
 </section>
 
@@ -1255,7 +1469,7 @@
   <div class="section-label">The collaboration</div>
   <h2 class="section-title title-reveal">Two ways to work<br>together.</h2>
   <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:540px; margin-top:-24px; margin-bottom:8px;">
-    Hotels, cafés, sport and lifestyle brands. Same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product. No invoice, full content.
+    Hotels, cafés, sport and lifestyle brands. Same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product, or as a paid project for larger briefs.
   </p>
   <div class="packages-grid">
     <div class="package-card fade-up">
@@ -1386,6 +1600,42 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-label">Good to know</div>
+  <h2 class="section-title">Questions brands ask.</h2>
+  <div class="faq-list">
+    <details class="faq-item fade-up">
+      <summary>Where are you based, and do you travel?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">I'm based in <strong>Sydney from September 7, 2026</strong> on a Working Holiday Visa, and I travel across Australia and the Asia-Pacific for the right projects. Tell me your location and dates and I'll let you know if we can make it work.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>Do you work in exchange or for a fee?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">Both. Most collaborations are offered <strong>in exchange</strong> for a hosted stay, an experience, a meal or a product. For larger briefs or ongoing work, I also take on <strong>paid projects</strong>. We agree on the terms before anything starts.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>How fast do I receive the content?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">All edited files are delivered <strong>within 48 hours</strong> after the shoot, organised, labelled and ready to post on your website, socials, Google or Booking.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>Who owns the content once it's delivered?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">You do. Every collaboration includes <strong>full commercial usage rights, forever</strong>. No licence renewal, no extra fees, the content is yours to use on any platform.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>How long does a shoot take?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">Anywhere from <strong>half a day to two days</strong> on location, depending on the package and how much of your space, product and atmosphere we want to capture.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>Is drone footage included?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">Yes. <strong>Aerial photo and video is available on every package</strong>, wherever local regulations allow it. It's often the shot that makes people stop and book.</p>
+    </details>
+    <details class="faq-item fade-up">
+      <summary>How far in advance should I reach out?<span class="faq-icon" aria-hidden="true"></span></summary>
+      <p class="faq-answer">As early as you can, slots are limited around the September 2026 Sydney launch. I reply to every enquiry <strong>within 24 hours</strong>.</p>
+    </details>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="contact-bg-layer" aria-hidden="true"></div>
@@ -1399,6 +1649,7 @@
     <a href="https://www.instagram.com/ju.en.vie" target="_blank" class="contact-link outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram DM</a>
     <a href="https://www.tiktok.com/@juenvie" target="_blank" class="contact-link outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok DM</a>
     <a href="https://bio.site/juenvie" target="_blank" class="contact-link outline">All my links</a>
+    <a href="mediakit.html" class="contact-link outline" style="border-color:rgba(196,113,74,0.55);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Media Kit</a>
   </div>
 </section>
 
