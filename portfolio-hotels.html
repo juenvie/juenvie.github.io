@@ -131,6 +131,22 @@
   }
   .category-subtitle { font-size: 14px; line-height: 1.65; color: var(--light); max-width: 520px; margin-bottom: 36px; }
 
+  /* DELIVERABLES */
+  .deliverables-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 28px;
+  }
+  .deliverable-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 20px 22px; background: var(--white);
+    border: 1px solid rgba(92,74,58,0.16);
+    font-size: 15px; color: var(--deep); line-height: 1.4;
+  }
+  .deliverable-card .deliverable-check { flex-shrink: 0; color: var(--terracotta); font-size: 16px; font-weight: 500; }
+  .deliverables-note { font-size: 14px; line-height: 1.65; color: var(--light); max-width: 560px; font-style: italic; }
+  @media (max-width: 900px) { .deliverables-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .deliverables-grid { grid-template-columns: 1fr; } }
+
   .photo-grid { columns: 3; column-gap: 8px; }
   .photo-card { break-inside: avoid; margin-bottom: 8px; position: relative; overflow: hidden; cursor: pointer; }
   .photo-card img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
@@ -493,6 +509,22 @@
   </section>
 
 </div><!-- end .page-wrap -->
+
+<!-- EXAMPLE HOTEL DELIVERABLES -->
+<section class="category-section" style="padding-top:64px; border-top:1px solid rgba(92,74,58,0.1);">
+  <div class="category-label">Deliverables</div>
+  <h2 class="category-title">Example Hotel Deliverables</h2>
+  <p class="category-subtitle">What a typical hotel collaboration may include</p>
+  <div class="deliverables-grid">
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>4 Instagram Reels</div>
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>15 Professional Photos</div>
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>12 Drone Video Clips</div>
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>3 Story Sequences</div>
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>Edited Content Ready for Social Media</div>
+    <div class="deliverable-card"><span class="deliverable-check">✓</span>Delivery within 48 hours</div>
+  </div>
+  <p class="deliverables-note">Deliverables are fully customizable depending on the property's needs, campaign objectives and collaboration scope.</p>
+</section>
 
 <!-- ABOUT MINI -->
 <div style="background: var(--sand); padding: 56px 48px; text-align: center;">

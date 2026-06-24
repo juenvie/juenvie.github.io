@@ -212,7 +212,7 @@
   .stat-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.15); }
 
   /* SECTION BASE */
-  section { padding: 100px 48px; }
+  section { padding: 72px 48px; }
   .section-label {
     font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--terracotta); margin-bottom: 16px;
@@ -264,6 +264,28 @@
     font-size: 22px; font-weight: 400; margin-bottom: 12px;
   }
   .service-desc { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+  /* BRANDS HIRE ME FOR */
+  .hire-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 14px; margin-top: 48px;
+  }
+  .hire-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 20px 24px; background: var(--white);
+    border: 1px solid rgba(92,74,58,0.16);
+    font-size: 15px; color: var(--deep); line-height: 1.4;
+  }
+  .hire-card .hire-check {
+    flex-shrink: 0; color: var(--terracotta);
+    font-size: 16px; font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .hire-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .hire-grid { grid-template-columns: 1fr; }
+  }
 
   /* PORTFOLIO GRID */
   .portfolio-section { background: var(--white); }
@@ -364,7 +386,7 @@
   .proof-collab-meta a:hover { text-decoration: underline; }
 
   /* BRAND WALL / PROOF */
-  .brands-section { background: var(--sand); padding: 80px 48px; }
+  .brands-section { background: var(--sand); padding: 58px 48px; }
   .brands-sub {
     font-size: 14px; color: var(--mid); line-height: 1.6;
     max-width: 520px; margin-top: -28px; margin-bottom: 8px;
@@ -482,7 +504,7 @@
   /* CONTACT */
   .contact-section {
     background: var(--deep); color: var(--white);
-    text-align: center; padding: 100px 48px;
+    text-align: center; padding: 72px 48px;
     position: relative; overflow: hidden;
   }
   .contact-section .section-title { margin-bottom: 20px; }
@@ -724,7 +746,7 @@
     .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 32px; min-height: auto; }
     .hero-visual { height: 360px; order: -1; }
     .hero-text { order: 1; }
-    section { padding: 64px 24px; }
+    section { padding: 48px 24px; }
     .stats-bar { padding: 24px; }
     .bali-banner { padding: 16px 24px; }
     .services-grid { grid-template-columns: 1fr; }
@@ -771,11 +793,11 @@
     .proof-grid { grid-template-columns: 1fr; }
     .proof-collabs { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
-    .brands-section { padding: 48px 16px; }
+    .brands-section { padding: 40px 16px; }
     .proof-cards { gap: 8px; }
     .contact-links { flex-direction: column; align-items: center; }
     .contact-link { width: 100%; text-align: center; }
-    section { padding: 48px 16px; }
+    section { padding: 40px 16px; }
     .stats-bar { padding: 20px 16px; }
     footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
     .process-grid { grid-template-columns: 1fr; }
@@ -914,7 +936,7 @@
   }
 
   /* ── SHOT ON ── */
-  .shot-on-section { background: var(--deep); padding: 80px 48px; }
+  .shot-on-section { background: var(--deep); padding: 58px 48px; }
   .shot-on-section .section-label { color: var(--terracotta); }
   .shot-on-section .section-title { color: white; }
   .shot-on-sub {
@@ -965,7 +987,7 @@
   }
 
   /* FAQ */
-  .faq-section { background: var(--white); padding: 100px 48px; }
+  .faq-section { background: var(--white); padding: 72px 48px; }
   .faq-list { max-width: 760px; margin-top: 40px; }
   .faq-item {
     border-bottom: 1px solid rgba(92,74,58,0.15);
@@ -1086,6 +1108,7 @@
   <div class="stat">
     <div class="stat-number">48h</div>
     <div class="stat-label">Content delivery</div>
+    <div class="stat-label" style="margin-top:4px; font-style:italic; text-transform:none; letter-spacing:0.02em; color:rgba(154,136,120,0.85);">Photos, Reels and Drone Footage. Ready to post.</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -1093,6 +1116,23 @@
     <div class="stat-label">Brand collabs</div>
   </div>
 </div>
+
+<!-- BRANDS HIRE ME FOR -->
+<section>
+  <div class="section-label">What I deliver</div>
+  <h2 class="section-title">Brands hire me for</h2>
+  <div class="hire-grid">
+    <div class="hire-card fade-up"><span class="hire-check">✓</span>Instagram Reels</div>
+    <div class="hire-card fade-up" style="transition-delay:0.05s"><span class="hire-check">✓</span>TikTok Videos</div>
+    <div class="hire-card fade-up" style="transition-delay:0.1s"><span class="hire-check">✓</span>UGC Content</div>
+    <div class="hire-card fade-up" style="transition-delay:0.15s"><span class="hire-check">✓</span>Professional Photography</div>
+    <div class="hire-card fade-up" style="transition-delay:0.2s"><span class="hire-check">✓</span>Drone Footage</div>
+    <div class="hire-card fade-up" style="transition-delay:0.25s"><span class="hire-check">✓</span>Hotel &amp; Hospitality Content</div>
+    <div class="hire-card fade-up" style="transition-delay:0.3s"><span class="hire-check">✓</span>Website &amp; Marketing Assets</div>
+    <div class="hire-card fade-up" style="transition-delay:0.35s"><span class="hire-check">✓</span>Paid Social Ad Creatives</div>
+    <div class="hire-card fade-up" style="transition-delay:0.4s"><span class="hire-check">✓</span>Product Launch Campaigns</div>
+  </div>
+</section>
 
 <!-- WORK CATEGORIES -->
 <section id="work">
@@ -1469,7 +1509,7 @@
   <div class="section-label">The collaboration</div>
   <h2 class="section-title title-reveal">Two ways to work<br>together.</h2>
   <p style="font-size:16px; line-height:1.7; color:var(--mid); max-width:540px; margin-top:-24px; margin-bottom:8px;">
-    Hotels, cafés, sport and lifestyle brands. Same standard, adapted to your world. Offered in exchange for a hosted stay, an experience, a meal or a product, or as a paid project for larger briefs.
+    Hotels, cafés, sport and lifestyle brands. Same standard, adapted to your world. Projects are available as paid collaborations. For selected hospitality, travel and lifestyle partners, I may also consider hosted stays, gifted experiences or products when aligned with my content strategy.
   </p>
   <div class="packages-grid">
     <div class="package-card fade-up">
@@ -1510,7 +1550,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="process" style="background: var(--cream); padding: 100px 48px;">
+<section id="process" style="background: var(--cream); padding: 72px 48px;">
   <div class="section-label">Simple process</div>
   <h2 class="section-title">How it works.</h2>
   <div class="process-grid">
@@ -1538,7 +1578,7 @@
 </section>
 
 <!-- AUDIENCE SNAPSHOT -->
-<section style="background: var(--white); padding: 80px 48px;">
+<section style="background: var(--white); padding: 58px 48px;">
   <div class="section-label">Who will see your property</div>
   <h2 class="section-title">A qualified audience.</h2>
   <div class="audience-grid">
@@ -1611,7 +1651,7 @@
     </details>
     <details class="faq-item fade-up">
       <summary>Do you work in exchange or for a fee?<span class="faq-icon" aria-hidden="true"></span></summary>
-      <p class="faq-answer">Both. Most collaborations are offered <strong>in exchange</strong> for a hosted stay, an experience, a meal or a product. For larger briefs or ongoing work, I also take on <strong>paid projects</strong>. We agree on the terms before anything starts.</p>
+      <p class="faq-answer">Projects are primarily available as <strong>paid collaborations</strong>. For selected hospitality, travel and lifestyle partners, I also consider hosted stays, gifted experiences or products when the fit is right. All terms are agreed before anything starts.</p>
     </details>
     <details class="faq-item fade-up">
       <summary>How fast do I receive the content?<span class="faq-icon" aria-hidden="true"></span></summary>
