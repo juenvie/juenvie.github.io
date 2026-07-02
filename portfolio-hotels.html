@@ -178,7 +178,7 @@
   .photo-placeholder svg { opacity: 0.4; }
 
   .video-row {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 16px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 16px;
   }
   .video-placeholder {
     background: var(--deep); aspect-ratio: 9 / 16; position: relative; overflow: hidden;
@@ -208,7 +208,7 @@
   .video-row .video-card:hover .video-card-overlay { background: linear-gradient(to top, rgba(28,20,16,0.65) 0%, transparent 50%); }
   .video-row .video-card-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: white; }
   .video-row--3 {
-    grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: center; gap: 16px;
+    grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: center; gap: 20px;
   }
   .video-row-logo-sep { display: flex; align-items: center; justify-content: center; }
   .video-row-logo-sep img { width: 36px; height: auto; opacity: 0.18; filter: drop-shadow(0 0 4px rgba(196,113,74,0.3)); }
@@ -342,7 +342,10 @@
     .has-js .rs-card,.has-js .category-title { opacity:1!important; transform:none!important; transition:none!important; }
   }
 
+  @media (max-width: 900px) { .video-row { gap: 14px; } }
+  @media (max-width: 480px) { .video-row { gap: 12px; } }
 </style>
+<script>document.documentElement.className += ' has-js';</script>
 <script>document.documentElement.className += " has-js";</script>
 </head>
 <body>
