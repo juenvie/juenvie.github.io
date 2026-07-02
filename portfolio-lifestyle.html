@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Lifestyle and brand content by Julien. Urban lifestyle, product photography and brand storytelling for activewear, accessories and consumer brands in Sydney.">
-<meta property="og:title" content="Lifestyle &amp; Brands — Julien · Content Creator">
+<meta property="og:title" content="Lifestyle &amp; Brands · Julien · Content Creator">
 <meta property="og:description" content="Urban lifestyle, product content and brand storytelling for activewear, accessories and consumer brands in Sydney.">
 <meta property="og:image" content="https://juenvie.github.io/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://juenvie.github.io/images/og-image.jpg">
 <link rel="canonical" href="https://juenvie.github.io/portfolio-lifestyle.html">
-<title>Lifestyle &amp; Brands — Julien · Content Creator</title>
+<title>Lifestyle &amp; Brands · Julien · Content Creator</title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,8 @@
   .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; font-style: italic; letter-spacing: 0.02em; color: var(--deep); text-decoration: none; }
   .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0 48px; position: fixed; top: 0; right: 0; height: 85px; align-items: center; z-index: 1001; }
   .nav-active { color: var(--terracotta) !important; }
+  .nav-links .nav-home a { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; color: var(--terracotta) !important; text-transform: none !important; letter-spacing: 0.02em !important; font-size: 16px !important; }
+  .nav-links .nav-home a:hover { color: var(--deep) !important; }
   .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 8px; z-index: 101; background: none; border: none; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--deep); transition: all 0.3s ease; transform-origin: center; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -53,17 +55,19 @@
   .portfolio-nav a:hover { color: var(--white); background: var(--terracotta); border-color: var(--terracotta); }
   .category-section { padding: 0 48px 80px; }
   .photo-grid { columns: 3; column-gap: 8px; }
-  .photo-card { break-inside: avoid; margin-bottom: 8px; position: relative; overflow: hidden; cursor: pointer; }
+  .photo-card { break-inside: avoid; margin-bottom: 8px; position: relative; overflow: hidden; cursor: pointer; border-radius: 8px; transition: box-shadow 0.35s ease, transform 0.35s ease; }
   .photo-card img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
   .photo-card:hover img { transform: scale(1.03); }
+  .photo-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(196,113,74,0.3), 0 10px 28px rgba(196,113,74,0.3), 0 14px 30px -12px rgba(28,20,16,0.35); z-index: 3; }
   .photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,16,0.72) 0%, transparent 55%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 14px; }
   .photo-card:hover .photo-overlay { opacity: 1; }
   .photo-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: white; }
-  .photo-placeholder { break-inside: avoid; margin-bottom: 8px; background: var(--sand); aspect-ratio: 4 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px dashed rgba(92,74,58,0.25); cursor: default; }
+  .photo-placeholder { break-inside: avoid; margin-bottom: 8px; background: var(--sand); aspect-ratio: 4 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px dashed rgba(92,74,58,0.25); border-radius: 8px; cursor: default; }
   .photo-placeholder.portrait { aspect-ratio: 3 / 4; }
   .photo-placeholder svg { opacity: 0.4; }
   .video-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 16px; }
-  .video-row .video-card { position: relative; aspect-ratio: 9 / 16; background: var(--deep); overflow: hidden; cursor: pointer; }
+  .video-row .video-card { position: relative; aspect-ratio: 9 / 16; background: var(--deep); overflow: hidden; cursor: pointer; border-radius: 16px; box-shadow: 0 0 0 1px rgba(196,113,74,0.15), 0 8px 24px rgba(196,113,74,0.2), 0 14px 30px -12px rgba(28,20,16,0.35); transition: box-shadow 0.35s ease, transform 0.35s ease; }
+  .video-row .video-card:hover { transform: translateY(-4px); box-shadow: 0 0 0 1.5px rgba(196,113,74,0.35), 0 12px 34px rgba(196,113,74,0.35), 0 20px 42px -12px rgba(28,20,16,0.4); z-index: 4; }
   .video-row .video-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .video-row .video-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,16,0.55) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 12px; transition: background 0.3s; }
   .video-row .video-card:hover .video-card-overlay { background: linear-gradient(to top, rgba(28,20,16,0.65) 0%, transparent 50%); }
@@ -72,7 +76,8 @@
   .sound-btn svg { width: 13px; height: 13px; }
   .sound-btn:hover { background: rgba(0,0,0,0.75); transform: scale(1.1); }
   .sound-btn.unmuted { background: rgba(196,113,74,0.85); border-color: rgba(196,113,74,1); }
-  .video-card-bottom { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; }
+  .video-card-bottom { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
+  .video-row .video-card-label { min-width: 0; }
   .video-row--1 { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
   .video-placeholder { background: var(--deep); aspect-ratio: 9 / 16; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: rgba(255,255,255,0.35); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px dashed rgba(255,255,255,0.12); cursor: default; }
   .video-placeholder svg { opacity: 0.3; }
@@ -87,11 +92,13 @@
   .contact-link.outline:hover { border-color: white; }
   footer { background: var(--deep); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   footer span { font-size: 12px; color: rgba(255,255,255,0.3); }
-  .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s; }
+  .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 48px; height: 48px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s; }
   .whatsapp-float:hover { transform: scale(1.08); }
   @media (max-width: 900px) {
     .nav-links .nav-cat a { font-size: 16px !important; font-family: 'DM Sans', sans-serif !important; font-style: normal !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; border: 1px solid rgba(196,113,74,0.5) !important; color: var(--terracotta) !important; padding: 8px 22px !important; border-radius: 2px !important; }
     .nav-links .nav-cat a:hover, .nav-links .nav-cat a.nav-active { background: var(--terracotta) !important; color: white !important; border-color: var(--terracotta) !important; }
+    .nav-links .nav-home a { font-size: 30px !important; color: var(--terracotta) !important; }
+    .nav-links .nav-home a:hover { color: white !important; }
     .nav-sep { display: block; width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 4px auto; }
     nav { padding: 16px 24px; }
     .nav-links { display: flex; flex-direction: column; position: fixed; inset: 0; width: 100vw; height: 100vh; background: rgba(28,20,16,0.97); z-index: 1000; justify-content: center; align-items: center; gap: 32px; padding: 80px 40px; overflow-y: auto; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; }
@@ -109,7 +116,7 @@
     .video-row--1 { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) { .photo-grid { columns: 2; column-gap: 6px; } }
-  @media (max-width: 480px) { .photo-grid { columns: 1; } .category-section { padding: 0 16px 48px; } .page-title { font-size: 36px; } .page-header { padding: 20px 16px 36px; } footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; } .contact-links { flex-direction: column; align-items: center; } .contact-link { width: 280px; } }
+  @media (max-width: 480px) { .photo-grid { columns: 2; column-gap: 6px; } .category-section { padding: 0 16px 48px; } .page-title { font-size: 36px; } .page-header { padding: 20px 16px 36px; } footer { flex-direction: column; text-align: center; gap: 8px; padding: 16px; } .contact-links { flex-direction: column; align-items: center; } .contact-link { width: 280px; } }
 
   /* ── REVEAL SYS (shared) ── */
   .has-js .page-eyebrow  { animation: rsRise .7s .05s both cubic-bezier(.22,1,.36,1); }
@@ -136,14 +143,16 @@
 
 <nav>
   <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px;">
-    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));" width="1254" height="1254" loading="lazy">
+    <img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4));" width="320" height="320" loading="lazy">
     ju.en.vie
   </a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <ul class="nav-links" id="nav-links">
+  <li class="nav-home"><a href="index.html">← Home</a></li>
+  <li class="nav-sep"></li>
   <li class="nav-cat"><a href="portfolio-hotels.html">Hotels</a></li>
   <li class="nav-cat"><a href="portfolio-food.html">Food</a></li>
   <li class="nav-cat"><a href="portfolio-sport.html">Sport</a></li>
@@ -265,7 +274,7 @@
   <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy">
   <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
   <div style="position:relative; z-index:1;">
-    <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="1254" height="1254" loading="lazy"></a>
+    <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="320" height="320" loading="lazy"></a>
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; font-style:italic; color:white; margin-bottom:32px; line-height:1.1;">Ready to collaborate?</p>
     <div class="contact-links">
       <a href="mailto:juenvie75@gmail.com" class="contact-link">Send an email</a>
@@ -277,7 +286,8 @@
 </section>
 
 <footer>
-  <a href="index.html" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;" width="1254" height="1254" loading="lazy"></a>
+  <a href="index.html" style="display:inline-block;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;" width="320" height="320" loading="lazy"></a>
+  <span>Designed &amp; coded from scratch by Julien. Yes, I build websites too.</span>
   <span>Content Creator · Sydney 2026</span>
 </footer>
 
@@ -309,6 +319,7 @@
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
     document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
   });
   navLinks.querySelectorAll('a').forEach(link => {
@@ -321,7 +332,7 @@
 </script>
 
 <a href="https://wa.me/33629702303" target="_blank" class="whatsapp-float" title="Contact me on WhatsApp" aria-label="Contact via WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
