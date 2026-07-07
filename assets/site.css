@@ -1,0 +1,36 @@
+/* ══════════════════════════════════════════════════════════
+   site.css — styles partagés (masonry, animations premium)
+   Chargé sur toutes les pages, mis en cache par le navigateur.
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Masonry équilibrée (activée par site.js, fallback = CSS columns) ── */
+.photo-grid.masonry-active { columns: auto; display: flex; align-items: flex-start; gap: 8px; }
+.photo-grid.masonry-active .masonry-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.photo-grid.masonry-active .photo-card { margin-bottom: 0; }
+@media (max-width: 768px) {
+  .photo-grid.masonry-active { gap: 6px; }
+  .photo-grid.masonry-active .masonry-col { gap: 6px; }
+}
+
+/* ── Reveal premium : zoom-out subtil des photos à l'apparition ── */
+.has-js .rs-card:not(.rs-in) img { transform: scale(1.06); }
+/* le retour à scale(1) est géré par la transition transform déjà présente sur .photo-card img */
+
+/* ── Transitions de page (View Transitions API, dégrade proprement) ── */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation-duration: 0.22s; }
+::view-transition-new(root) { animation-duration: 0.22s; }
+
+/* ── Parallax hero : évite tout saut si JS absent ── */
+.has-js .hero-visual { will-change: transform; }
+
+/* ── Resserrage des blancs sur mobile (index) ── */
+@media (max-width: 900px) {
+  .portfolio-gallery { margin-top: 40px; }
+  .section-title { margin-bottom: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-js .rs-card:not(.rs-in) img { transform: none !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}

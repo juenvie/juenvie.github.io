@@ -139,8 +139,16 @@
   @media (max-width: 900px) { .video-row { gap: 14px; } }
   @media (max-width: 480px) { .video-row { gap: 12px; } }
 </style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 <script>document.documentElement.className += ' has-js';</script>
-<script>document.documentElement.className += " has-js";</script>
+<!-- ═══ ANALYTICS (à activer en 2 minutes) ═══════════════════════════
+  1. Crée un compte gratuit sur https://www.goatcounter.com (aucun cookie,
+     conforme RGPD sans bannière, gratuit pour les sites perso).
+  2. Choisis un code (ex: juenvie) → ton dashboard sera https://juenvie.goatcounter.com
+  3. Remplace TONCODE ci-dessous et décommente la ligne script.
+<script data-goatcounter="https://TONCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+════════════════════════════════════════════════════════════════ -->
 </head>
 <body>
 
@@ -185,33 +193,48 @@
     <div class="photo-grid">
 
       <div class="photo-card">
-        <img src="images/sport-central-park.jpg" alt="Central Park · NYC · Sport" width="3024" height="4032" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/sport-central-park-800.webp"><img src="images/sport-central-park.jpg" alt="Central Park · NYC · Sport" width="3024" height="4032" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇺🇸 Central Park · NYC</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/6-ciel-bleu.jpg" alt="Paris · Ciel Bleu x Adidas · Team Portrait" width="1067" height="1600" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/6-ciel-bleu-800.webp"><img src="images/6-ciel-bleu.jpg" alt="Paris · Ciel Bleu x Adidas · Team Portrait" width="1067" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Ciel Bleu x Adidas</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/adidas-stairs.jpg" alt="Paris · Adidas District · Stair Training" width="1200" height="1600" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/adidas-stairs-800.webp"><img src="images/adidas-stairs.jpg" alt="Paris · Adidas District · Stair Training" width="1200" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Adidas District</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/ciel-bleu-back.jpg" alt="Paris · Ciel Bleu · Running Jersey" width="1067" height="1600" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/ciel-bleu-back-800.webp"><img src="images/ciel-bleu-back.jpg" alt="Paris · Ciel Bleu · Running Jersey" width="1067" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Ciel Bleu · Jersey</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/ciel-bleu-coffe.jpg" alt="Paris · Ciel Bleu · Post Run Coffee Stop" width="1200" height="1600" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/ciel-bleu-coffe-800.webp"><img src="images/ciel-bleu-coffe.jpg" alt="Paris · Ciel Bleu · Post Run Coffee Stop" width="1200" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Ciel Bleu · Coffee Stop</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/ciel-bleu-quais.jpg" alt="Paris · Ciel Bleu · Running on the Seine Quays" width="1067" height="1600" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/ciel-bleu-quais-800.webp"><img src="images/ciel-bleu-quais.jpg" alt="Paris · Ciel Bleu · Running on the Seine Quays" width="1067" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Ciel Bleu · Seine Quays</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piste-800.webp"><img src="images/piste.jpg" alt="Paris · Athletics Track · Training Session" width="1600" height="2133" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Athletics Track</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piste-virage-800.webp"><img src="images/piste-virage.jpg" alt="Paris · Athletics Track · Curve Lanes" width="1600" height="2133" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Track Curve</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/padel-eifel-800.webp"><img src="images/padel-eifel.jpg" alt="Paris · Padel Court · Eiffel Tower View" width="1600" height="1200" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Padel · Eiffel Tower</span></div>
       </div>
 
     </div>
@@ -289,7 +312,7 @@
 
 <!-- CONTACT -->
 <section style="background:var(--deep); padding:64px 48px; text-align:center; position:relative; overflow:hidden;">
-  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy">
+  <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/photo-thakhek-etendue-800.webp"><img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy"></picture>
   <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
   <div style="position:relative; z-index:1;">
     <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="320" height="320" loading="lazy"></a>

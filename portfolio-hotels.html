@@ -345,8 +345,16 @@
   @media (max-width: 900px) { .video-row { gap: 14px; } }
   @media (max-width: 480px) { .video-row { gap: 12px; } }
 </style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 <script>document.documentElement.className += ' has-js';</script>
-<script>document.documentElement.className += " has-js";</script>
+<!-- ═══ ANALYTICS (à activer en 2 minutes) ═══════════════════════════
+  1. Crée un compte gratuit sur https://www.goatcounter.com (aucun cookie,
+     conforme RGPD sans bannière, gratuit pour les sites perso).
+  2. Choisis un code (ex: juenvie) → ton dashboard sera https://juenvie.goatcounter.com
+  3. Remplace TONCODE ci-dessous et décommente la ligne script.
+<script data-goatcounter="https://TONCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+════════════════════════════════════════════════════════════════ -->
 </head>
 <body>
 
@@ -391,83 +399,88 @@
     <div class="photo-grid">
 
       <div class="photo-card">
-        <img src="images/senguigui-lombok-piscine.jpg" alt="Lombok · Senggigi · Pool" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/senguigui-lombok-piscine-800.webp"><img src="images/senguigui-lombok-piscine.jpg" alt="Lombok · Senggigi · Pool" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Lombok · Senggigi · Pool</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/hotel-laos-drone-cabanes.jpg" alt="Laos · Hotel · Drone" width="1600" height="899" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-laos-drone-cabanes-800.webp"><img src="images/hotel-laos-drone-cabanes.jpg" alt="Laos · Hotel · Drone" width="1600" height="899" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Ecolodge · Drone</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/coucher-soleil-piscine-palmiers-hotel-plage.jpg" alt="Pool · Sunset" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/coucher-soleil-piscine-palmiers-hotel-plage-800.webp"><img src="images/coucher-soleil-piscine-palmiers-hotel-plage.jpg" alt="Pool · Sunset" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🌅 Pool · Sunset</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/2lits-laos.jpg" alt="Room · Laos" width="1600" height="1200" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/2lits-laos-800.webp"><img src="images/2lits-laos.jpg" alt="Room · Laos" width="1600" height="1200" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Twin Room</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/piscine-ha-giang-loop.jpg" alt="Ha Giang Loop · Pool" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-ha-giang-loop-800.webp"><img src="images/piscine-ha-giang-loop.jpg" alt="Ha Giang Loop · Pool" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Ha Giang · Pool</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/lit-laos-voilage.jpg" alt="Room · Canopy Bed · Laos" width="1600" height="1200" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/lit-laos-voilage-800.webp"><img src="images/lit-laos-voilage.jpg" alt="Room · Canopy Bed · Laos" width="1600" height="1200" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Canopy Bed</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/canggu-piscine.jpg" alt="Canggu · Pool" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/canggu-piscine-800.webp"><img src="images/canggu-piscine.jpg" alt="Canggu · Pool" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Canggu · Pool</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/hotel-laos-terasse.jpg" alt="Terrace · Laos" width="1600" height="1200" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-laos-terasse-800.webp"><img src="images/hotel-laos-terasse.jpg" alt="Terrace · Laos" width="1600" height="1200" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Terrace</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-vang-laos-800.webp"><img src="images/hotel-vang-laos.jpg" alt="Vang Vieng · Hotel · Laos" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Vang Vieng · Hotel</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/transat-uma-bali.jpg" alt="Uma · Sun Lounger" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/transat-uma-bali-800.webp"><img src="images/transat-uma-bali.jpg" alt="Uma · Sun Lounger" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Uma · Sun Lounger</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/piscine-tam-coc.jpg" alt="Tam Coc · Pool" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-tam-coc-800.webp"><img src="images/piscine-tam-coc.jpg" alt="Tam Coc · Pool" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Tam Coc · Pool</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/cuisine-laos.jpg" alt="Laos · Kitchen" width="1600" height="1200" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/cuisine-laos-800.webp"><img src="images/cuisine-laos.jpg" alt="Laos · Kitchen" width="1600" height="1200" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Kitchen</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/hostel-kohphiphi.jpg" alt="Koh Phi Phi · Hostel" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hostel-kohphiphi-800.webp"><img src="images/hostel-kohphiphi.jpg" alt="Koh Phi Phi · Hostel" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · Hostel</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/hotel-bangkok.jpg" alt="Bangkok · Hotel" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-bangkok-800.webp"><img src="images/hotel-bangkok.jpg" alt="Bangkok · Hotel" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Bangkok · Hotel</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/chambre-arriere-laos.jpg" alt="Laos · Room" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/chambre-arriere-laos-800.webp"><img src="images/chambre-arriere-laos.jpg" alt="Laos · Room" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Laos · Room</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/drone-da-nang.jpg" alt="Da Nang · Drone" width="1600" height="900" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/drone-da-nang-800.webp"><img src="images/drone-da-nang.jpg" alt="Da Nang · Drone" width="1600" height="900" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Da Nang · Drone</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/lutecia-800.webp"><img src="images/lutecia.jpg" alt="Paris · Hôtel Lutetia · Facade" width="1600" height="1200" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Hôtel Lutetia</span></div>
       </div>
 
     </div>
@@ -569,7 +582,7 @@
 
 <!-- CONTACT -->
 <section style="background:var(--deep); padding:64px 48px; text-align:center; position:relative; overflow:hidden;">
-  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy">
+  <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/photo-thakhek-etendue-800.webp"><img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy"></picture>
   <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
   <div style="position:relative; z-index:1;">
     <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="320" height="320" loading="lazy"></a>

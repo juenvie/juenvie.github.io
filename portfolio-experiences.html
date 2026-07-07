@@ -147,8 +147,16 @@
   @media (max-width: 900px) { .video-row { gap: 14px; } }
   @media (max-width: 480px) { .video-row { gap: 12px; } }
 </style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 <script>document.documentElement.className += ' has-js';</script>
-<script>document.documentElement.className += " has-js";</script>
+<!-- ═══ ANALYTICS (à activer en 2 minutes) ═══════════════════════════
+  1. Crée un compte gratuit sur https://www.goatcounter.com (aucun cookie,
+     conforme RGPD sans bannière, gratuit pour les sites perso).
+  2. Choisis un code (ex: juenvie) → ton dashboard sera https://juenvie.goatcounter.com
+  3. Remplace TONCODE ci-dessous et décommente la ligne script.
+<script data-goatcounter="https://TONCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+════════════════════════════════════════════════════════════════ -->
 </head>
 <body>
 
@@ -197,68 +205,78 @@
     <div class="photo-grid">
 
       <div class="photo-card">
-        <img src="images/opera-sydney.jpg" alt="Sydney · Opera House &amp; Harbour Bridge" width="3024" height="4032" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/opera-sydney-800.webp"><img src="images/opera-sydney.jpg" alt="Sydney · Opera House &amp; Harbour Bridge" width="3024" height="4032" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Opera House</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Laos · Hot Air Balloon" width="1600" height="1066" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/drone-montgolfiere-rouge-vallee-vang-vieng-laos-800.webp"><img src="images/drone-montgolfiere-rouge-vallee-vang-vieng-laos.jpg" alt="Laos · Hot Air Balloon" width="1600" height="1066" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🚁 Laos · Hot Air Balloon</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/kayak-sydney.jpg" alt="Sydney · Kayak" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/kayak-sydney-800.webp"><img src="images/kayak-sydney.jpg" alt="Sydney · Kayak" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Kayak</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/indonesie-bateau.jpg" alt="Indonesia · Boat" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/indonesie-bateau-800.webp"><img src="images/indonesie-bateau.jpg" alt="Indonesia · Boat" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Indonesia · Boat</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/riziere-sapa.jpg" alt="Sapa · Rice Fields" width="1600" height="900" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/riziere-sapa-800.webp"><img src="images/riziere-sapa.jpg" alt="Sapa · Rice Fields" width="1600" height="900" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Rice Fields</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/plongee-thailande.jpg" alt="Thailand · Diving" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/plongee-thailande-800.webp"><img src="images/plongee-thailande.jpg" alt="Thailand · Diving" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🤿 Thailand · Diving</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/bateau-komodo-800.webp"><img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Komodo · Boat</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/sapa-drone.jpg" alt="Sapa · Drone" width="1600" height="900" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/sapa-drone-800.webp"><img src="images/sapa-drone.jpg" alt="Sapa · Drone" width="1600" height="900" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Sapa · Drone</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/padar-island.jpg" alt="Padar Island" width="1600" height="2133" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/padar-island-800.webp"><img src="images/padar-island.jpg" alt="Padar Island" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Padar Island</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/drone-koh-lanta.jpg" alt="Koh Lanta · Drone" width="1600" height="900" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/drone-koh-lanta-800.webp"><img src="images/drone-koh-lanta.jpg" alt="Koh Lanta · Drone" width="1600" height="900" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Lanta · Drone</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/piscine-hoi-an.jpg" alt="Hoi An · Pool" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-hoi-an-800.webp"><img src="images/piscine-hoi-an.jpg" alt="Hoi An · Pool" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇻🇳 Hoi An · Pool</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/coeur-kohphophi.jpg" alt="Koh Phi Phi · View" width="1200" height="1599" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/coeur-kohphophi-800.webp"><img src="images/coeur-kohphophi.jpg" alt="Koh Phi Phi · View" width="1200" height="1599" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇹🇭 Koh Phi Phi · View</span></div>
       </div>
 
       <div class="photo-card">
-        <img src="images/opera-house-sydney.jpg" alt="Sydney · Opera House · Harbour view" width="3024" height="4032" loading="lazy">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/opera-house-sydney-800.webp"><img src="images/opera-house-sydney.jpg" alt="Sydney · Opera House · Harbour view" width="3024" height="4032" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇦🇺 Sydney · Opera House</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/seine-river-parie-800.webp"><img src="images/seine-river-parie.jpg" alt="Paris · Seine River · Houseboat Deck" width="1600" height="2133" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Seine Houseboat</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/boat-paris-800.webp"><img src="images/boat-paris.jpg" alt="Paris · Seine River · Bridge View from Boat" width="1600" height="1200" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Seine River Cruise</span></div>
       </div>
 
     </div>
@@ -371,7 +389,7 @@
 
 <!-- CONTACT -->
 <section style="background:var(--deep); padding:64px 48px; text-align:center; position:relative; overflow:hidden;">
-  <img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy">
+  <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/photo-thakhek-etendue-800.webp"><img src="images/photo-thakhek-etendue.jpg" alt="" aria-hidden="true" style="position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover; object-position:right center; opacity:0.13; pointer-events:none; display:block;" width="1600" height="879" loading="lazy"></picture>
   <div style="position:absolute; top:0; left:0; height:100%; width:75%; background:linear-gradient(to right, var(--deep) 30%, transparent 100%); pointer-events:none;"></div>
   <div style="position:relative; z-index:1;">
     <a href="index.html" style="display:block;text-align:center;"><img src="images/logo_transparent.png" alt="ju.en.vie logo" style="height:96px;width:auto;opacity:0.6;margin-bottom:24px;display:inline-block;" width="320" height="320" loading="lazy"></a>
