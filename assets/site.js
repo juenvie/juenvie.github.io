@@ -113,6 +113,25 @@
     counters.forEach(function (el) { cio.observe(el); });
   }
 
+  /* ── 2b. Barre de progression de lecture ──────────────────── */
+  if (!reduce) {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var pTicking = false;
+    function updateProgress() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0).toFixed(4) + ')';
+      pTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!pTicking) { pTicking = true; requestAnimationFrame(updateProgress); }
+    }, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
+    updateProgress();
+  }
+
   /* ── 3. Parallax léger du hero (index) ────────────────────── */
   var heroVisual = document.querySelector('.hero-visual');
   if (heroVisual && !reduce) {
