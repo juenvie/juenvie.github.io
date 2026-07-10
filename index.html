@@ -219,6 +219,8 @@
   @media (hover: hover) and (pointer: fine) {
     .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
   }
+  /* Intro : les cartes arrivent côté verso, puis se retournent une à une (JS) */
+  .has-js .flip-card.intro-back .flip-card-inner { transform: rotateY(180deg); }
 
   /* STATS BAR */
   .stats-bar {
@@ -355,6 +357,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    border-radius: 8px;
   }
 
   .gallery-card img {
@@ -1072,6 +1075,7 @@
     .title-reveal, .has-js .section-title,
     .has-js .hero-anim { opacity: 1 !important; transform: none !important; transition: none !important; }
     .img-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .has-js .flip-card.intro-back .flip-card-inner { transform: none !important; }
     .process-grid::after { transition: none !important; transform: scaleX(1) !important; }
     .whatsapp-float { animation: none !important; }
     .urgency-dot { animation: none !important; }
@@ -1387,38 +1391,38 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-img img-reveal flip-card">
+    <div class="hero-img img-reveal flip-card intro-back">
       <div class="flip-card-inner">
         <div class="flip-card-face flip-card-front">
           <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/portrait-rooftop-skyline-bangkok-800.webp"><img src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien, Travel Content Creator" width="2000" height="2666" fetchpriority="high"></picture>
           <span class="hero-img-label">Julien · Content Creator</span>
         </div>
         <div class="flip-card-face flip-card-back">
-          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/julien-laos-thakhek-800.webp"><img src="images/julien-laos-thakhek.jpg" alt="Julien · Laos, Thakhek" width="1600" height="2133" loading="lazy"></picture>
+          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/julien-laos-thakhek-800.webp"><img src="images/julien-laos-thakhek.jpg" alt="Julien · Laos, Thakhek" width="1600" height="2133" fetchpriority="high"></picture>
           <span class="hero-img-label">Julien · On the road</span>
         </div>
       </div>
     </div>
-    <div class="hero-img img-reveal flip-card" style="transition-delay:.15s">
+    <div class="hero-img img-reveal flip-card intro-back" style="transition-delay:.15s">
       <div class="flip-card-inner">
         <div class="flip-card-face flip-card-front">
           <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/indonesie-komodo-bateau-drone-800.webp"><img src="images/indonesie-komodo-bateau-drone.jpg" alt="Komodo · Drone" width="1600" height="900"></picture>
           <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
         </div>
         <div class="flip-card-face flip-card-back">
-          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/bateau-komodo-800.webp"><img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1600" height="900" loading="lazy"></picture>
+          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/bateau-komodo-800.webp"><img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1600" height="900"></picture>
           <span class="hero-img-label">🇮🇩 Komodo · Boat</span>
         </div>
       </div>
     </div>
-    <div class="hero-img img-reveal flip-card" style="transition-delay:.3s">
+    <div class="hero-img img-reveal flip-card intro-back" style="transition-delay:.3s">
       <div class="flip-card-inner">
         <div class="flip-card-face flip-card-front">
           <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/cabane-bambou-plage-800.webp"><img src="images/cabane-bambou-plage.jpg" alt="Cabane plage" width="1200" height="900"></picture>
           <span class="hero-img-label">🇮🇩 Indonesia · Beach</span>
         </div>
         <div class="flip-card-face flip-card-back">
-          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-laos-drone-cabanes-800.webp"><img src="images/hotel-laos-drone-cabanes.jpg" alt="Laos · Cabins, drone view" width="1600" height="900" loading="lazy"></picture>
+          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/hotel-laos-drone-cabanes-800.webp"><img src="images/hotel-laos-drone-cabanes.jpg" alt="Laos · Cabins, drone view" width="1600" height="900"></picture>
           <span class="hero-img-label">🇱🇦 Laos · Cabins</span>
         </div>
       </div>
@@ -1725,8 +1729,8 @@
       <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta);">Available in Sydney · September 2026 onwards</p>
     </div>
     <div class="about-imgs" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-      <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/kayak-sydney-800.webp"><img class="img-reveal from-bottom" src="images/kayak-sydney.jpg" alt="Sydney · Kayak" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block;" width="1600" height="2133" loading="lazy"></picture>
-      <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/portrait-rooftop-skyline-bangkok-800.webp"><img class="img-reveal from-bottom" src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Content Creator" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; transition-delay:.15s;" width="2000" height="2666" loading="lazy"></picture>
+      <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/kayak-sydney-800.webp"><img class="img-reveal from-bottom" src="images/kayak-sydney.jpg" alt="Sydney · Kayak" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:8px;" width="1600" height="2133" loading="lazy"></picture>
+      <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/portrait-rooftop-skyline-bangkok-800.webp"><img class="img-reveal from-bottom" src="images/portrait-rooftop-skyline-bangkok.jpg" alt="Julien · Content Creator" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:8px; transition-delay:.15s;" width="2000" height="2666" loading="lazy"></picture>
     </div>
   </div>
 </section>
@@ -2179,6 +2183,13 @@
     });
   }
 
+  // ─── HERO INTRO: les cartes arrivent côté verso puis se retournent
+  //     une à une (2.5s, 3.5s, 4.5s), après la signature du hero ──
+  document.querySelectorAll('.flip-card.intro-back').forEach((card, i) => {
+    if (reduceMotion) { card.classList.remove('intro-back'); return; }
+    setTimeout(() => card.classList.remove('intro-back', 'is-flipped'), 2500 + i * 1000);
+  });
+
   // ─── HERO STAGGERED ENTRANCE ────────────────────────────────────────────────
   if (!reduceMotion) {
     const heroEl = document.querySelector('.hero');
@@ -2310,28 +2321,35 @@
     });
   });
 
-  // ─── D: GALLERY COLUMN PARALLAX (desktop only) ───────────────────────────────
-  const col1 = document.querySelector('.col-1');
-  const col3 = document.querySelector('.col-3');
-  let galleryRect = null;
-
-  function updateGalleryRect() {
-    const gallery = document.querySelector('.portfolio-gallery');
-    if (gallery) galleryRect = gallery.getBoundingClientRect();
-  }
-  updateGalleryRect();
-  window.addEventListener('resize', updateGalleryRect, { passive: true });
-
-  function applyGalleryParallax() {
-    if (isMobile() || !col1 || !col3) return;
-    const scrollY = window.scrollY;
-    const gallery = document.querySelector('.portfolio-gallery');
-    if (!gallery) return;
-    const rect = gallery.getBoundingClientRect();
-    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-    col1.style.transform = `translateY(${centerOffset * -0.05}px)`;
-    col3.style.transform = `translateY(${centerOffset *  0.05}px)`;
-  }
+  // ─── D: GALLERY — égalisation des bas de colonnes (même principe que les
+  //      pages portfolio : recadrage subtil ±15 % réparti par colonne) ─────────
+  (function equalizeGallery() {
+    const cols = document.querySelectorAll('.portfolio-gallery .col');
+    if (!cols.length) return;
+    const totals = [], data = [];
+    cols.forEach(col => {
+      let sum = 0;
+      const list = [];
+      col.querySelectorAll('.gallery-card img').forEach(img => {
+        const w = parseInt(img.getAttribute('width'), 10);
+        const h = parseInt(img.getAttribute('height'), 10);
+        const r = (w > 0 && h > 0) ? h / w : 4 / 3;
+        sum += r;
+        list.push({ img, r });
+      });
+      totals.push(sum);
+      data.push(list);
+    });
+    const target = totals.reduce((a, b) => a + b, 0) / totals.length;
+    data.forEach((list, i) => {
+      const scale = Math.max(0.85, Math.min(1.15, target / totals[i]));
+      if (Math.abs(scale - 1) < 0.01) return;
+      list.forEach(p => {
+        p.img.style.aspectRatio = (1 / (p.r * scale)).toFixed(4);
+        p.img.style.objectFit = 'cover';
+      });
+    });
+  })();
 
   // ─── E: COUNT-UP numbers ─────────────────────────────────────────────────────
   function countUp(el, target, suffix, duration) {
@@ -2361,8 +2379,8 @@
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const raw = el.textContent.trim();
-      if (raw === '77K') { el.textContent = '0'; countUp(el, 77, 'K', 1200); }
-      else if (raw === '48h') { el.textContent = ''; typewriter(el, '48h', 800); }
+      if (raw === '77K') { el.textContent = '0'; countUp(el, 77, 'K', 2600); }
+      else if (raw === '48h') { el.textContent = ''; typewriter(el, '48h', 1400); }
       proofObserver.unobserve(el);
     });
   }, { threshold: 0.5 });
@@ -2407,23 +2425,13 @@
     if (rafPending) return;
     rafPending = true;
     requestAnimationFrame(() => {
-      applyGalleryParallax();
       applyContactParallax();
       rafPending = false;
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Disable parallax transforms on resize to mobile
-  window.addEventListener('resize', () => {
-    if (isMobile()) {
-      if (col1) col1.style.transform = '';
-      if (col3) col3.style.transform = '';
-    }
-  }, { passive: true });
-
   // Run once on load
-  applyGalleryParallax();
   applyContactParallax();
 </script>
 

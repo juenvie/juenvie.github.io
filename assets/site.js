@@ -87,7 +87,7 @@
     if (!isFinite(target) || target <= 0) return;
     var suffix = m[2] || '';
     var decimals = target < 10 ? 1 : 0;
-    var dur = 1100, t0 = null;
+    var dur = 2600, t0 = null;
     function frame(ts) {
       if (!t0) t0 = ts;
       var p = Math.min((ts - t0) / dur, 1);
