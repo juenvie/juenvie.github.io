@@ -337,8 +337,10 @@
     entries.forEach(entry => {
       const video = entry.target.querySelector('video');
       if (!video) return;
-      if (entry.isIntersecting) video.play().catch(() => {});
-      else video.pause();
+      if (entry.isIntersecting) {
+        document.querySelectorAll('video').forEach(v => { if (v !== video && !v.paused) v.pause(); });
+        video.play().catch(() => {});
+      } else video.pause();
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.video-card').forEach(el => videoObserver.observe(el));
