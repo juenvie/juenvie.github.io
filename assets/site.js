@@ -177,7 +177,7 @@
       btn.className = 'video-play-btn';
       btn.type = 'button';
       btn.setAttribute('aria-label', 'Play video');
-      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
       card.appendChild(btn);
 
       v.addEventListener('play', function () { card.classList.add('is-playing'); });
