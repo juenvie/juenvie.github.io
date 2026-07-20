@@ -375,17 +375,6 @@
 </footer>
 
 <script>
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target.querySelector('video');
-      if (!video) return;
-      if (entry.isIntersecting) {
-        document.querySelectorAll('video').forEach(v => { if (v !== video && !v.paused) v.pause(); });
-        video.play().catch(() => {});
-      } else video.pause();
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
 
   document.querySelectorAll('.sound-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {

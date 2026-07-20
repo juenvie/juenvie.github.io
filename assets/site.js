@@ -148,4 +148,85 @@
       });
     }, { passive: true });
   }
+
+  /* ── 4. Lecture vidéo intelligente ────────────────────────────
+     • Vidéos horizontales (drone) : autoplay muet au scroll.
+     • Vidéos verticales : bouton Play, chargement au clic seulement.
+       Seule la 1re verticale de la page démarre automatiquement.
+     Objectif : réduire la bande passante (hébergement GitHub Pages)
+     et garantir un démarrage fiable — un seul flux lourd à la fois. */
+  (function initVideos() {
+    var cards = Array.prototype.slice.call(
+      document.querySelectorAll('.video-card, .video-featured')
+    );
+    if (!cards.length) return;
+
+    var hasIO = 'IntersectionObserver' in window;
+    var firstPortraitUsed = false;
+    var autoCards = [];
+
+    function safePlay(v) {
+      v.preload = 'auto';
+      var p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    }
+
+    function setupClickToPlay(card, v) {
+      card.classList.add('needs-play');
+      var btn = document.createElement('button');
+      btn.className = 'video-play-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Play video');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+      card.appendChild(btn);
+
+      v.addEventListener('play', function () { card.classList.add('is-playing'); });
+      v.addEventListener('pause', function () { card.classList.remove('is-playing'); });
+
+      function toggle(e) {
+        if (e && e.target && e.target.closest('.sound-btn')) return;
+        if (v.paused) safePlay(v); else v.pause();
+      }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); safePlay(v); });
+      card.addEventListener('click', toggle);
+
+      /* Pause quand la carte quitte l'écran : libère la bande passante. */
+      if (hasIO) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting && !v.paused) v.pause();
+          });
+        }, { threshold: 0 });
+        io.observe(card);
+      }
+    }
+
+    cards.forEach(function (card) {
+      var v = card.querySelector('video');
+      if (!v) return;
+      var r = card.getBoundingClientRect();
+      var landscape = r.width > r.height;
+      var autoplay = landscape;
+      if (!landscape && !firstPortraitUsed) { autoplay = true; firstPortraitUsed = true; }
+
+      if (autoplay) autoCards.push(card);
+      else setupClickToPlay(card, v);
+    });
+
+    /* Autoplay au scroll pour les cartes désignées (horizontales + 1re verticale). */
+    if (autoCards.length) {
+      if (hasIO) {
+        var aio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            var v = e.target.querySelector('video');
+            if (!v) return;
+            if (e.isIntersecting) safePlay(v); else v.pause();
+          });
+        }, { threshold: 0.35 });
+        autoCards.forEach(function (c) { aio.observe(c); });
+      } else {
+        autoCards.forEach(function (c) { safePlay(c.querySelector('video')); });
+      }
+    }
+  })();
 })();

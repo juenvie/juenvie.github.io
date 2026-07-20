@@ -2265,17 +2265,6 @@
   }
 
   // ─── VIDEO: play only when in view (saves data on slow connections) ──────────
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target.querySelector('video');
-      if (!video) return;
-      if (entry.isIntersecting) {
-        document.querySelectorAll('video').forEach(v => { if (v !== video && !v.paused) v.pause(); });
-        video.play().catch(() => {});
-      } else video.pause();
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.video-card, .video-featured').forEach(card => videoObserver.observe(card));
 
   // ─── SOUND TOGGLE ────────────────────────────────────────────────────────────
   document.querySelectorAll('.sound-btn').forEach(btn => {

@@ -75,3 +75,32 @@
   .nav-links li:not(.nav-cat) a::after { transition: none; }
   .em-stroke path { animation: none !important; stroke-dashoffset: 0; }
 }
+
+/* ── Lecture vidéo : bouton Play sur les vidéos verticales ──────────
+   Les vidéos verticales (portrait) ne se lancent pas automatiquement :
+   elles affichent leur poster + un bouton Play, et se chargent au clic.
+   Les vidéos horizontales (drone) gardent l'autoplay au scroll. */
+.video-card.needs-play { cursor: pointer; }
+.video-play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px; height: 62px; border-radius: 50%;
+  background: rgba(28,20,16,0.5);
+  border: 1.5px solid rgba(255,255,255,0.9);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 6; padding: 0;
+  box-shadow: 0 4px 16px rgba(28,20,16,0.4);
+  transition: opacity 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.video-play-btn svg { width: 26px; height: 26px; margin-left: 3px; }
+.video-card:hover .video-play-btn {
+  background: rgba(168,88,50,0.92);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.video-card.is-playing .video-play-btn { opacity: 0; pointer-events: none; }
+.video-card.needs-play:not(.is-playing) .sound-btn { display: none; }
+@media (max-width: 480px) {
+  .video-play-btn { width: 54px; height: 54px; }
+  .video-play-btn svg { width: 22px; height: 22px; }
+}
