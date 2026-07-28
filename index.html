@@ -737,8 +737,11 @@
     .sound-btn { width: 30px; height: 30px; }
   }
 
-  .video-card--wide { grid-column: span 3; aspect-ratio: 16/9; }
-  @media (max-width: 900px) { .video-card--wide { grid-column: span 2; } }
+  /* Carte drone : 2 colonnes sur desktop — elle complète la 2e rangée
+     (6 cartes verticales + 2 = 8 = 2 rangées pleines) et s'aligne sur leur
+     hauteur, d'où aspect-ratio:auto. Pleine largeur en 16/9 sur mobile. */
+  .video-card--wide { grid-column: span 2; aspect-ratio: 16/9; }
+  @media (min-width: 901px) { .video-card--wide { aspect-ratio: auto; } }
 
   /* ANIMATIONS */
   .fade-up {
@@ -1592,6 +1595,17 @@
       <div class="video-card-overlay">
         <div class="video-card-bottom">
           <div class="video-card-label">🇮🇩 Komodo · Boat</div>
+          <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="video-card fade-up" style="transition-delay:.2s">
+      <video src="videos/food/nourish-brunch.mp4" muted playsinline loop preload="none" poster="videos/food/nourish-brunch-poster.jpg"></video>
+      <div class="video-card-overlay">
+        <div class="video-card-bottom">
+          <div class="video-card-label">🇮🇩 Uluwatu · Nourish</div>
           <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5zm4.07 1.93a8 8 0 010 10.14M17.66 3.34a12 12 0 010 17.32" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><line class="muted-line" x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
         </div>
       </div>
