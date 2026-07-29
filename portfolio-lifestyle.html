@@ -225,6 +225,10 @@
         <div class="photo-overlay"><span class="photo-tag">🇮🇩 Canggu · Villa</span></div>
       </div>
       <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/miroir-uluwatu-800.webp"><img src="images/miroir-uluwatu.jpg" alt="Uluwatu · Bali · Garden Mirror, Stone Wall" width="1600" height="1200" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Uluwatu · Garden Mirror</span></div>
+      </div>
+      <div class="photo-card">
         <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/portrait-buggy-panorama-coucher-soleil-vang-vieng-800.webp"><img src="images/portrait-buggy-panorama-coucher-soleil-vang-vieng.jpg" alt="Buggy · Coucher de soleil · Vang Vieng" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇱🇦 Vang Vieng · Sunset</span></div>
       </div>
@@ -259,6 +263,27 @@
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🇮🇩 Komodo · Drone</div>
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vidéo verticale : rangée dédiée, largeur calée sur les cartes 9/16
+         des autres pages (la rangée --1 fait 680px, trop large pour du vertical). -->
+    <div class="video-row video-row--1" style="max-width:340px; margin-top:20px;">
+      <div class="video-card rs-card" style="--d:.07s;">
+        <video src="videos/lifestyle/souvence.mp4" muted playsinline loop preload="none" poster="videos/lifestyle/souvence-poster.jpg"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">📖 Souvence · Photo Books</div>
             <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>

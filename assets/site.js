@@ -154,7 +154,12 @@
      • Vidéos verticales : bouton Play, chargement au clic seulement.
        Seule la 1re verticale de la page démarre automatiquement.
      Objectif : réduire la bande passante (hébergement GitHub Pages)
-     et garantir un démarrage fiable — un seul flux lourd à la fois. */
+     et garantir un démarrage fiable — un seul flux lourd à la fois.
+
+     Le son suit l'intention : un clic sur une vidéo = on veut l'entendre,
+     donc la lecture démarre avec le son. L'autoplay au scroll, lui, reste
+     muet — les navigateurs bloquent tout son non déclenché par un clic.
+     Une seule vidéo peut avoir le son à la fois. */
   (function initVideos() {
     var cards = Array.prototype.slice.call(
       document.querySelectorAll('.video-card, .video-featured')
@@ -165,10 +170,54 @@
     var firstPortraitUsed = false;
     var autoCards = [];
 
+    /* ── Son : exclusivité + état du bouton ────────────────────── */
+    var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
+
+    function muteOthers(except) {
+      allVideos.forEach(function (o) { if (o !== except && !o.muted) o.muted = true; });
+    }
+
+    /* Reflète l'état réel de la vidéo sur son bouton son, quelle que soit
+       l'origine du changement (clic sur la carte, sur le bouton, repli muet). */
+    function syncSoundBtn(v) {
+      var card = v.closest ? v.closest('.video-card, .video-featured') : null;
+      if (!card) return;
+      var btn = card.querySelector('.sound-btn');
+      if (!btn) return;
+      btn.classList.toggle('unmuted', !v.muted);
+      var line = btn.querySelector('.muted-line');
+      if (line) line.style.display = v.muted ? '' : 'none';
+    }
+
+    allVideos.forEach(function (v) {
+      v.addEventListener('volumechange', function () {
+        if (!v.muted) muteOthers(v);
+        syncSoundBtn(v);
+      });
+    });
+
+    /* Lecture muette : réservée à l'autoplay au scroll. */
     function safePlay(v) {
       v.preload = 'auto';
       var p = v.play();
       if (p && typeof p.catch === 'function') p.catch(function () {});
+    }
+
+    /* Lecture déclenchée par un clic : avec le son. Si le navigateur refuse
+       malgré le geste (politique stricte), on retombe proprement en muet
+       plutôt que de ne rien lancer. */
+    function playWithSound(v) {
+      muteOthers(v);
+      v.muted = false;
+      v.preload = 'auto';
+      var p = v.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          v.muted = true;
+          var p2 = v.play();
+          if (p2 && typeof p2.catch === 'function') p2.catch(function () {});
+        });
+      }
     }
 
     function setupClickToPlay(card, v) {
@@ -176,7 +225,7 @@
       var btn = document.createElement('button');
       btn.className = 'video-play-btn';
       btn.type = 'button';
-      btn.setAttribute('aria-label', 'Play video');
+      btn.setAttribute('aria-label', 'Play video with sound');
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
       card.appendChild(btn);
 
@@ -185,9 +234,9 @@
 
       function toggle(e) {
         if (e && e.target && e.target.closest('.sound-btn')) return;
-        if (v.paused) safePlay(v); else v.pause();
+        if (v.paused) playWithSound(v); else v.pause();
       }
-      btn.addEventListener('click', function (e) { e.stopPropagation(); safePlay(v); });
+      btn.addEventListener('click', function (e) { e.stopPropagation(); playWithSound(v); });
       card.addEventListener('click', toggle);
 
       /* Pause quand la carte quitte l'écran : libère la bande passante. */
@@ -201,6 +250,15 @@
       }
     }
 
+    /* Cartes en autoplay muet : le clic sert à activer / couper le son. */
+    function setupClickToHear(card, v) {
+      card.addEventListener('click', function (e) {
+        if (e && e.target && e.target.closest('.sound-btn')) return;
+        if (v.muted) { muteOthers(v); v.muted = false; safePlay(v); }
+        else { v.muted = true; }
+      });
+    }
+
     cards.forEach(function (card) {
       var v = card.querySelector('video');
       if (!v) return;
@@ -209,7 +267,7 @@
       var autoplay = landscape;
       if (!landscape && !firstPortraitUsed) { autoplay = true; firstPortraitUsed = true; }
 
-      if (autoplay) autoCards.push(card);
+      if (autoplay) { autoCards.push(card); setupClickToHear(card, v); }
       else setupClickToPlay(card, v);
     });
 

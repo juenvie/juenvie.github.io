@@ -82,7 +82,9 @@
   .sound-btn.unmuted { background: rgba(196,113,74,0.85); border-color: rgba(196,113,74,1); }
   .video-card-bottom { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
   .video-row .video-card-label { min-width: 0; }
-  .video-row--2 { grid-template-columns: 1fr 1fr; max-width: 700px; margin-left: auto; margin-right: auto; }
+  /* 3 cartes verticales : largeur max calée pour garder des cartes de ~340px,
+     comme quand la rangée en comptait 2 (3 × 340 + 2 × 20 de gouttière). */
+  .video-row--3 { grid-template-columns: repeat(3, 1fr); max-width: 1060px; margin-left: auto; margin-right: auto; }
   .portfolio-cta-block { margin-top: 56px; padding: 48px 32px; background: var(--deep); text-align: center; }
   .portfolio-cta-block p { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight:300; font-style:italic; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
   .btn-portfolio-big { display: inline-block; padding: 18px 56px; background: var(--terracotta); color: white; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; font-family: 'DM Sans', sans-serif; }
@@ -211,6 +213,11 @@
       </div>
 
       <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/sport-bambu-uluwatu-800.webp"><img src="images/sport-bambu-uluwatu.jpg" alt="Uluwatu · Bali · Outdoor Gym, Squat Rack" width="1200" height="1600" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🇮🇩 Uluwatu · Outdoor Gym</span></div>
+      </div>
+
+      <div class="photo-card">
         <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/paris-lacoste-800.webp"><img src="images/paris-lacoste.jpg" alt="Paris · Club Lacoste · Padel Court" width="1200" height="1600" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🇫🇷 Paris · Club Lacoste · Padel</span></div>
       </div>
@@ -265,7 +272,7 @@
   </section>
 
   <section class="category-section" id="videos" style="padding-top: 0;">
-    <div class="video-row video-row--2">
+    <div class="video-row video-row--3">
       <div class="video-card rs-card" style="--d:0s;">
         <video src="videos/sport/cielbleu-10k.mp4" muted playsinline loop preload="none" poster="videos/sport/cielbleu-10k-poster.jpg"></video>
         <div class="video-card-overlay">
@@ -287,6 +294,22 @@
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">🏟️ Piste · Ciel Bleu</div>
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="video-card rs-card" style="--d:0.2s;">
+        <video src="videos/sport/bambu-fitness-uluwatu.mp4" muted playsinline loop preload="none" poster="videos/sport/bambu-fitness-uluwatu-poster.jpg"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Uluwatu · Bambu Fitness</div>
             <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
