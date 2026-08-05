@@ -78,7 +78,8 @@
   .video-row .video-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,16,0.55) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 12px; transition: background 0.3s; }
   .video-row .video-card:hover .video-card-overlay { background: linear-gradient(to top, rgba(28,20,16,0.65) 0%, transparent 50%); }
   .video-row .video-card-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: white; }
-  .video-row--3 { grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: center; gap: 20px; }
+  /* 4 cartes séparées par le logo, même motif qu'à 3 (carte · logo · carte…). */
+  .video-row--4 { grid-template-columns: 1fr 48px 1fr 48px 1fr 48px 1fr; align-items: center; gap: 20px; }
   .video-row-logo-sep { display: flex; align-items: center; justify-content: center; }
   .video-row-logo-sep img { width: 36px; height: auto; opacity: 0.18; filter: drop-shadow(0 0 4px rgba(196,113,74,0.3)); }
   .sound-btn { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: rgba(0,0,0,0.55); border: 1.5px solid rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(6px); transition: background 0.2s, transform 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.35); color: white; font: inherit; padding: 0; appearance: none; -webkit-appearance: none; }
@@ -119,7 +120,7 @@
     .category-section { padding: 0 24px 56px; }
     footer { padding: 16px 24px; }
     .video-row { grid-template-columns: 1fr 1fr; }
-    .video-row--3 { grid-template-columns: 1fr 1fr; }
+    .video-row--4 { grid-template-columns: 1fr 1fr; }
     .video-row-logo-sep { display: none; }
   }
   @media (max-width: 768px) { .photo-grid { columns: 2; column-gap: 6px; } }
@@ -242,8 +243,18 @@
       </div>
 
       <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/egg-benedict-800.webp"><img src="images/egg-benedict.jpg" alt="Eggs Benedict · Waffle Brunch" width="1200" height="1600" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🍳 Eggs Benedict</span></div>
+      </div>
+
+      <div class="photo-card">
         <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/nasi-goreng-800.webp"><img src="images/nasi-goreng.jpg" alt="Nasi Goreng" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🍳 Nasi Goreng</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/mie-goreng-800.webp"><img src="images/mie-goreng.jpg" alt="Mie Goreng · Indonesian Noodles" width="1200" height="1600" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🍜 Mie Goreng</span></div>
       </div>
 
       <div class="photo-card">
@@ -254,6 +265,11 @@
       <div class="photo-card">
         <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/acai-800.webp"><img src="images/acai.jpg" alt="Acai Bowl" width="1600" height="2133" loading="lazy"></picture>
         <div class="photo-overlay"><span class="photo-tag">🫐 Acai Bowl</span></div>
+      </div>
+
+      <div class="photo-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/yogourt-and-granola-800.webp"><img src="images/yogourt-and-granola.jpg" alt="Yogurt &amp; Granola · Café Brunch Table" width="1200" height="1600" loading="lazy"></picture>
+        <div class="photo-overlay"><span class="photo-tag">🥣 Yogurt &amp; Granola</span></div>
       </div>
 
       <div class="photo-card">
@@ -273,7 +289,7 @@
 
     </div>
 
-    <div class="video-row video-row--3" id="videos">
+    <div class="video-row video-row--4" id="videos">
       <div class="video-card">
         <video src="videos/food/danasol-da-nang.mp4" muted playsinline loop preload="none" poster="videos/food/danasol-da-nang-poster.jpg"></video>
         <div class="video-card-overlay">
@@ -317,6 +333,25 @@
         <div class="video-card-overlay">
           <div class="video-card-bottom">
             <div class="video-card-label">☕ Rosie's Café</div>
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="320" height="320" loading="lazy">
+      </div>
+      <div class="video-card">
+        <video src="videos/food/milo-oliver-brunch.mp4" muted playsinline loop preload="none" poster="videos/food/milo-oliver-brunch-poster.jpg"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Nusa Lembongan · Milo &amp; Oliver</div>
             <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
