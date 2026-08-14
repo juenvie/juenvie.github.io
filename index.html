@@ -1236,8 +1236,10 @@
   @media (max-width: 900px) {
     .beyond-content-wrap { flex-direction: column; align-items: stretch; gap: 26px; }
     .beyond-content-text { flex: none; max-width: none; }
-    .site-links-col { flex-direction: row; width: 100%; }
+    .site-links-col { flex-direction: row; flex-wrap: wrap; width: 100%; }
     .site-link-card { flex: 1 1 0; aspect-ratio: 4 / 3; }
+    /* bannière pleine largeur : passe sur sa propre ligne sous les deux autres */
+    .site-link-card--wide { flex: 1 1 100%; aspect-ratio: 16 / 10; }
   }
   @media (max-width: 480px) {
     .site-link-name { font-size: 15px; }
@@ -1461,6 +1463,10 @@
 
     <!-- Column 1 -->
     <div class="col col-1">
+      <div class="gallery-card">
+        <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/entree-omni-800.webp"><img src="images/entree-omni.jpg" alt="Bali · Omni Social Wellness Club · Canggu" width="1400" height="1867" loading="lazy"></picture>
+        <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Omni Club</span></div>
+      </div>
       <div class="gallery-card">
         <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-riziere-bali-800.webp"><img src="images/piscine-riziere-bali.jpg" alt="Bali · Pool · Rice Field" width="900" height="1199" loading="lazy"></picture>
         <div class="portfolio-overlay"><span class="portfolio-tag">🇮🇩 Bali · Pool · Rice Field</span></div>
@@ -2035,6 +2041,14 @@
         <span class="site-link-badge"><svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="site-link-overlay">
           <span class="site-link-name">CIEL BLEU</span>
+          <span class="site-link-cta">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+      <a class="site-link-card site-link-card--wide" href="https://juenvie.github.io/ressources/index.html" target="_blank" rel="noopener" aria-label="Visit the ju.en.vie resources website" style="background:#1A1208;">
+        <img src="images/ressources-web.jpg" alt="ju.en.vie resources website" loading="lazy" width="1200" height="750" onerror="this.style.display='none'">
+        <span class="site-link-badge"><svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="site-link-overlay">
+          <span class="site-link-name">Ressources</span>
           <span class="site-link-cta">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
