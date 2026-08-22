@@ -213,6 +213,7 @@
   .video-row--3 {
     grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: center; gap: 20px;
   }
+  .video-row--4 { grid-template-columns: 1fr 48px 1fr 48px 1fr 48px 1fr; align-items: center; gap: 20px; }
   .video-row-logo-sep { display: flex; align-items: center; justify-content: center; }
   .video-row-logo-sep img { width: 36px; height: auto; opacity: 0.18; filter: drop-shadow(0 0 4px rgba(196,113,74,0.3)); }
 
@@ -311,6 +312,7 @@
     footer { padding: 16px 24px; }
     .video-row { grid-template-columns: 1fr 1fr; }
     .video-row--3 { grid-template-columns: 1fr 1fr; }
+    .video-row--4 { grid-template-columns: 1fr 1fr; }
     .video-row-logo-sep { display: none; }
   }
   @media (max-width: 768px) { .photo-grid { columns: 2; column-gap: 6px; } }
@@ -548,7 +550,26 @@
 
     </div>
 
-    <div class="video-row video-row--3" id="videos">
+    <div class="video-row video-row--4" id="videos">
+      <div class="video-card">
+        <video src="videos/hotels/bamboo-house.mp4" muted playsinline loop preload="none" poster="videos/hotels/bamboo-house-poster.jpg"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇮🇩 Bali · Bamboo House</div>
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="video-row-logo-sep">
+        <img src="images/logo_transparent.png" alt="" aria-hidden="true" width="320" height="320" loading="lazy">
+      </div>
       <div class="video-card">
         <video src="videos/hotels/anahata-canggu.mp4" muted playsinline loop preload="none" poster="videos/hotels/anahata-canggu-poster.jpg"></video>
         <div class="video-card-overlay">
