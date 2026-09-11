@@ -936,6 +936,7 @@
     .stat { min-width: 0; }
     .stat-sub { display: none; }
     .section-title { font-size: 28px; }
+    #work .section-title { font-size: min(28px, 7vw); }
     .bali-banner { flex-direction: column; text-align: center; padding: 14px 20px; }
     .bali-banner-text { font-size: 13px; }
     .services-grid { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; scroll-padding: 0 16px; }
@@ -1189,10 +1190,11 @@
   .beyond-content-wrap {
     display: flex; gap: 56px; align-items: center; flex-wrap: wrap;
   }
-  .beyond-content-text { flex: 1 1 480px; max-width: 640px; }
+  .beyond-content-text { flex: 1 1 320px; max-width: 640px; }
+  /* grille 2x2 : quatre cartes, équilibrée avec le texte */
   .site-links-col {
-    display: flex; flex-direction: column; gap: 16px;
-    width: 260px; flex-shrink: 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+    width: clamp(400px, 38vw, 540px); flex-shrink: 0;
   }
   .site-link-card {
     position: relative; display: block; overflow: hidden;
@@ -1238,12 +1240,10 @@
   @media (max-width: 900px) {
     .beyond-content-wrap { flex-direction: column; align-items: stretch; gap: 26px; }
     .beyond-content-text { flex: none; max-width: none; }
-    .site-links-col { flex-direction: row; flex-wrap: wrap; width: 100%; }
-    .site-link-card { flex: 1 1 0; aspect-ratio: 4 / 3; }
-    /* bannière pleine largeur : passe sur sa propre ligne sous les deux autres */
-    .site-link-card--wide { flex: 1 1 100%; aspect-ratio: 16 / 10; }
+    .site-links-col { width: 100%; }
   }
   @media (max-width: 480px) {
+    .site-links-col { grid-template-columns: 1fr; }
     .site-link-name { font-size: 15px; }
     .site-link-cta { font-size: 9px; }
   }
@@ -1415,8 +1415,8 @@
           <span class="hero-img-label">🇮🇩 Komodo · Drone</span>
         </div>
         <div class="flip-card-face flip-card-back">
-          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/bateau-komodo-800.webp"><img src="images/bateau-komodo.jpg" alt="Komodo · Boat" width="1200" height="1600"></picture>
-          <span class="hero-img-label">🇮🇩 Komodo · Boat</span>
+          <picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/sydney-marathon-bridge-800.webp"><img src="images/sydney-marathon-bridge.jpg" alt="Sydney Marathon finisher biting the medal, Harbour Bridge behind" width="1200" height="1600" style="object-position: 50% 15%"></picture>
+          <span class="hero-img-label">🇦🇺 Sydney · Marathon Finisher</span>
         </div>
       </div>
     </div>
@@ -1438,8 +1438,8 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">15K+</div>
-    <div class="stat-label">followers (Instagram &amp; TikTok)</div>
+    <div class="stat-number">18K+</div>
+    <div class="stat-label">followers (Instagram, TikTok &amp; Facebook)</div>
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
@@ -1457,7 +1457,7 @@
 <!-- PORTFOLIO -->
 <section id="work" class="portfolio-section">
   <div class="section-label">Selected work</div>
-  <h2 class="section-title">Collaborations<br>across Asia.</h2>
+  <h2 class="section-title">Collaborations across the world.</h2>
   <div class="portfolio-gallery">
 
     <!-- Column 1 -->
@@ -2052,6 +2052,14 @@
         <span class="site-link-badge"><svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="site-link-overlay">
           <span class="site-link-name">CIEL BLEU</span>
+          <span class="site-link-cta">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+      <a class="site-link-card" href="https://julien-denis.github.io/cv/" target="_blank" rel="noopener" aria-label="Visit Julien's content creator and growth marketer CV website" style="background:#1C1410;">
+        <img src="images/cv-web.jpg" alt="Julien's content creator and growth marketer CV website" loading="lazy" width="900" height="675" style="object-position: 50% 30%;" onerror="this.style.display='none'">
+        <span class="site-link-badge"><svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="site-link-overlay">
+          <span class="site-link-name">Content &amp; Growth&nbsp;CV</span>
           <span class="site-link-cta">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
