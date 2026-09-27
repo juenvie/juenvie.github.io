@@ -86,7 +86,7 @@
   .video-row .video-card-label { min-width: 0; }
   /* 3 cartes verticales : largeur max calée pour garder des cartes de ~340px,
      comme quand la rangée en comptait 2 (3 × 340 + 2 × 20 de gouttière). */
-  .video-row--3 { grid-template-columns: repeat(3, 1fr); max-width: 1060px; margin-left: auto; margin-right: auto; }
+  .video-row--4 { grid-template-columns: repeat(4, 1fr); max-width: 1320px; margin-left: auto; margin-right: auto; }
   .portfolio-cta-block { margin-top: 56px; padding: 48px 32px; background: var(--deep); text-align: center; }
   .portfolio-cta-block p { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight:300; font-style:italic; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
   .btn-portfolio-big { display: inline-block; padding: 18px 56px; background: var(--terracotta); color: white; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; font-family: 'DM Sans', sans-serif; }
@@ -316,8 +316,24 @@
   </section>
 
   <section class="category-section" id="videos" style="padding-top: 0;">
-    <div class="video-row video-row--3">
+    <div class="video-row video-row--4">
       <div class="video-card rs-card" style="--d:0s;">
+        <video src="videos/sport/ella-yoga-bondi.mp4" muted playsinline loop preload="none" poster="videos/sport/ella-yoga-bondi-poster.jpg"></video>
+        <div class="video-card-overlay">
+          <div class="video-card-bottom">
+            <div class="video-card-label">🇦🇺 Bondi · Ella Yoga</div>
+            <button class="sound-btn" type="button" aria-label="Toggle sound" title="Toggle sound">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <line class="muted-line" x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/>
+                <line class="muted-line" x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="video-card rs-card" style="--d:0.1s;">
         <video src="videos/sport/cielbleu-10k.mp4" muted playsinline loop preload="none" poster="videos/sport/cielbleu-10k-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
@@ -333,7 +349,7 @@
           </div>
         </div>
       </div>
-      <div class="video-card rs-card" style="--d:0.1s;">
+      <div class="video-card rs-card" style="--d:0.2s;">
         <video src="videos/sport/cielbleu-piste.mp4" muted playsinline loop preload="none" poster="videos/sport/cielbleu-piste-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
@@ -349,7 +365,7 @@
           </div>
         </div>
       </div>
-      <div class="video-card rs-card" style="--d:0.2s;">
+      <div class="video-card rs-card" style="--d:0.3s;">
         <video src="videos/sport/bambu-fitness-uluwatu.mp4" muted playsinline loop preload="none" poster="videos/sport/bambu-fitness-uluwatu-poster.jpg"></video>
         <div class="video-card-overlay">
           <div class="video-card-bottom">
