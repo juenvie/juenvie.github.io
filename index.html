@@ -1037,6 +1037,21 @@
   }
   .process-grid.line-visible::after { transform: scaleX(1); }
 
+
+  /* PROCESS — timing per step */
+  .process-section { background: var(--white); }
+  .process-intro { font-size: 16px; line-height: 1.7; color: var(--mid); max-width: 540px; margin-top: -24px; }
+  .process-num { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: var(--terracotta); line-height: 1; margin-bottom: 16px; }
+  .process-time { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); border: 1px solid rgba(168,88,50,0.3); padding: 5px 10px; margin-bottom: 14px; }
+  .process-title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; margin-bottom: 12px; }
+  .process-desc { font-size: 14px; color: var(--mid); line-height: 1.65; }
+  .process-cta { text-align: center; margin-top: 48px; }
+  @media (max-width: 768px) { .process-intro { margin-top: 0; } }
+
+  /* Merged blocks inside a section */
+  .section-label.sub-label { margin-top: 64px; }
+  .audience-grid--inline, .hire-grid--inline { margin-top: 24px; }
+
   /* CONTACT — decorative parallax warm-glow layer */
   .contact-bg-layer {
     position: absolute;
@@ -1438,7 +1453,7 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">18K+</div>
+    <div class="stat-number">21K+</div>
     <div class="stat-label">followers (Instagram, TikTok &amp; Facebook)</div>
   </div>
   <div class="stat-divider"></div>
@@ -1567,17 +1582,59 @@
   </div>
 </section>
 
-<!-- PORTFOLIO CTA -->
-<div class="portfolio-cta-center">
-  <p style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);margin-bottom:24px;">Explore by category</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <a href="portfolio-hotels.html" class="btn-portfolio">Hotels &amp; Stays <span class="arr">→</span></a>
-    <a href="portfolio-food.html" class="btn-portfolio">Food &amp; Coffee <span class="arr">→</span></a>
-    <a href="portfolio-sport.html" class="btn-portfolio">Sport <span class="arr">→</span></a>
-    <a href="portfolio-experiences.html" class="btn-portfolio">Experiences <span class="arr">→</span></a>
-    <a href="portfolio-lifestyle.html" class="btn-portfolio">Lifestyle <span class="arr">→</span></a>
+<!-- WORK CATEGORIES -->
+<section id="categories">
+  <div class="section-label">Work categories</div>
+  <h2 class="section-title">Five verticals.<br>One portfolio.</h2>
+  <p class="swipe-hint" aria-hidden="true">Swipe to explore <span>→</span> Tap a card to open</p>
+  <div class="services-grid">
+    <a href="portfolio-hotels.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;">
+      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-riziere-bali-800.webp"><img src="images/piscine-riziere-bali.jpg" alt="" loading="lazy"></picture></span>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 17V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h12a2 2 0 0 1 2 2v5"/><path d="M2 13h20"/><path d="M2 17v2"/><path d="M22 17v2"/></svg></span>
+      <div class="service-name">Hotels &amp; Stays</div>
+      <p class="service-desc">From boutique guesthouses to design hotels. Rooms, pools, atmosphere and unique stays across Asia and Australia.</p>
+      <span class="service-cta">View portfolio <span class="arr">→</span></span>
+    </a>
+    <a href="portfolio-food.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.1s">
+      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/smoothie-bowl-fruits-tropicaux-cafe-bangkok-800.webp"><img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="" loading="lazy"></picture></span>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></span>
+      <div class="service-name">Food &amp; Coffee</div>
+      <p class="service-desc">Cafés, restaurants and food brands. Content that makes audiences hungry and places bookable.</p>
+      <span class="service-cta">View portfolio <span class="arr">→</span></span>
+    </a>
+    <a href="portfolio-sport.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.2s">
+      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/ciel-bleu-quais-800.webp"><img src="images/ciel-bleu-quais.jpg" alt="" loading="lazy"></picture></span>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+      <div class="service-name">Sport &amp; Running</div>
+      <p class="service-desc">Training content, race days, activewear and sport lifestyle. Built for brands that move.</p>
+      <span class="service-cta">View portfolio <span class="arr">→</span></span>
+    </a>
+    <a href="portfolio-experiences.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.3s">
+      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/saut-chemin-herbes-montagnes-vang-vieng-800.webp"><img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="" loading="lazy"></picture></span>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+      <div class="service-name">Experiences &amp; Travel</div>
+      <p class="service-desc">Adventures, activities, surf, hikes and road trips. Content for travel agencies and experience brands.</p>
+      <span class="service-cta">View portfolio <span class="arr">→</span></span>
+    </a>
+    <a href="portfolio-lifestyle.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.4s">
+      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/beach-club-canggu-800.webp"><img src="images/beach-club-canggu.jpg" alt="" loading="lazy"></picture></span>
+      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+      <div class="service-name">Lifestyle &amp; Brands</div>
+      <p class="service-desc">Product shots, city content and brand lifestyle. For activewear, accessories and urban brands.</p>
+      <span class="service-cta">View portfolio <span class="arr">→</span></span>
+    </a>
   </div>
-</div>
+  <div class="drone-cta" id="drone-cta" role="button" tabindex="0" aria-label="Watch a drone showreel" style="margin-top:32px; padding: 20px 28px; border: 1px solid rgba(196,113,74,0.25); display:flex; align-items:center; gap:20px; background: rgba(196,113,74,0.04);">
+    <span style="flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--terracotta); border-radius:2px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </span>
+    <div>
+      <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:4px;">Drone · Aerial Photography &amp; Video</p>
+      <p style="font-size:13px; color:var(--mid); line-height:1.6;">Available on all packages. Drone footage for hotels, resorts, experiences and travel brands across Asia and Australia.</p>
+    </div>
+    <span class="drone-cta-hint"><span class="hint-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Watch the reel</span>
+  </div>
+</section>
 
 <!-- VIDEOS -->
 <section id="videos" class="videos-section" style="padding-bottom: 0;">
@@ -1676,89 +1733,6 @@
 
   </div>
 
-  <div class="portfolio-cta-block">
-    <p>Hotels, food and coffee, sport and lifestyle brands.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-      <a href="portfolio-hotels.html" class="btn-portfolio-big" style="padding:14px 28px;">Hotels <span class="arr">→</span></a>
-      <a href="portfolio-food.html" class="btn-portfolio-big" style="padding:14px 28px;">Food <span class="arr">→</span></a>
-      <a href="portfolio-sport.html" class="btn-portfolio-big" style="padding:14px 28px;">Sport <span class="arr">→</span></a>
-      <a href="portfolio-experiences.html" class="btn-portfolio-big" style="padding:14px 28px;">Experiences <span class="arr">→</span></a>
-      <a href="portfolio-lifestyle.html" class="btn-portfolio-big" style="padding:14px 28px;">Lifestyle <span class="arr">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- BRANDS HIRE ME FOR -->
-<section>
-  <div class="section-label">What I deliver</div>
-  <h2 class="section-title">Brands hire me for</h2>
-  <div class="hire-grid">
-    <div class="hire-card fade-up"><span class="hire-check">✓</span>Instagram Reels</div>
-    <div class="hire-card fade-up" style="transition-delay:0.05s"><span class="hire-check">✓</span>TikTok Videos</div>
-    <div class="hire-card fade-up" style="transition-delay:0.1s"><span class="hire-check">✓</span>UGC Content</div>
-    <div class="hire-card fade-up" style="transition-delay:0.15s"><span class="hire-check">✓</span>Professional Photography</div>
-    <div class="hire-card fade-up" style="transition-delay:0.2s"><span class="hire-check">✓</span>Drone Footage</div>
-    <div class="hire-card fade-up" style="transition-delay:0.25s"><span class="hire-check">✓</span>Hotel &amp; Hospitality Content</div>
-    <div class="hire-card fade-up" style="transition-delay:0.3s"><span class="hire-check">✓</span>Website &amp; Marketing Assets</div>
-    <div class="hire-card fade-up" style="transition-delay:0.35s"><span class="hire-check">✓</span>Paid Social Ad Creatives</div>
-    <div class="hire-card fade-up" style="transition-delay:0.4s"><span class="hire-check">✓</span>Product Launch Campaigns</div>
-    <div class="hire-card fade-up" style="transition-delay:0.45s"><span class="hire-check">✓</span>Websites &amp; Landing Pages</div>
-    <div class="hire-card fade-up" style="transition-delay:0.5s"><span class="hire-check">✓</span>AI-Powered Content Workflows</div>
-  </div>
-</section>
-
-<!-- WORK CATEGORIES -->
-<section id="categories">
-  <div class="section-label">Work categories</div>
-  <h2 class="section-title">Five verticals.<br>One portfolio.</h2>
-  <p class="swipe-hint" aria-hidden="true">Swipe to explore <span>→</span> Tap a card to open</p>
-  <div class="services-grid">
-    <a href="portfolio-hotels.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;">
-      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/piscine-riziere-bali-800.webp"><img src="images/piscine-riziere-bali.jpg" alt="" loading="lazy"></picture></span>
-      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 17V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h12a2 2 0 0 1 2 2v5"/><path d="M2 13h20"/><path d="M2 17v2"/><path d="M22 17v2"/></svg></span>
-      <div class="service-name">Hotels &amp; Stays</div>
-      <p class="service-desc">From boutique guesthouses to design hotels. Rooms, pools, atmosphere and unique stays across Asia and Australia.</p>
-      <span class="service-cta">View portfolio <span class="arr">→</span></span>
-    </a>
-    <a href="portfolio-food.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.1s">
-      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/smoothie-bowl-fruits-tropicaux-cafe-bangkok-800.webp"><img src="images/smoothie-bowl-fruits-tropicaux-cafe-bangkok.jpg" alt="" loading="lazy"></picture></span>
-      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></span>
-      <div class="service-name">Food &amp; Coffee</div>
-      <p class="service-desc">Cafés, restaurants and food brands. Content that makes audiences hungry and places bookable.</p>
-      <span class="service-cta">View portfolio <span class="arr">→</span></span>
-    </a>
-    <a href="portfolio-sport.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.2s">
-      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/ciel-bleu-quais-800.webp"><img src="images/ciel-bleu-quais.jpg" alt="" loading="lazy"></picture></span>
-      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
-      <div class="service-name">Sport &amp; Running</div>
-      <p class="service-desc">Training content, race days, activewear and sport lifestyle. Built for brands that move.</p>
-      <span class="service-cta">View portfolio <span class="arr">→</span></span>
-    </a>
-    <a href="portfolio-experiences.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.3s">
-      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/saut-chemin-herbes-montagnes-vang-vieng-800.webp"><img src="images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="" loading="lazy"></picture></span>
-      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
-      <div class="service-name">Experiences &amp; Travel</div>
-      <p class="service-desc">Adventures, activities, surf, hikes and road trips. Content for travel agencies and experience brands.</p>
-      <span class="service-cta">View portfolio <span class="arr">→</span></span>
-    </a>
-    <a href="portfolio-lifestyle.html" class="service-card fade-up" style="text-decoration:none;color:inherit;display:block;transition-delay:0.4s">
-      <span class="service-bg" aria-hidden="true"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/webp/beach-club-canggu-800.webp"><img src="images/beach-club-canggu.jpg" alt="" loading="lazy"></picture></span>
-      <span class="vert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
-      <div class="service-name">Lifestyle &amp; Brands</div>
-      <p class="service-desc">Product shots, city content and brand lifestyle. For activewear, accessories and urban brands.</p>
-      <span class="service-cta">View portfolio <span class="arr">→</span></span>
-    </a>
-  </div>
-  <div class="drone-cta" id="drone-cta" role="button" tabindex="0" aria-label="Watch a drone showreel" style="margin-top:32px; padding: 20px 28px; border: 1px solid rgba(196,113,74,0.25); display:flex; align-items:center; gap:20px; background: rgba(196,113,74,0.04);">
-    <span style="flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--terracotta); border-radius:2px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-    </span>
-    <div>
-      <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:4px;">Drone · Aerial Photography &amp; Video</p>
-      <p style="font-size:13px; color:var(--mid); line-height:1.6;">Available on all packages. Drone footage for hotels, resorts, experiences and travel brands across Asia and Australia.</p>
-    </div>
-    <span class="drone-cta-hint"><span class="hint-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Watch the reel</span>
-  </div>
 </section>
 
 <!-- ABOUT -->
@@ -1963,6 +1937,26 @@
     </div>
   </div>
   <p style="font-size:11px; color:var(--light); font-style:italic; text-align:center; margin-top:24px;">* All content delivered with full commercial usage rights. Yours to use forever, no licence renewal.</p>
+  <div class="section-label sub-label">Who will see your content</div>
+  <div class="audience-grid audience-grid--inline">
+    <div class="proof-card fade-up">
+      <div class="proof-card-number">18–34</div>
+      <div class="proof-card-label">Average age of my audience, active travellers in trip-planning mode</div>
+    </div>
+    <div class="proof-card fade-up" style="transition-delay:0.1s">
+      <div class="flag-row">
+        <span class="flag-chip">🇫🇷</span>
+        <span class="flag-chip">🇧🇪</span>
+        <span class="flag-chip">🇨🇦</span>
+        <span class="flag-chip">🇨🇭</span>
+      </div>
+      <div class="proof-card-label">Top audience countries, French-speaking + English international travellers</div>
+    </div>
+    <div class="proof-card fade-up" style="transition-delay:0.2s">
+      <div class="proof-card-number" style="font-size:22px; font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.2;">Instagram · TikTok</div>
+      <div class="proof-card-label">100% organic following, travellers and digital nomads, zero paid promotion</div>
+    </div>
+  </div>
   <div class="proof-collabs">
     <div class="proof-collab fade-up">
       <div class="proof-collab-quote">"After our collaboration, the content was posted on both my account and used by the property. Authentic hospitality storytelling that actually performs."</div>
@@ -1976,6 +1970,73 @@
       <div class="proof-collab-quote">"Booking enquiries went up within days of the video going live. Guests arrived already knowing the bungalows. The content did the selling for us before they even landed."</div>
       <div class="proof-collab-meta">New Coconut Lanta Bungalow<br><span style="opacity:0.6; font-size:0.9em;">Koh Lanta, Thailand · 2026</span></div>
     </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" class="process-section">
+  <div class="section-label">Simple process</div>
+  <h2 class="section-title">How it works.</h2>
+  <p class="process-intro">From your first message to files you can post, in a few days. One person handles it all, start to finish.</p>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <span class="process-time">Within 24h</span>
+      <div class="process-title">You reach out</div>
+      <p class="process-desc">Tell me about your brand, your space and your dates. I'll confirm if we're a match and answer any questions within 24h.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <span class="process-time">Half a day to 2 days</span>
+      <div class="process-title">I come to you</div>
+      <p class="process-desc">Half a day to two days on location, capturing your space, product, atmosphere, lifestyle and aerial drone footage.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <span class="process-time">48h after the shoot</span>
+      <div class="process-title">You receive your assets</div>
+      <p class="process-desc">All edited files delivered within 48h after the shoot. Organised, labelled, ready to post.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <span class="process-time">Yours forever</span>
+      <div class="process-title">You publish and grow</div>
+      <p class="process-desc">Use the content on Instagram, TikTok, your website, Google, Booking or in store. Forever. No licence renewal.</p>
+    </div>
+  </div>
+  <div class="process-cta">
+    <a href="#contact" class="btn-primary">Start with step 01 <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- SHOT ON -->
+<section class="shot-on-section">
+  <div class="section-label">Equipment</div>
+  <h2 class="section-title">Shot on professional gear.</h2>
+  <p class="shot-on-sub">Every asset delivered with cinema-grade quality, drone footage, iPhone ProRes video and professional post-production.</p>
+  <div class="shot-on-grid">
+    <div class="shot-on-card fade-up">
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="6.8" y1="6.8" x2="9.5" y2="9.5"/><line x1="17.2" y1="6.8" x2="14.5" y2="9.5"/><line x1="6.8" y1="17.2" x2="9.5" y2="14.5"/><line x1="17.2" y1="17.2" x2="14.5" y2="14.5"/></svg></span>
+      <h3 class="shot-on-title">DJI Mini 4K</h3>
+      <p class="shot-on-desc">4K drone footage, aerial shots that reveal your location's scale, setting and surroundings.</p>
+      <span class="shot-on-tag">Drone</span>
+    </div>
+    <div class="shot-on-card fade-up" style="transition-delay:0.1s">
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+      <h3 class="shot-on-title">iPhone 16 Pro Max</h3>
+      <p class="shot-on-desc">ProRes 4K video and Dolby HDR photography, the same chip that powers Hollywood productions.</p>
+      <span class="shot-on-tag">Photo &amp; Video</span>
+    </div>
+    <div class="shot-on-card fade-up" style="transition-delay:0.2s">
+      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+      <h3 class="shot-on-title">Pro Post-Production</h3>
+      <p class="shot-on-desc">Colour grading, sound design, captions and format optimisation, all included, zero extra cost.</p>
+      <span class="shot-on-tag">Editing</span>
+    </div>
+  </div>
+  <div class="shot-on-banner">
+    <span class="shot-on-banner-left">All assets delivered within 48 hours.</span>
+    <span class="shot-on-banner-right">Commercial usage rights included, forever.</span>
   </div>
 </section>
 
@@ -2018,6 +2079,20 @@
     <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><polyline points="9 12 11 14 15 10"/></svg><strong>Full usage rights</strong>, forever</span>
     <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9z"/></svg><strong>100% organic</strong> audience</span>
     <span class="offer-chip"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Reply within <strong>24h</strong></span>
+  </div>
+  <div class="section-label sub-label">Brands hire me for</div>
+  <div class="hire-grid hire-grid--inline">
+    <div class="hire-card fade-up"><span class="hire-check">✓</span>Instagram Reels</div>
+    <div class="hire-card fade-up" style="transition-delay:0.05s"><span class="hire-check">✓</span>TikTok Videos</div>
+    <div class="hire-card fade-up" style="transition-delay:0.1s"><span class="hire-check">✓</span>UGC Content</div>
+    <div class="hire-card fade-up" style="transition-delay:0.15s"><span class="hire-check">✓</span>Professional Photography</div>
+    <div class="hire-card fade-up" style="transition-delay:0.2s"><span class="hire-check">✓</span>Drone Footage</div>
+    <div class="hire-card fade-up" style="transition-delay:0.25s"><span class="hire-check">✓</span>Hotel &amp; Hospitality Content</div>
+    <div class="hire-card fade-up" style="transition-delay:0.3s"><span class="hire-check">✓</span>Website &amp; Marketing Assets</div>
+    <div class="hire-card fade-up" style="transition-delay:0.35s"><span class="hire-check">✓</span>Paid Social Ad Creatives</div>
+    <div class="hire-card fade-up" style="transition-delay:0.4s"><span class="hire-check">✓</span>Product Launch Campaigns</div>
+    <div class="hire-card fade-up" style="transition-delay:0.45s"><span class="hire-check">✓</span>Websites &amp; Landing Pages</div>
+    <div class="hire-card fade-up" style="transition-delay:0.5s"><span class="hire-check">✓</span>AI-Powered Content Workflows</div>
   </div>
   <div style="text-align:center;">
     <span class="urgency-pill"><span class="urgency-dot"></span>Now in Sydney · Limited collaboration slots</span>
@@ -2072,97 +2147,6 @@
         </span>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="process" style="background: var(--cream); padding: 72px 48px;">
-  <div class="section-label">Simple process</div>
-  <h2 class="section-title">How it works.</h2>
-  <div class="process-grid">
-    <div class="process-step">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">01</div>
-      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You reach out</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Tell me about your brand, your space and your dates. I'll confirm if we're a match and answer any questions within 24h.</p>
-    </div>
-    <div class="process-step" style="transition-delay:0.1s">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">02</div>
-      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">I come to you</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Half a day to two days on location, capturing your space, product, atmosphere, lifestyle and aerial drone footage.</p>
-    </div>
-    <div class="process-step" style="transition-delay:0.2s">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">03</div>
-      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You receive your assets</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">All edited files delivered within 48h after the shoot. Organised, labelled, ready to post.</p>
-    </div>
-    <div class="process-step" style="transition-delay:0.3s">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--terracotta); line-height:1; margin-bottom:20px;">04</div>
-      <div style="font-size:16px; font-weight:500; margin-bottom:12px; font-family:'DM Sans',sans-serif;">You publish and grow</div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.65;">Use the content on Instagram, TikTok, your website, Google, Booking or in-store. Forever. No licence renewal.</p>
-    </div>
-  </div>
-</section>
-
-<!-- AUDIENCE SNAPSHOT -->
-<section style="background: var(--white); padding: 58px 48px;">
-  <div class="section-label">Who will see your property</div>
-  <h2 class="section-title">A qualified audience.</h2>
-  <div class="audience-grid">
-    <div class="proof-card fade-up">
-      <div class="proof-card-number">18–34</div>
-      <div class="proof-card-label">Average age of my audience, active travellers in trip-planning mode</div>
-    </div>
-    <div class="proof-card fade-up" style="transition-delay:0.1s">
-      <div class="flag-row">
-        <span class="flag-chip">🇫🇷</span>
-        <span class="flag-chip">🇧🇪</span>
-        <span class="flag-chip">🇨🇦</span>
-        <span class="flag-chip">🇨🇭</span>
-      </div>
-      <div class="proof-card-label">Top audience countries, French-speaking + English international travellers</div>
-    </div>
-    <div class="proof-card fade-up" style="transition-delay:0.2s">
-      <div class="proof-card-number" style="font-size:22px; font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.2;">Instagram · TikTok</div>
-      <div class="proof-card-label">100% organic following, travellers and digital nomads, zero paid promotion</div>
-    </div>
-  </div>
-</section>
-
-<!-- SHOT ON -->
-<section class="shot-on-section">
-  <div class="section-label">Equipment</div>
-  <h2 class="section-title">Shot on professional gear.</h2>
-  <p class="shot-on-sub">Every asset delivered with cinema-grade quality, drone footage, iPhone ProRes video and professional post-production.</p>
-  <div class="shot-on-grid">
-    <div class="shot-on-card fade-up">
-      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="6.8" y1="6.8" x2="9.5" y2="9.5"/><line x1="17.2" y1="6.8" x2="14.5" y2="9.5"/><line x1="6.8" y1="17.2" x2="9.5" y2="14.5"/><line x1="17.2" y1="17.2" x2="14.5" y2="14.5"/></svg></span>
-      <h3 class="shot-on-title">DJI Mini 4K</h3>
-      <p class="shot-on-desc">4K drone footage, aerial shots that reveal your location's scale, setting and surroundings.</p>
-      <span class="shot-on-tag">Drone</span>
-    </div>
-    <div class="shot-on-card fade-up" style="transition-delay:0.1s">
-      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-      <h3 class="shot-on-title">iPhone 16 Pro Max</h3>
-      <p class="shot-on-desc">ProRes 4K video and Dolby HDR photography, the same chip that powers Hollywood productions.</p>
-      <span class="shot-on-tag">Photo &amp; Video</span>
-    </div>
-    <div class="shot-on-card fade-up" style="transition-delay:0.2s">
-      <span class="shot-on-icon-line" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
-      <h3 class="shot-on-title">Pro Post-Production</h3>
-      <p class="shot-on-desc">Colour grading, sound design, captions and format optimisation, all included, zero extra cost.</p>
-      <span class="shot-on-tag">Editing</span>
-    </div>
-  </div>
-  <div class="shot-on-banner">
-    <span class="shot-on-banner-left">All assets delivered within 48 hours.</span>
-    <span class="shot-on-banner-right">Commercial usage rights included, forever.</span>
-  </div>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:48px;">
-    <a href="portfolio-hotels.html" class="btn-portfolio-big" style="padding:14px 28px;">Hotels <span class="arr">→</span></a>
-    <a href="portfolio-food.html" class="btn-portfolio-big" style="padding:14px 28px;">Food <span class="arr">→</span></a>
-    <a href="portfolio-sport.html" class="btn-portfolio-big" style="padding:14px 28px;">Sport <span class="arr">→</span></a>
-    <a href="portfolio-experiences.html" class="btn-portfolio-big" style="padding:14px 28px;">Experiences <span class="arr">→</span></a>
-    <a href="portfolio-lifestyle.html" class="btn-portfolio-big" style="padding:14px 28px;">Lifestyle <span class="arr">→</span></a>
   </div>
 </section>
 
