@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F0E8">
+<meta name="robots" content="noindex">
+<title>Page not found · Julien · Content Creator</title>
+<!-- Served by GitHub Pages at any missing address: every path is absolute -->
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --cream: #F5F0E8; --sand: #E8DDD0; --terracotta: #A85832; --deep: #1C1410; --mid: #5C4A3A; --light: #7A6A5A; --white: #FDFAF6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--deep); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; border-bottom: 1px solid rgba(92,74,58,0.12); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; font-style: italic; letter-spacing: 0.02em; color: var(--deep); text-decoration: none; }
+  .nav-logo img { height: 52px; width: auto; filter: drop-shadow(0 2px 8px rgba(196,113,74,0.7)) drop-shadow(0 0 3px rgba(196,113,74,0.4)); }
+  .nav-home { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--terracotta); text-decoration: none; }
+  .nav-home:hover { color: var(--deep); }
+
+  main { flex: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; padding: 72px 48px; max-width: 1200px; width: 100%; margin: 0 auto; }
+  .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .label::before { content: ''; width: 32px; height: 1px; background: var(--terracotta); }
+  .code { font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 300; line-height: 0.9; color: var(--terracotta); opacity: 0.25; margin-bottom: 8px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; line-height: 1.05; margin-bottom: 24px; }
+  h1 em { color: var(--terracotta); }
+  .intro { font-size: 16px; line-height: 1.7; color: var(--mid); max-width: 440px; margin-bottom: 36px; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary, .btn-secondary { display: inline-block; padding: 14px 32px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
+  .btn-primary { background: var(--deep); color: var(--white); }
+  .btn-primary:hover { background: var(--terracotta); }
+  .btn-secondary { padding: 13px 32px; border: 1px solid var(--deep); color: var(--deep); }
+  .btn-secondary:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .arr { display: inline-block; transition: transform 0.25s; }
+  .btn-primary:hover .arr { transform: translateX(5px); }
+
+  .explore-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 14px; }
+  .cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .cats a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); text-decoration: none; border: 1px solid rgba(168,88,50,0.4); padding: 8px 16px; transition: all 0.2s; }
+  .cats a:hover { background: var(--terracotta); color: var(--white); }
+  .guides { font-size: 14px; color: var(--mid); }
+  .guides a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(168,88,50,0.4); }
+  .guides a:hover { border-color: var(--terracotta); }
+
+  .photo { position: relative; }
+  .photo img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; display: block; border-radius: 8px; }
+  .photo figcaption { position: absolute; left: 16px; bottom: 16px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: rgba(28,20,16,0.55); padding: 6px 12px; border-radius: 2px; }
+
+  footer { background: var(--deep); padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer span { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-logo { font-size: 26px; }
+    .nav-logo img { height: 42px; }
+    main { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px; }
+    .photo { order: -1; }
+    .photo img { aspect-ratio: 16/10; }
+    .code { font-size: 88px; }
+    h1 { font-size: 40px; }
+    footer { padding: 16px 24px; }
+  }
+  @media (max-width: 480px) {
+    .ctas a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/images/logo_transparent.png" alt="ju.en.vie logo" width="320" height="320">
+    ju.en.vie
+  </a>
+  <a href="/" class="nav-home">← Home</a>
+</nav>
+
+<main>
+  <div>
+    <div class="label">Page not found</div>
+    <div class="code" aria-hidden="true">404</div>
+    <h1>This page took<br>a <em>different route.</em></h1>
+    <p class="intro">The link may be old or mistyped. My work, my packages and my contact details are all still here.</p>
+    <div class="ctas">
+      <a href="/" class="btn-primary">Back to home <span class="arr">→</span></a>
+      <a href="/#contact" class="btn-secondary">Get in touch</a>
+    </div>
+    <p class="explore-title">Or explore my work</p>
+    <div class="cats">
+      <a href="/portfolio-hotels.html">Hotels</a>
+      <a href="/portfolio-food.html">Food</a>
+      <a href="/portfolio-sport.html">Sport</a>
+      <a href="/portfolio-experiences.html">Experiences</a>
+      <a href="/portfolio-lifestyle.html">Lifestyle</a>
+    </div>
+    <p class="guides">Looking for my travel guides? <a href="/ressources/">They are over here (in French)</a></p>
+  </div>
+  <figure class="photo">
+    <picture>
+      <source type="image/webp" media="(max-width: 768px)" srcset="/images/webp/saut-chemin-herbes-montagnes-vang-vieng-800.webp">
+      <img src="/images/saut-chemin-herbes-montagnes-vang-vieng.jpg" alt="Wooden walkway through the fields of Vang Vieng, Laos" width="1051" height="1400">
+    </picture>
+    <figcaption>🇱🇦 Vang Vieng · Laos</figcaption>
+  </figure>
+</main>
+
+<footer>
+  <a href="/" style="display:inline-block;"><img src="/images/logo_transparent.png" alt="ju.en.vie logo" style="height:56px;width:auto;opacity:0.4;" width="320" height="320" loading="lazy"></a>
+  <span>Designed &amp; coded from scratch by Julien. Yes, I build websites too.</span>
+  <span>Content Creator · Sydney 2026</span>
+</footer>
+
+</body>
+</html>
