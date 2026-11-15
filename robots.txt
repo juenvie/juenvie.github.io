@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://juenvie.github.io/sitemap.xml
+Sitemap: https://juenvie.com/sitemap.xml
+Sitemap: https://juenvie.com/ressources/sitemap.xml
